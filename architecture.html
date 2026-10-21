@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6effb">
+<title>Computer Architecture | Veloureria</title>
+<style>
+:root{
+  --ink:#30223e;--muted:#796b86;--lilac:#c6a7e8;
+  --purple:#7953a4;--pale:#f5eefb;--paper:#fffcf8;
+  --line:#e8d9f1;--white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.75}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid #ac81dc;outline-offset:4px}
+.nav{display:flex;justify-content:space-between;align-items:center;
+padding:17px 6%;border-bottom:1px solid var(--line);background:#fffcf8eF;
+position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
+.brand{font-family:Georgia,serif;font-size:22px;font-weight:bold}
+.brand span{color:var(--purple)}
+.nav a{text-decoration:none;font-size:13px;color:var(--purple)}
+.wrap{max-width:1100px;margin:auto;padding:0 24px}
+.hero{padding:75px 0 60px;display:grid;grid-template-columns:1.05fr .95fr;
+align-items:center;gap:38px}
+.eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:11px;
+font-weight:800;color:var(--purple)}
+h1,h2,h3{line-height:1.2}
+h1{font:clamp(42px,6vw,68px)/1.08 Georgia,serif;margin:18px 0}
+h1 em{color:var(--purple);font-weight:normal}
+.lead{color:var(--muted);font-size:16px;max-width:540px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+padding:12px 18px;border-radius:30px;border:1px solid var(--line);
+background:white;color:var(--purple);text-decoration:none;font-weight:650;
+font-size:13px;transition:.2s}
+.btn.primary{background:var(--purple);color:white;border-color:var(--purple)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px #7953a422}
+.hero-art{border-radius:28px;background:linear-gradient(145deg,#eee0fa,#fff7f1);
+padding:20px;min-height:310px;display:grid;place-items:center;overflow:hidden}
+.hero-art img{width:100%;height:300px;object-fit:cover;border-radius:20px}
+.author{display:flex;gap:12px;align-items:center;margin-top:24px;font-size:12px;color:var(--muted)}
+.avatar{width:45px;height:45px;border-radius:50%;object-fit:cover;
+background:#e9daf6;border:2px solid white}
+.section{padding:55px 0}
+.section-head{max-width:680px;margin-bottom:26px}
+h2{font:clamp(29px,4vw,42px) Georgia,serif;margin:10px 0 15px}
+h3{font-size:17px}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{padding:22px;background:white;border:1px solid var(--line);
+border-radius:20px;box-shadow:0 8px 26px #4e31520a}
+.card p{font-size:14px;color:var(--muted)}
+.icon{font-size:29px}
+.pill{display:inline-block;background:var(--pale);color:var(--purple);
+padding:4px 10px;border-radius:30px;font-size:11px;font-weight:bold}
+.lab{background:#f5eef9;border-radius:28px;padding:28px;margin:15px 0}
+.lab-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
+.stage{min-height:330px;display:grid;place-items:center;perspective:900px;
+background:radial-gradient(ellipse,#e6d3f6,#f8f1fb 65%,transparent 66%);
+overflow:hidden;border-radius:20px}
+.motherboard{position:relative;width:220px;height:220px;
+transform-style:preserve-3d;transform:rotateX(56deg) rotateZ(-35deg);
+transition:transform .12s linear}
+.board{position:absolute;inset:0;border:3px solid #9b77b7;border-radius:20px;
+background:linear-gradient(135deg,#b5a0cb,#79628e 50%,#b8a0ce);
+box-shadow:10px 14px 0 #634a7a,18px 25px 35px #4b315455}
+.chip{position:absolute;width:76px;height:76px;left:70px;top:70px;
+transform:translateZ(18px);border:5px double #d9c4ed;border-radius:10px;
+background:repeating-linear-gradient(45deg,#392c48,#392c48 5px,#51405f 5px,#51405f 10px);
+box-shadow:0 0 0 5px #8f73a8,0 0 22px #e5c6ff}
+.chip:after{content:"CPU";color:#fff;position:absolute;inset:25px 0;
+text-align:center;font-weight:bold;font-size:14px;transform:rotateZ(0)}
+.slot{position:absolute;left:22px;top:30px;width:13px;height:115px;
+background:repeating-linear-gradient(0deg,#eed8a0 0 5px,#785f88 5px 9px);
+transform:translateZ(8px);border-radius:3px}
+.slot.two{left:auto;right:22px}
+.pin{position:absolute;inset:0;border-radius:20px;transform:translateZ(-3px);
+background:repeating-linear-gradient(0deg,transparent 0 12px,#d8c2ec 12px 14px),
+repeating-linear-gradient(90deg,transparent 0 12px,#d8c2ec 12px 14px);
+opacity:.65}
+.lab-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.lab-controls button{border:1px solid var(--line);border-radius:20px;
+background:white;padding:9px 13px;color:var(--purple);font-size:12px}
+.parts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.part{border:1px solid var(--line);border-radius:14px;background:white;
+text-align:left;padding:14px;color:var(--ink)}
+.part.active{background:#eee0fa;border-color:#a681ca}
+.part strong{display:block;color:var(--purple);font-size:13px}
+.part small{color:var(--muted)}
+.diagram{display:grid;grid-template-columns:1fr 1fr;gap:12px;
+align-items:center;text-align:center}
+.node{padding:17px 8px;border:1px solid #c8addf;background:white;
+border-radius:13px;color:var(--purple);font-size:13px;font-weight:bold}
+.node:hover{background:#eadcf7}
+.arrow{color:#a083be;font-size:20px}
+.detail{margin-top:14px;padding:20px;border-radius:17px;background:#f6effb;
+min-height:125px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px}
+table{border-collapse:collapse;width:100%;min-width:580px;background:white;font-size:13px}
+th,td{text-align:left;padding:14px;border-bottom:1px solid var(--line)}
+th{background:#f2e8fa;color:var(--purple)}
+tr:last-child td{border:0}
+.quiz{padding:28px;background:white;border:1px solid var(--line);
+border-radius:24px;max-width:760px}
+.progress{height:6px;background:#eee3f5;border-radius:9px;overflow:hidden;margin:15px 0}
+.progress span{display:block;width:0;height:100%;background:var(--purple);transition:.3s}
+.answers{display:grid;gap:10px;margin:20px 0}
+.answer{padding:13px 15px;border:1px solid var(--line);border-radius:13px;
+background:white;text-align:left;color:var(--ink)}
+.answer:hover:not(:disabled){background:#f4ebfb}
+.answer.correct{background:#e4f5e8;border-color:#81bc91}
+.answer.wrong{background:#fce7eb;border-color:#d991a0}
+.feedback{color:var(--muted);font-size:14px;min-height:25px}
+#fireworks{position:fixed;inset:0;width:100%;height:100%;
+pointer-events:none;z-index:50;display:none}
+footer{text-align:center;padding:35px 20px;border-top:1px solid var(--line);
+font-size:12px;color:var(--muted)}
+@media(max-width:760px){
+ .hero,.lab-grid{grid-template-columns:1fr}.hero{padding-top:42px}
+ .grid{grid-template-columns:1fr}.parts{grid-template-columns:1fr 1fr}
+ .nav{padding:14px 5%}.brand{font-size:18px}.hero-art img{height:230px}
+ .section{padding:40px 0}.lab{padding:16px}.stage{min-height:280px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="fireworks" aria-hidden="true"></canvas>
+<nav class="nav">
+  <a class="brand" href="index.html" style="text-decoration:none">VELOURERIA<span> ✧</span></a>
+  <a href="index.html">← Back to Welcome</a>
+</nav>
+
+<header class="wrap hero">
+ <div>
+  <div class="eyebrow">The digital study journal · 02</div>
+  <h1>Inside the <em>Architecture</em> of a Computer.</h1>
+  <p class="lead">Mengenal komponen yang bekerja di balik layar—dari CPU dan memori hingga jalur data yang membuat komputer menjalankan instruksi.</p>
+  <a class="btn primary" href="#3d-lab">Explore the 3D Lab ↗</a>
+  <a class="btn" href="#quiz">Take the quiz</a>
+  <div class="author">
+    <img class="avatar" src="assets/author-profile.jpeg" alt="Foto Salsabillah Aurellya Utami"
+      onerror="this.style.display='none'">
+    <div><b>Salsabillah Aurellya Utami</b><br>
+    NIM 8020250141 · Teknik Informatika</div>
+  </div>
+ </div>
+ <div class="hero-art">
+  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85"
+   alt="Papan sirkuit elektronik dan komponen komputer" loading="lazy">
+ </div>
+</header>
+
+<main class="wrap">
+<section class="section" id="fundamentals">
+ <div class="section-head">
+  <div class="eyebrow">01 · The fundamentals</div>
+  <h2>Apa itu arsitektur komputer?</h2>
+  <p class="muted">Arsitektur komputer menjelaskan rancangan dan karakteristik sistem yang berkaitan dengan cara program berinteraksi dengan komputer. Organisasi komputer membahas bagaimana komponen hardware disusun dan bekerja untuk mewujudkan rancangan tersebut.</p>
+ </div>
+ <div class="grid">
+  <article class="card"><div class="icon">🧠</div><h3>CPU — The Processor</h3>
+   <p>Central Processing Unit menjalankan instruksi dan mengendalikan operasi sistem. CPU memiliki unit kendali, ALU, register, serta cache pada prosesor modern.</p></article>
+  <article class="card"><div class="icon">💾</div><h3>Memory & Storage</h3>
+   <p>Register dan cache menyediakan akses sangat cepat. RAM menampung data sementara yang sedang digunakan, sedangkan SSD dan HDD menyimpan data jangka panjang.</p></article>
+  <article class="card"><div class="icon">↔️</div><h3>System Bus</h3>
+   <p>Jalur komunikasi menghubungkan komponen. Data bus membawa data, address bus menunjukkan lokasi yang diakses, dan control signals membantu mengatur operasi.</p></article>
+ </div>
+</section>
+
+<section class="section" id="3d-lab">
+ <div class="section-head">
+  <div class="eyebrow">02 · Interactive experience</div>
+  <h2>The Lilac Motherboard Lab.</h2>
+  <p class="muted">Putar model motherboard bergaya 3D dengan menggerakkan mouse, atau gunakan tombol rotasi. Pilih komponen untuk mempelajari fungsinya.</p>
+ </div>
+ <div class="lab">
+  <div class="lab-grid">
+   <div>
+    <div class="stage" id="stage" aria-label="Model ilustrasi motherboard 3D">
+     <div class="motherboard" id="board">
+      <div class="board"></div><div class="pin"></div>
+      <div class="chip"></div><div class="slot"></div><div class="slot two"></div>
+     </div>
+    </div>
+    <div class="lab-controls">
+     <button id="rotateLeft">↶ Rotate left</button>
+     <button id="rotateRight">Rotate right ↷</button>
+     <button id="resetView">Reset view</button>
+    </div>
+    <p class="muted" style="font-size:11px">Ilustrasi 3D dekoratif, bukan model teknis dengan skala nyata.</p>
+   </div>
+   <div>
+    <h3>Choose a component</h3>
+    <div class="parts">
+     <button class="part active" data-part="cpu"><strong>CPU</strong><small>Instruction processing</small></button>
+     <button class="part" data-part="ram"><strong>RAM</strong><small>Working memory</small></button>
+     <button class="part" data-part="rom"><strong>ROM / Firmware</strong><small>Startup instructions</small></button>
+     <button class="part" data-part="bus"><strong>System Bus</strong><small>Communication paths</small></button>
+     <button class="part" data-part="storage"><strong>SSD / HDD</strong><small>Long-term storage</small></button>
+     <button class="part" data-part="gpu"><strong>GPU</strong><small>Graphics processing</small></button>
+    </div>
+    <div class="detail" id="partDetail" aria-live="polite">
+     <b>CPU — Central Processing Unit</b>
+     <p>CPU mengambil dan menjalankan instruksi. Control Unit mengatur alur kerja, ALU melakukan operasi aritmetika dan logika, sementara register menyimpan nilai yang diperlukan segera.</p>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="diagram">
+ <div class="section-head">
+  <div class="eyebrow">03 · Click to discover</div>
+  <h2>How the system works.</h2>
+  <p class="muted">Klik setiap blok pada diagram untuk membaca peran komponen. Diagram ini menyederhanakan aliran kerja—sistem nyata memiliki banyak jalur dan proses paralel.</p>
+ </div>
+ <div class="lab-grid">
+  <div class="diagram">
+   <button class="node" data-node="input">INPUT<br>Keyboard / Mouse</button>
+   <button class="node" data-node="memory">MEMORY<br>RAM / Cache</button>
+   <button class="node" data-node="cpu">CPU<br>CU + ALU + Registers</button>
+   <button class="node" data-node="storage">STORAGE<br>SSD / HDD</button>
+   <button class="node" data-node="output" style="grid-column:1 / -1">OUTPUT · Display / Printer / Audio</button>
+  </div>
+  <div class="detail" id="nodeDetail" aria-live="polite">
+   <span class="pill">SYSTEM OVERVIEW</span>
+   <h3>From input to output</h3>
+   <p class="muted">Komputer menerima data, memproses instruksi, mengakses memori dan penyimpanan sesuai kebutuhan, lalu menyajikan hasil melalui perangkat output.</p>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="instruction-cycle">
+ <div class="section-head">
+  <div class="eyebrow">04 · Inside the CPU</div>
+  <h2>The instruction cycle.</h2>
+  <p class="muted">CPU menjalankan banyak instruksi per detik. Secara sederhana, satu siklus instruksi terdiri dari tahapan berikut.</p>
+ </div>
+ <div class="grid">
+  <article class="card"><span class="pill">STEP 01</span><h3>Fetch</h3>
+   <p>Instruksi berikutnya diambil dari memori menggunakan alamat yang ditunjuk program counter.</p></article>
+  <article class="card"><span class="pill">STEP 02</span><h3>Decode</h3>
+   <p>Control Unit menerjemahkan instruksi untuk menentukan operasi dan sumber data yang diperlukan.</p></article>
+  <article class="card"><span class="pill">STEP 03</span><h3>Execute</h3>
+   <p>CPU menjalankan operasi, misalnya perhitungan ALU, pemindahan data, atau operasi lain yang sesuai.</p></article>
+ </div>
+ <article class="card" style="margin-top:15px">
+  <h3>Write back — simpan hasil</h3>
+  <p>Jika instruksi menghasilkan nilai, hasil dapat ditulis kembali ke register atau memori. Detail siklus bergantung pada desain prosesor; instruksi modern juga bisa diproses secara bertumpang tindih melalui pipeline.</p>
+ </article>
+</section>
+
+<section class="section" id="memory-hierarchy">
+ <div class="section-head">
+  <div class="eyebrow">05 · Memory hierarchy</div>
+  <h2>Fast, faster, and persistent.</h2>
+  <p class="muted">Secara umum, memori yang lebih dekat ke CPU memiliki latensi lebih rendah dan kapasitas lebih kecil. Hierarki membantu menyeimbangkan kecepatan, kapasitas, dan biaya.</p>
+ </div>
+ <div class="table-wrap">
+ <table>
+  <thead><tr><th>Komponen</th><th>Peran utama</th><th>Sifat umum</th></tr></thead>
+  <tbody>
+   <tr><td>Register</td><td>Menyimpan nilai yang sedang digunakan CPU</td><td>Sangat cepat, kapasitas sangat kecil</td></tr>
+   <tr><td>Cache</td><td>Menyimpan salinan data/instruksi yang sering diakses</td><td>Sangat cepat, kapasitas kecil</td></tr>
+   <tr><td>RAM</td><td>Area kerja program dan data aktif</td><td>Volatil; data hilang saat daya mati</td></tr>
+   <tr><td>SSD / HDD</td><td>File, aplikasi, dan data jangka panjang</td><td>Nonvolatil; kapasitas besar</td></tr>
+  </tbody>
+ </table>
+ </div>
+</section>
+
+<section class="section" id="quiz">
+ <div class="section-head">
+  <div class="eyebrow">06 · Moonlight challenge</div>
+  <h2>Test your knowledge ✧</h2>
+  <p class="muted">Setiap ronde memilih lima pertanyaan secara acak. Selesaikan ronde untuk melihat skor dan fireworks!</p>
+ </div>
+ <div class="quiz">
+  <div style="display:flex;justify-content:space-between;gap:12px">
+   <span class="pill" id="quizCount">READY TO PLAY</span><b id="scoreLabel">Score: 0</b>
+  </div>
+  <div class="progress"><span id="progressBar"></span></div>
+  <h3 id="question">Ready to enter the architecture lab?</h3>
+  <p id="quizHint" class="muted">Uji pemahamanmu tentang komponen dan cara kerja komputer.</p>
+  <div class="answers" id="answers"></div>
+  <p class="feedback" id="feedback" aria-live="polite"></p>
+  <button class="btn primary" id="startQuiz">Start the quiz ✨</button>
+  <button class="btn" id="nextQuestion" hidden>Next question →</button>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-head">
+  <div class="eyebrow">07 · Key takeaways</div>
+  <h2>What to remember.</h2>
+ </div>
+ <div class="card">
+  <ul>
+   <li>Arsitektur komputer berkaitan dengan rancangan dan karakteristik sistem komputer.</li>
+   <li>Organisasi komputer menjelaskan bagaimana komponen hardware diimplementasikan dan saling bekerja.</li>
+   <li>CPU menjalankan instruksi; ALU menangani operasi aritmetika/logika, sedangkan Control Unit mengatur alur instruksi.</li>
+   <li>Register, cache, RAM, dan penyimpanan memiliki fungsi serta karakteristik berbeda.</li>
+   <li>Input, pemrosesan, memori, penyimpanan, dan output bekerja sebagai bagian dari satu sistem.</li>
+  </ul>
+ </div>
+ <p class="muted" style="font-size:12px;margin-top:18px">Referensi belajar: William Stallings, <i>Computer Organization and Architecture</i>; David A. Patterson dan John L. Hennessy, <i>Computer Organization and Design</i>. Gunakan edisi yang tersedia di perpustakaan kampus untuk daftar pustaka tugas.</p>
+</section>
+</main>
+<footer>
+ <p>VELoureria ✧ The digital study journal</p>
+ <p>Written and curated by Salsabillah Aurellya Utami · 8020250141</p>
+ <a href="index.html">Return to Welcome ↗</a>
+</footer>
+
+<script>
+const details={
+ cpu:["CPU — Central Processing Unit","CPU menjalankan instruksi program. Control Unit mengatur aliran instruksi, ALU mengerjakan operasi aritmetika dan logika, dan register menyimpan nilai yang perlu diakses dengan cepat."],
+ ram:["RAM — Random Access Memory","RAM menyimpan data dan instruksi yang sedang digunakan program. RAM utama bersifat volatil, sehingga isinya umumnya hilang ketika komputer dimatikan."],
+ rom:["ROM dan firmware","Firmware menyimpan instruksi dasar untuk menginisialisasi perangkat keras dan memulai proses boot. Implementasi modern sering menggunakan flash memory yang dapat diperbarui."],
+ bus:["System bus dan interconnect","Jalur komunikasi membawa data, alamat, dan sinyal kendali antarbagian sistem. Komputer modern juga menggunakan beragam interconnect khusus."],
+ storage:["SSD / HDD","Perangkat penyimpanan mempertahankan file dan program tanpa bergantung pada daya aktif. SSD menggunakan memori flash; HDD menggunakan piringan magnetik."],
+ gpu:["GPU — Graphics Processing Unit","GPU dirancang untuk pemrosesan grafis dan banyak operasi paralel. GPU juga digunakan dalam komputasi ilmiah dan sebagian beban kerja AI."]
+};
+document.querySelectorAll(".part").forEach(button=>{
+ button.addEventListener("click",()=>{
+  document.querySelectorAll(".part").forEach(x=>x.classList.remove("active"));
+  button.classList.add("active");
+  const d=details[button.dataset.part];
+  document.getElementById("partDetail").innerHTML="<b>"+d[0]+"</b><p>"+d[1]+"</p>";
+ });
+});
+const nodeDetails={
+ input:["INPUT","Keyboard, mouse, kamera, dan sensor memasukkan data atau perintah ke dalam sistem."],
+ memory:["MEMORY","Register dan cache mendukung akses cepat, sedangkan RAM menyimpan program serta data yang sedang aktif."],
+ cpu:["CPU","CPU mengambil, menerjemahkan, dan menjalankan instruksi sesuai desain arsitekturnya."],
+ storage:["STORAGE","SSD dan HDD menyimpan aplikasi dan file untuk digunakan kembali, termasuk setelah komputer dimatikan."],
+ output:["OUTPUT","Monitor, printer, speaker, dan perangkat lain menyampaikan hasil pemrosesan kepada pengguna."]
+};
+document.querySelectorAll(".node").forEach(button=>{
+ button.addEventListener("click",()=>{
+  const d=nodeDetails[button.dataset.node];
+  document.getElementById("nodeDetail").innerHTML="<span class='pill'>"+d[0]+"</span><h3>"+d[0]+"</h3><p class='muted'>"+d[1]+"</p>";
+ });
+});
+// Interactive 3D motherboard: mouse movement and rotation controls.
+const board=document.getElementById("board"),stage=document.getElementById("stage");
+let rx=56,rz=-35;
+function renderBoard(){board.style.transform=`rotateX(${rx}deg) rotateZ(${rz}deg)`;}
+stage.addEventListener("pointermove",e=>{
+ if(e.pointerType==="touch")return;
+ const r=stage.getBoundingClientRect();
+ rz=-35+((e.clientX-r.left)/r.width-.5)*35;
+ rx=56+((e.clientY-r.top)/r.height-.5)*20;
+ renderBoard();
+});
+stage.addEventListener("pointerleave",()=>{rx=56;rz=-35;renderBoard()});
+document.getElementById("rotateLeft").onclick=()=>{rz-=25;renderBoard()};
+document.getElementById("rotateRight").onclick=()=>{rz+=25;renderBoard()};
+document.getElementById("resetView").onclick=()=>{rx=56;rz=-35;renderBoard()};
+
+// Randomized quiz, shuffled choices, explanations and celebratory fireworks.
+const bank=[
+ {q:"Komponen mana yang menjalankan instruksi program?",a:["CPU","Monitor","Keyboard","SSD"],c:0,e:"CPU menjalankan instruksi dan mengoordinasikan operasi pemrosesan."},
+ {q:"Apa tugas utama ALU?",a:["Mencetak dokumen","Operasi aritmetika dan logika","Menyimpan file permanen","Menampilkan gambar"],c:1,e:"ALU adalah Arithmetic Logic Unit yang melakukan operasi aritmetika dan logika."},
+ {q:"Memori mana yang umumnya kehilangan data saat daya mati?",a:["SSD","HDD","RAM","Flash drive"],c:2,e:"RAM utama bersifat volatil dan digunakan sebagai area kerja sementara."},
+ {q:"Apa fungsi Control Unit?",a:["Mengatur jalannya instruksi","Menyimpan semua foto secara permanen","Mendinginkan CPU","Memasukkan teks"],c:0,e:"Control Unit mengendalikan urutan dan koordinasi operasi CPU."},
+ {q:"Tahap pertama dalam siklus instruksi sederhana adalah ...",a:["Print","Decode","Fetch","Delete"],c:2,e:"Fetch mengambil instruksi yang akan diproses."},
+ {q:"Perangkat yang menyimpan file jangka panjang adalah ...",a:["Register","SSD","ALU","Control Unit"],c:1,e:"SSD menyimpan data secara nonvolatil."},
+ {q:"Apa fungsi register?",a:["Menyimpan nilai yang dibutuhkan CPU dengan cepat","Mencetak halaman","Menghubungkan Wi-Fi saja","Menampilkan video"],c:0,e:"Register adalah penyimpanan kecil dan sangat cepat di dalam CPU."},
+ {q:"Cache digunakan untuk ...",a:["Menyimpan data yang sering diakses agar lebih cepat","Mengganti semua RAM","Menghasilkan listrik","Mencetak file"],c:0,e:"Cache mengurangi waktu akses terhadap data atau instruksi yang sering digunakan."},
+ {q:"Bus alamat (address bus) membantu menentukan ...",a:["Warna monitor","Lokasi data atau instruksi yang diakses","Kecepatan mengetik","Ukuran keyboard"],c:1,e:"Address bus membawa informasi alamat lokasi yang sedang diakses."},
+ {q:"GPU modern sangat cocok untuk ...",a:["Menggantikan semua penyimpanan","Pemrosesan grafis dan operasi paralel","Menyimpan firmware saja","Mengetik secara manual"],c:1,e:"GPU dirancang untuk pekerjaan grafis dan banyak operasi yang bisa dikerjakan paralel."},
+ {q:"Firmware biasanya membantu ...",a:["Inisialisasi perangkat dan proses boot","Membersihkan layar secara fisik","Mengganti keyboard","Menambah kapasitas SSD secara otomatis"],c:0,e:"Firmware menyediakan instruksi dasar untuk perangkat keras dan startup."},
+ {q:"Manakah pernyataan yang tepat tentang RAM dan SSD?",a:["Keduanya selalu volatil","RAM area kerja sementara, SSD penyimpanan nonvolatil","SSD adalah bagian ALU","RAM hanya menyimpan gambar"],c:1,e:"RAM dan SSD memiliki fungsi dan karakteristik penyimpanan yang berbeda."},
+ {q:"Tahap decode bertujuan untuk ...",a:["Menerjemahkan instruksi","Mematikan komputer","Mencetak hasil","Menghapus RAM"],c:0,e:"Instruksi diterjemahkan agar CPU menentukan operasi yang diperlukan."},
+ {q:"Perangkat input yang umum adalah ...",a:["Speaker","Monitor","Keyboard","Printer"],c:2,e:"Keyboard digunakan untuk memasukkan karakter dan perintah."},
+ {q:"Arsitektur dan organisasi komputer ...",a:["Selalu berarti hal yang sama persis","Saling berkaitan, tetapi menyoroti aspek yang berbeda","Tidak terkait hardware","Hanya membahas aplikasi web"],c:1,e:"Arsitektur menekankan rancangan/karakteristik yang terlihat oleh program; organisasi membahas implementasi komponen."}
+];
+const $=id=>document.getElementById(id);
+let round=[],idx=0,score=0,locked=false;
+function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+function start(){
+ round=shuffle(bank).slice(0,5);idx=0;score=0;locked=false;
+ $("scoreLabel").textContent="Score: 0";$("startQuiz").hidden=true;
+ $("nextQuestion").hidden=false;$("nextQuestion").textContent="Check answer";
+ showQuestion();
+}
+function showQuestion(){
+ locked=false;const item=round[idx];
+ $("quizCount").textContent=`QUESTION ${idx+1} / ${round.length}`;
+ $("progressBar").style.width=(idx/round.length*100)+"%";
+ $("question").textContent=item.q;$("quizHint").textContent="Pilih satu jawaban yang paling tepat.";
+ $("feedback").textContent="";$("answers").innerHTML="";
+ const choices=shuffle(item.a.map((text,i)=>({text,correct:i===item.c})));
+ choices.forEach(choice=>{
+  const b=document.createElement("button");b.className="answer";b.textContent=choice.text;
+  b.addEventListener("click",()=>{
+   if(locked)return;locked=true;
+   document.querySelectorAll(".answer").forEach(x=>x.disabled=true);
+   if(choice.correct){score++;b.classList.add("correct");$("feedback").textContent="Benar! "+item.e;}
+   else{
+    b.classList.add("wrong");
+    const correct=choices.find(x=>x.correct);
+    document.querySelectorAll(".answer").forEach(x=>{if(x.textContent===correct.text)x.classList.add("correct")});
+    $("feedback").textContent="Belum tepat. "+item.e;
+   }
+   $("scoreLabel").textContent="Score: "+score;
+   $("nextQuestion").textContent=idx===round.length-1?"Finish round ✨":"Next question →";
+  });
+  $("answers").appendChild(b);
+ });
+ $("nextQuestion").textContent="Check answer";
+}
+$("startQuiz").onclick=start;
+$("nextQuestion").onclick=()=>{
+ if(!round.length)return;
+ if(!locked){$("feedback").textContent="Pilih jawaban terlebih dahulu.";return;}
+ if(idx<round.length-1){idx++;showQuestion();return;}
+ finish();
+};
+function finish(){
+ $("progressBar").style.width="100%";$("quizCount").textContent="ROUND COMPLETE";
+ $("question").textContent=`You scored ${score} / ${round.length} ✧`;
+ $("quizHint").textContent=score===5?"Perfect score! Kamu menguasai materi ini.":score>=3?"Bagus! Tinjau kembali jawaban yang salah dan terus belajar.":"Keep learning, little by little. Coba ronde baru setelah membaca materi.";
+ $("answers").innerHTML="";$("feedback").textContent="Moonlight fireworks for you! 🎆";
+ $("nextQuestion").hidden=true;$("startQuiz").hidden=false;
+ $("startQuiz").textContent="Play another round ↻";launchFireworks();
+}
+function launchFireworks(){
+ const c=$("fireworks"),ctx=c.getContext("2d");
+ const dpr=Math.min(window.devicePixelRatio||1,2);
+ c.width=innerWidth*dpr;c.height=innerHeight*dpr;c.style.display="block";
+ ctx.setTransform(dpr,0,0,dpr,0,0);
+ const colors=["#c6a7e8","#8d65b3","#fff1cb","#f7d8ef","#ffffff"];
+ const ps=[];
+ for(let burst=0;burst<6;burst++){
+  const x=innerWidth*(.12+Math.random()*.76),y=innerHeight*(.12+Math.random()*.48);
+  for(let i=0;i<55;i++){const a=Math.PI*2*i/55,s=1+Math.random()*4;
+   ps.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:55+Math.random()*25,
+    max:80,color:colors[Math.floor(Math.random()*colors.length)],r:1+Math.random()*2});
+  }
+ }
+ let frame=0;
+ function draw(){
+  ctx.clearRect(0,0,innerWidth,innerHeight);let alive=false;
+  ps.forEach(p=>{if(p.life<=0)return;alive=true;p.x+=p.vx;p.y+=p.vy;p.vy+=.035;p.life--;
+   ctx.globalAlpha=Math.max(0,p.life/p.max);ctx.fillStyle=p.color;
+   ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+  });
+  ctx.globalAlpha=1;frame++;
+  if(alive&&frame<140)requestAnimationFrame(draw);
+  else{c.style.display="none";ctx.clearRect(0,0,c.width,c.height);}
+ }
+ draw();
+}
+</script>
+</body>
+</html>
