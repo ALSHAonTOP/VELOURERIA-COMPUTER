@@ -1,1933 +1,258 @@
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fffaf4">
-<meta name="description" content="Materi lengkap sejarah dan evolusi komputer dari generasi pertama hingga generasi kelima oleh Salsabillah Aurellya Utami.">
-<title>The History of Computers — Veloureria</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The History of Computers — Veloureria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ink: #282036;
-  --muted: #766c84;
-  --purple: #7956a6;
-  --deep: #4d356c;
-  --cream: #fffaf4;
-  --white: #ffffff;
-  --line: #e6d9f1;
-  --pale: #f0e6f9;
-  --green: #e1f1e4;
-}
-
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-
-body {
-  margin: 0;
-  background: var(--cream);
-  color: var(--ink);
-  font-family: "DM Sans", sans-serif;
-  line-height: 1.8;
-}
-
-img { max-width: 100%; }
-
-a { color: inherit; text-decoration: none; }
-
-button, input, select { font: inherit; }
-
-button, a, summary { -webkit-tap-highlight-color: transparent; }
-
-button:focus-visible, a:focus-visible, summary:focus-visible {
-  outline: 3px solid #ac81dc;
-  outline-offset: 4px;
-}
-
-.wrap {
-  width: min(1120px, calc(100% - 40px));
-  margin: auto;
-}
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: #fffaf4ed;
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--line);
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  padding: 14px 0;
-}
-
-.brand {
-  font: 700 1.1rem "Playfair Display", serif;
-  letter-spacing: .12em;
-  white-space: nowrap;
-}
-
-.brand b { color: var(--purple); }
-
-nav {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  font-size: .8rem;
-  color: var(--muted);
-}
-
-nav a:hover, footer a:hover { color: var(--purple); }
-
-.eyebrow {
-  font-size: .72rem;
-  letter-spacing: .17em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--purple);
-}
-
-h1, h2, h3, h4 { line-height: 1.25; }
-
-h1, h2 { font-family: "Playfair Display", Georgia, serif; }
-
-h1 {
-  font-size: clamp(3rem, 6vw, 5.4rem);
-  letter-spacing: -.045em;
-  line-height: 1.05;
-  margin: 14px 0 20px;
-}
-
-h1 em { color: var(--purple); font-weight: 500; }
-
-h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin: 8px 0 14px;
-  letter-spacing: -.025em;
-}
-
-h3 { font-size: 1.2rem; margin-top: 8px; }
-
-p { margin-top: 8px; }
-
-.muted, .lead { color: var(--muted); }
-
-.lead { font-size: 1.04rem; max-width: 600px; }
-
-.btn {
-  display: inline-block;
-  padding: 10px 16px;
-  margin: 5px 5px 5px 0;
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  background: var(--white);
-  color: var(--deep);
-  font-size: .86rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform .2s, box-shadow .2s;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px #7953a422;
-}
-
-.btn.primary { background: var(--deep); color: white; }
-
-.hero {
-  display: grid;
-  grid-template-columns: 1fr .9fr;
-  gap: 40px;
-  align-items: center;
-  padding-top: 65px;
-  padding-bottom: 70px;
-}
-
-.hero h1 span { color: var(--purple); }
-
-.hero-image {
-  position: relative;
-  padding: 15px;
-  background: linear-gradient(145deg, #f0e2fa, #fff0e4);
-  border-radius: 26px;
-}
-
-.hero-image img {
-  display: block;
-  width: 100%;
-  height: 370px;
-  object-fit: cover;
-  border-radius: 19px;
-}
-
-.image-caption {
-  display: block;
-  padding: 8px 4px 0;
-  color: var(--muted);
-  font-size: .72rem;
-}
-
-.author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 22px;
-  font-size: .82rem;
-}
-
-.author img {
-  width: 49px;
-  height: 49px;
-  border: 3px solid white;
-  border-radius: 50%;
-  object-fit: cover;
-  background: var(--pale);
-}
-
-.section {
-  padding: 58px 0;
-  border-top: 1px solid var(--line);
-}
-
-.heading {
-  max-width: 780px;
-  margin-bottom: 27px;
-}
-
-.heading > p { color: var(--muted); }
-
-.intro {
-  padding: 22px;
-  background: linear-gradient(120deg, #f0e6f9, #fff);
-  border: 1px solid var(--line);
-  border-radius: 19px;
-}
-
-.intro p:last-child { margin-bottom: 0; }
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.card {
-  min-width: 0;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 19px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px #4d356c09;
-}
-
-.card-content { padding: 21px; }
-
-.card p, .card li { color: var(--muted); }
-
-.card-image {
-  display: block;
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-  background: var(--pale);
-}
-
-.tag {
-  display: inline-block;
-  padding: 5px 10px;
-  background: var(--pale);
-  color: var(--purple);
-  border-radius: 20px;
-  font-size: .68rem;
-  letter-spacing: .08em;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.details {
-  margin-top: 15px;
-  border-top: 1px solid var(--line);
-  padding-top: 13px;
-}
-
-summary {
-  color: var(--deep);
-  font-weight: 700;
-  cursor: pointer;
-}
-
-details p, details li { font-size: .91rem; }
-
-figure { margin: 0; }
-
-figure img {
-  display: block;
-  width: 100%;
-  border-radius: 14px;
-  background: var(--pale);
-}
-
-figcaption {
-  font-size: .74rem;
-  color: var(--muted);
-  padding-top: 7px;
-}
-
-.tools {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 20px 0;
-}
-
-.tools input, .tools select {
-  padding: 12px 14px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: white;
-  color: var(--ink);
-}
-
-.tools input { flex: 1; min-width: 220px; }
-
-.generation-card[hidden] { display: none; }
-
-.empty { color: var(--muted); padding: 18px 0; }
-
-.timeline {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.time {
-  padding: 15px;
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--purple);
-  border-radius: 0 0 13px 13px;
-  background: white;
-}
-
-.time strong {
-  display: block;
-  font: 600 1.2rem "Playfair Display", serif;
-}
-
-.time span { font-size: .8rem; color: var(--muted); }
-
-.comparison-intro {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 22px;
-}
-
-.comparison-intro figure {
-  padding: 12px;
-  border: 1px solid var(--line);
-  background: white;
-  border-radius: 17px;
-}
-
-.comparison-intro img {
-  height: 200px;
-  object-fit: cover;
-}
-
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  background: white;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 720px;
-}
-
-th, td {
-  padding: 13px 15px;
-  text-align: left;
-  vertical-align: top;
-  border-bottom: 1px solid var(--line);
-  font-size: .87rem;
-}
-
-th { background: #eee5f8; color: var(--deep); }
-
-tr:last-child td { border-bottom: 0; }
-
-.bar-wrap {
-  display: grid;
-  gap: 14px;
-}
-
-.bar-row {
-  display: grid;
-  grid-template-columns: 125px 1fr;
-  gap: 12px;
-  align-items: center;
-}
-
-.bar-label { font-size: .84rem; font-weight: 700; }
-
-.bar {
-  min-height: 39px;
-  padding: 7px 12px;
-  border-radius: 7px;
-  color: var(--deep);
-  background: linear-gradient(90deg, #e7d5f5, #f7edf9);
-  font-size: .78rem;
-}
-
-.bar-row:nth-child(2) .bar { background: #e1e9f7; }
-.bar-row:nth-child(3) .bar { background: #dfeee4; }
-.bar-row:nth-child(4) .bar { background: #f5e4cf; }
-.bar-row:nth-child(5) .bar { background: #f1dff0; }
-
-.callout {
-  padding: 18px 21px;
-  border-left: 4px solid var(--purple);
-  border-radius: 0 13px 13px 0;
-  background: #f2e9fa;
-  margin-top: 18px;
-}
-
-.quiz {
-  padding: 25px;
-  background: linear-gradient(130deg, #eee5f8, #fffaf4);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-}
-
-.quiz-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  color: var(--muted);
-  font-size: .85rem;
-}
-
-.question {
-  font: 600 1.5rem/1.4 "Playfair Display", serif;
-  margin: 18px 0;
-}
-
-.answers {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.answer {
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: white;
-  text-align: left;
-  padding: 12px;
-  color: var(--ink);
-  cursor: pointer;
-}
-
-.answer:hover:not(:disabled) { border-color: var(--purple); }
-
-.answer:disabled { cursor: default; }
-
-.answer.correct { background: #e1f1e4; border-color: #78aa82; }
-
-.answer.wrong { background: #f8e1e8; border-color: #d28b9c; }
-
-.feedback { min-height: 30px; color: var(--deep); font-weight: 600; }
-
-.actions { display: flex; gap: 10px; flex-wrap: wrap; }
-
-.action {
-  border: 0;
-  border-radius: 25px;
-  padding: 10px 15px;
-  background: var(--deep);
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.action.alt {
-  background: white;
-  border: 1px solid var(--line);
-  color: var(--deep);
-}
-
-.refs {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.ref {
-  padding: 16px;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 13px;
-}
-
-.ref strong { display: block; color: var(--deep); }
-
-.ref span { font-size: .83rem; color: var(--muted); }
-
-footer {
-  padding: 30px 0;
-  color: var(--muted);
-  font-size: .82rem;
-}
-
-.foot {
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-@media(max-width:800px) {
-  .hero { grid-template-columns: 1fr; padding-top: 38px; }
-  .hero-image img { height: 280px; }
-  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  nav { gap: 10px; }
-  nav a:nth-child(n+3) { display: none; }
-}
-
-@media(max-width:600px) {
-  .wrap { width: calc(100% - 28px); }
-  .grid, .comparison-intro, .refs, .answers { grid-template-columns: 1fr; }
-  .card-image { height: 210px; }
-  .section { padding: 40px 0; }
-  .nav { gap: 8px; }
-  .brand { font-size: .92rem; }
-  nav { font-size: .72rem; }
-  .timeline { grid-template-columns: 1fr 1fr; }
-  .bar-row { grid-template-columns: 95px 1fr; }
-  .bar-label { font-size: .75rem; }
-  .quiz { padding: 18px; }
-}
-
-@media(prefers-reduced-motion:reduce) {
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    transition: none !important;
-  }
-}
-</style>
-</head>
-
-<body>
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="index.html">VELOURERIA <b>✿</b></a>
-    <nav aria-label="Navigasi utama">
-      <a href="index.html">← Welcome</a>
-      <a href="#before">Awal sejarah</a>
-      <a href="#generations">Generasi I–V</a>
-      <a href="#compare">Perbandingan</a>
-      <a href="#quiz">Quiz ✧</a>
-    </nav>
-  </div>
-</header>
-
+:root{--ink:#282036;--muted:#766c84;--purple:#7956a6;--deep:#4d356c;--cream:#fffaf4;--line:#e6d9f1}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.75}a{color:inherit;text-decoration:none}button,input,select{font:inherit}header{position:sticky;top:0;z-index:5;background:#fffaf4ed;backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}.wrap{width:min(1080px,calc(100% - 36px));margin:auto}.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}.brand{font:700 1.1rem "Playfair Display",serif;letter-spacing:.15em}.brand b{color:var(--purple)}nav{display:flex;gap:17px;font-size:.82rem;color:var(--muted)}nav a:hover{color:var(--purple)}.eyebrow{font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;font-weight:700;color:var(--purple)}.hero{display:grid;grid-template-columns:1fr .85fr;gap:34px;align-items:center;padding:60px 0 70px}.hero h1{font:600 clamp(3rem,6vw,5.5rem)/1.04 "Playfair Display",serif;letter-spacing:-.04em;margin:12px 0 18px}.hero h1 em{color:var(--purple);font-weight:500}.hero p{color:var(--muted)}.hero img{width:100%;height:360px;object-fit:cover;border-radius:44% 44% 20px 20px;box-shadow:0 20px 50px #4d356c20}.btn{display:inline-block;padding:10px 16px;border:1px solid var(--line);border-radius:25px;background:white;font-weight:700;font-size:.87rem}.primary{background:var(--deep);color:white}.section{padding:58px 0;border-top:1px solid var(--line)}.heading{max-width:720px;margin-bottom:25px}.heading h2{font:600 clamp(2rem,4vw,3rem)/1.2 "Playfair Display",serif;margin:7px 0}.heading p,.muted{color:var(--muted)}.intro{background:linear-gradient(120deg,#f0e6f9,#fff);border:1px solid var(--line);border-radius:20px;padding:23px}.intro p:last-child{margin-bottom:0}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.tools input,.tools select{padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:white;color:var(--ink)}.tools input{flex:1;min-width:220px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.gen-card{background:white;border:1px solid var(--line);border-radius:19px;overflow:hidden;box-shadow:0 12px 30px #4d356c09}.gen-card[hidden]{display:none}.gen-card img{width:100%;height:205px;object-fit:cover}.body{padding:20px}.tag{font-size:.7rem;color:var(--purple);font-weight:700;letter-spacing:.12em;text-transform:uppercase}.body h3{font:600 1.6rem "Playfair Display",serif;margin:7px 0}.body p{color:var(--muted)}details{border-top:1px solid var(--line);padding-top:12px;margin-top:13px}summary{cursor:pointer;color:var(--deep);font-weight:700}details p,details li{font-size:.92rem}.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.time{background:white;border:1px solid var(--line);border-top:3px solid var(--purple);border-radius:0 0 12px 12px;padding:12px}.time strong{display:block;font:600 1.2rem "Playfair Display",serif}.time span{font-size:.8rem;color:var(--muted)}.table-wrap{overflow:auto;background:white;border:1px solid var(--line);border-radius:15px}table{border-collapse:collapse;width:100%;min-width:700px}th,td{text-align:left;vertical-align:top;padding:13px;border-bottom:1px solid var(--line);font-size:.89rem}th{background:#eee5f8;color:var(--deep)}tr:last-child td{border:0}.quiz{padding:25px;background:linear-gradient(130deg,#eee5f8,#fffaf4);border:1px solid var(--line);border-radius:22px}.quiz-top{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:.85rem}.question{font:600 1.5rem/1.4 "Playfair Display",serif;margin:18px 0}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}.answer{border:1px solid var(--line);border-radius:12px;background:white;text-align:left;padding:12px;color:var(--ink);cursor:pointer;transition:.2s}.answer:hover:not(:disabled){border-color:var(--purple);transform:translateY(-2px)}.answer:disabled{cursor:default}.answer.correct{background:#e1f1e4;border-color:#78aa82}.answer.wrong{background:#f8e1e8;border-color:#d28b9c}.feedback{min-height:30px;margin:13px 0;color:var(--deep);font-weight:600}.actions{display:flex;gap:10px;flex-wrap:wrap}.action{border:0;border-radius:25px;padding:10px 15px;background:var(--deep);color:white;font-weight:700;cursor:pointer}.action.alt{background:white;border:1px solid var(--line);color:var(--deep)}.refs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.ref{padding:15px;background:white;border:1px solid var(--line);border-radius:13px}.ref strong{display:block;color:var(--deep)}.ref span{font-size:.82rem;color:var(--muted)}.author{display:flex;gap:18px;align-items:center;background:#f0e6f9;padding:22px;border-radius:18px}.author img{width:90px;height:90px;object-fit:cover;object-position:center 35%;border:4px solid white;border-radius:50%}.author p{margin:5px 0;color:var(--muted)}footer{padding:25px 0 35px;color:var(--muted);font-size:.82rem}.foot{border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:740px){.hero{grid-template-columns:1fr;padding-top:35px}.hero img{height:260px}.grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr 1fr}.answers,.refs{grid-template-columns:1fr}nav{gap:10px;font-size:.74rem}nav a:nth-child(n+3){display:none}.author{align-items:flex-start}.wrap{width:calc(100% - 28px)}}
+
+#fireworks{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:20;display:none}
+.quiz-win{animation:winGlow 1.2s ease-in-out 2}
+@keyframes winGlow{0%,100%{box-shadow:0 0 0 #c4a6e8}50%{box-shadow:0 0 38px #c4a6e899}}
+
+/* Interactive 3D evolution lab */
+.evolution-lab{background:linear-gradient(135deg,#f0e6f9,#fffaf4);border:1px solid var(--line);border-radius:24px;padding:22px}
+.evo-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:center}
+.evo-stage{height:310px;display:grid;place-items:center;overflow:hidden;border-radius:18px;background:radial-gradient(ellipse,#e3d0f3,#fffaf4 68%);perspective:900px}
+.evo-object{position:relative;width:210px;height:170px;transform-style:preserve-3d;transform:rotateX(12deg) rotateY(-24deg);transition:transform .5s}
+.evo-case{position:absolute;inset:35px 25px 15px;background:linear-gradient(135deg,#d9c6e9,#806198);border:3px solid #6f5089;border-radius:12px;box-shadow:12px 14px 0 #4d356c,18px 22px 28px #4d356c33}
+.evo-monitor{position:absolute;left:48px;top:5px;width:115px;height:85px;border:9px solid #554064;border-radius:8px;background:#9fd5c0;transform:translateZ(24px);box-shadow:4px 6px 0 #372542}
+.evo-monitor:after{content:"";position:absolute;left:12px;right:12px;top:18px;height:3px;background:#eafff5;box-shadow:0 10px #eafff5,0 20px #eafff5}
+.evo-keyboard{position:absolute;left:38px;top:110px;width:135px;height:28px;border:2px solid #8f73a8;border-radius:5px;background:repeating-linear-gradient(90deg,#e8d9f4 0 10px,#9a7bb3 11px 13px);transform:translateZ(30px) rotateX(48deg)}
+.evo-vacuum{position:absolute;inset:20px 4px 5px;background:linear-gradient(135deg,#bca7ce,#604775);border:3px solid #5b426e;border-radius:10px;box-shadow:12px 14px 0 #4d356c}
+.evo-vacuum:before{content:"";position:absolute;inset:12px;background:repeating-linear-gradient(90deg,#40334a 0 9px,#e4c6a0 10px 13px);border-radius:5px}
+.evo-vacuum:after{content:"VACUUM TUBES";position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:10px;font-weight:800;color:white;letter-spacing:1px}
+.evo-chip{position:absolute;left:62px;top:45px;width:90px;height:80px;border:7px double #d8c3ed;border-radius:8px;background:repeating-linear-gradient(45deg,#302439 0 5px,#5d476d 6px 10px);transform:translateZ(35px);box-shadow:0 0 0 5px #9879b2}
+.evo-chip:after{content:"IC";position:absolute;inset:27px 0;text-align:center;color:white;font-weight:bold;font-size:16px}
+.evo-tower{position:absolute;left:65px;top:20px;width:85px;height:130px;border:3px solid #8565a2;border-radius:8px;background:linear-gradient(90deg,#8d72a5,#d5c1e5,#79588f);box-shadow:10px 12px 0 #4d356c}
+.evo-tower:before{content:"";position:absolute;left:12px;right:12px;top:18px;height:55px;border-radius:5px;background:repeating-linear-gradient(0deg,#4b3b58 0 5px,#b6a0ca 6px 9px)}
+.evo-tower:after{content:"●  ●";position:absolute;bottom:8px;left:15px;color:#f1e2fb;letter-spacing:5px}
+.evo-picks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:14px}
+.evo-pick{border:1px solid var(--line);background:white;color:var(--ink);border-radius:12px;padding:10px 6px;cursor:pointer;text-align:center;font-size:.78rem}
+.evo-pick b{display:block;color:var(--purple);font-size:.82rem}
+.evo-pick.active{border:2px solid var(--purple);background:#eee3f8}
+.evo-info{background:white;border:1px solid var(--line);padding:20px;border-radius:17px}
+.evo-info h3{font:600 1.5rem "Playfair Display",serif;margin:7px 0}
+.evo-fact{font-size:.9rem;color:var(--muted)}
+.evo-controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.evo-controls button{border:1px solid var(--line);border-radius:20px;background:white;padding:8px 12px;color:var(--deep);cursor:pointer}
+.evo-note{font-size:.78rem;color:var(--muted);margin-bottom:0}
+@media(max-width:740px){.evo-layout{grid-template-columns:1fr}.evo-picks{grid-template-columns:repeat(2,minmax(0,1fr))}.evo-pick:last-child{grid-column:1/-1}}
+</style></head><body>
+<header><div class="wrap nav"><a class="brand" href="index.html">VELOURERIA <b>✿</b></a><nav><a href="index.html">← Welcome</a><a href="#generations">Generasi</a><a href="#compare">Perbandingan</a><a href="#quiz">Moonlight Quiz ✧</a></nav></div></header>
+<canvas id="fireworks" aria-hidden="true"></canvas>
 <main class="wrap">
+<section class="hero" style="border:0"><div><div class="eyebrow">ARSIKOM · Tugas individu</div><h1>The History<br>of <em>Computers.</em></h1><p>Menelusuri perjalanan komputer dari mesin elektronik berukuran besar hingga perangkat cerdas yang menemani kehidupan modern.</p><p><b>Salsabillah Aurell ya Utami</b><br>NIM 8020250141 · Teknik Informatika</p><a class="btn primary" href="#generations">Jelajahi lima generasi ↓</a></div><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1100&q=85" alt="Papan sirkuit komputer"></section>
+<section class="section"><div class="heading"><div class="eyebrow">01 · Introduction</div><h2>Mengapa sejarah komputer penting?</h2><p>Sejarah komputer menjelaskan bagaimana kebutuhan manusia untuk menghitung, menyimpan informasi, dan mengotomatisasi pekerjaan mendorong lahirnya teknologi baru.</p></div><div class="intro"><p>Perkembangan komputer sering dipelajari melalui lima generasi berdasarkan teknologi perangkat keras yang dominan. Pembagian ini memudahkan pembelajaran, tetapi rentang waktunya dapat berbeda antar sumber dan beberapa inovasi saling tumpang tindih.</p><p>Dari generasi ke generasi, komponen cenderung semakin kecil, pemrosesan semakin cepat, efisiensi meningkat, kapasitas penyimpanan bertambah, dan komputer semakin mudah digunakan.</p></div></section>
+<section class="section" id="generations"><div class="heading"><div class="eyebrow">02 · The generations</div><h2>Lima bab dalam evolusi komputer.</h2><p>Cari kata kunci atau filter generasi. Buka “Pelajari lebih dalam” untuk melihat detail teknologi, contoh, kelebihan, dan keterbatasan.</p></div><div class="tools"><input id="search" type="search" placeholder="Cari: transistor, ENIAC, AI…"><select id="filter"><option value="all">Semua generasi</option><option value="1">Generasi I</option><option value="2">Generasi II</option><option value="3">Generasi III</option><option value="4">Generasi IV</option><option value="5">Generasi V</option></select></div>
+<div class="grid" id="cards">
+<article class="gen-card" data-gen="1" data-words="tabung vakum vacuum tube ENIAC UNIVAC panas besar bahasa mesin"><img loading="lazy" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85" alt="Rak perangkat komputer"><div class="body"><span class="tag">Generation I · sekitar 1940-an–1950-an</span><h3>Tabung Vakum</h3><p>Komputer elektronik awal menggunakan tabung vakum untuk mengendalikan aliran listrik. Mesin berukuran besar, mahal, panas, dan membutuhkan banyak daya.</p><details><summary>Pelajari lebih dalam +</summary><p><b>Teknologi:</b> tabung vakum, drum magnetik, kartu berlubang, serta pemrograman yang dekat dengan bahasa mesin.</p><p><b>Contoh:</b> ENIAC dan UNIVAC I. ENIAC dikenal sebagai komputer elektronik serbaguna awal; UNIVAC I merupakan salah satu komputer komersial awal di Amerika Serikat.</p><p><b>Kelebihan:</b> memungkinkan perhitungan elektronik jauh lebih cepat dibanding banyak metode mekanis sebelumnya.</p><p><b>Keterbatasan:</b> ukuran sangat besar, panas tinggi, konsumsi listrik besar, dan perawatan rumit.</p></details></div></article>
+<article class="gen-card" data-gen="2" data-words="transistor IBM 1401 PDP-1 hemat daya panas FORTRAN COBOL assembly"><img loading="lazy" src="https://images.unsplash.com/photo-1527430253228-e93688616381?auto=format&fit=crop&w=900&q=85" alt="Perangkat komputer dan komponen elektronik"><div class="body"><span class="tag">Generation II · sekitar 1950-an–1960-an</span><h3>Transistor</h3><p>Transistor menggantikan banyak tabung vakum sehingga komputer lebih kecil, lebih andal, lebih hemat daya, dan menghasilkan panas lebih rendah.</p><details><summary>Pelajari lebih dalam +</summary><p><b>Teknologi:</b> transistor, memori inti magnetik, pita magnetik, dan bahasa pemrograman tingkat tinggi yang semakin berkembang.</p><p><b>Contoh:</b> IBM 1401 dan PDP-1. Komputer digunakan lebih luas dalam bisnis, sains, dan penelitian.</p><p><b>Bahasa:</b> FORTRAN dan COBOL membantu programmer menulis instruksi lebih praktis daripada bahasa mesin murni.</p><p><b>Keterbatasan:</b> perangkat masih mahal dan sering memerlukan ruang serta tenaga ahli khusus.</p></details></div></article>
+<article class="gen-card" data-gen="3" data-words="integrated circuit IC IBM System 360 PDP-8 sistem operasi multiprogramming"><img loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85" alt="Jalur sirkuit elektronik"><div class="body"><span class="tag">Generation III · sekitar 1960-an–1970-an</span><h3>Integrated Circuit (IC)</h3><p>IC menggabungkan banyak komponen elektronik dalam satu chip. Integrasi meningkatkan kecepatan, keandalan, dan efisiensi produksi.</p><details><summary>Pelajari lebih dalam +</summary><p><b>Teknologi:</b> integrated circuit, sistem operasi lebih matang, multiprogramming, dan terminal interaktif.</p><p><b>Contoh:</b> keluarga IBM System/360 dan PDP-8. Komputer menjadi lebih fleksibel untuk berbagai kebutuhan organisasi.</p><p><b>Dampak:</b> sistem dapat mengelola beberapa pekerjaan lebih efektif dan memperluas penggunaan komputer di universitas, industri, dan bisnis.</p><p><b>Keterbatasan:</b> komputer utama masih bisa membutuhkan ruangan khusus dan biaya pengadaan besar.</p></details></div></article>
+<article class="gen-card" data-gen="4" data-words="mikroprosesor microprocessor Intel 4004 IBM PC Apple II komputer pribadi laptop GUI"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/IBM_PC_5150.jpg" alt="Chip mikroprosesor"><div class="body"><span class="tag">Generation IV · sejak 1970-an</span><h3>Mikroprosesor</h3><p>CPU dapat ditempatkan dalam satu chip mikroprosesor. Ini membantu lahirnya komputer pribadi, laptop, dan perangkat komputasi yang makin terjangkau.</p><details><summary>Pelajari lebih dalam +</summary><p><b>Teknologi:</b> mikroprosesor, memori semikonduktor, antarmuka grafis (GUI), jaringan, dan media penyimpanan yang terus berkembang.</p><p><b>Contoh:</b> IBM PC dan Apple II merupakan contoh penting komputer pribadi era tersebut.</p><p><b>Dampak:</b> komputer masuk ke rumah, sekolah, kantor, desain, komunikasi, dan hiburan.</p><p><b>Catatan:</b> generasi keempat mencakup rentang panjang; internet, ponsel pintar, dan komputasi awan berkembang melalui inovasi lanjutan.</p></details></div></article>
+<article class="gen-card" data-gen="5" data-words="AI kecerdasan buatan artificial intelligence machine learning NLP robot sistem pakar komputasi paralel"><img loading="lazy" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=85" alt="Ilustrasi kecerdasan buatan"><div class="body"><span class="tag">Generation V · konsep berkembang hingga kini</span><h3>AI dan Komputasi Cerdas</h3><p>Generasi kelima sering dikaitkan dengan kecerdasan buatan, pemrosesan paralel, pemahaman bahasa, robotika, dan sistem pendukung keputusan.</p><details><summary>Pelajari lebih dalam +</summary><p><b>Teknologi:</b> machine learning, deep learning, pemrosesan bahasa alami, akselerator komputasi, dan komputasi paralel.</p><p><b>Contoh pemanfaatan:</b> asisten digital, penerjemahan otomatis, pengenalan gambar, rekomendasi, analisis data, dan robotika.</p><p><b>Kelebihan:</b> membantu mengenali pola dan menangani tugas kompleks dengan dukungan data serta komputasi memadai.</p><p><b>Tantangan:</b> bias data, privasi, keamanan, konsumsi energi, dan pentingnya verifikasi manusia. AI tidak berarti komputer memiliki kesadaran manusia.</p></details></div></article>
+</div><p id="empty" class="muted" hidden>Tidak ada materi yang cocok. Coba kata kunci lain, ya.</p></section>
 
-<!-- HERO -->
-<section class="hero">
-  <div>
-    <div class="eyebrow">ARSIKOM · Materi pembelajaran</div>
-    <h1>The History of <em>Computers.</em></h1>
-    <p class="lead">
-      Menelusuri perjalanan panjang teknologi komputer: dari alat hitung
-      sederhana, mesin elektronik raksasa, mikroprosesor, hingga era
-      kecerdasan buatan.
-    </p>
-    <a class="btn primary" href="#generations">Jelajahi lima generasi ↓</a>
-    <a class="btn" href="#compare">Lihat perbandingan</a>
+<section class="section" id="how-it-works">
+<div class="heading"><div class="eyebrow">03 · Under the hood</div><h2>Bagaimana komputer bekerja?</h2>
+<p>Walaupun bentuknya berubah dari generasi ke generasi, prinsip dasar komputer tetap berkaitan dengan input, pemrosesan, penyimpanan, dan output.</p></div>
+<div class="grid">
+<div class="intro"><h3>1. Input — menerima data</h3><p>Data dan instruksi dimasukkan melalui perangkat input, misalnya keyboard, mouse, mikrofon, kamera, sensor, atau jaringan. Pada komputer lama, kartu berlubang dan pita kertas juga pernah digunakan untuk memasukkan program atau data.</p></div>
+<div class="intro"><h3>2. Processing — mengolah data</h3><p>CPU menjalankan instruksi program. Control Unit mengatur jalannya instruksi, sedangkan ALU melakukan operasi aritmetika dan logika. Pada komputer modern, GPU dan prosesor khusus dapat membantu jenis pekerjaan tertentu.</p></div>
+<div class="intro"><h3>3. Storage — menyimpan data</h3><p>RAM menyimpan data sementara ketika program berjalan dan umumnya kehilangan isinya saat daya mati. SSD, hard disk, dan media lain menyimpan data lebih lama. Komputer generasi awal menggunakan media seperti drum magnetik dan pita magnetik.</p></div>
+<div class="intro"><h3>4. Output — menampilkan hasil</h3><p>Hasil pemrosesan disampaikan melalui monitor, printer, speaker, aktuator, atau jaringan. Sistem modern dapat mengirim output ke banyak perangkat secara bersamaan.</p></div>
+</div>
+<div class="intro" style="margin-top:16px"><h3>Siklus instruksi secara sederhana</h3><p><b>Fetch → Decode → Execute → Store/Write back.</b> Prosesor mengambil instruksi dari memori, menerjemahkan instruksi, menjalankannya, lalu menyimpan hasil jika diperlukan. Proses ini berlangsung sangat cepat dan berulang selama program berjalan.</p></div>
+</section>
+<section class="section" id="history-context">
+<div class="heading"><div class="eyebrow">04 · Before the five generations</div><h2>Sebelum komputer elektronik modern.</h2>
+<p>Sejarah komputer bukan dimulai dari satu penemuan saja. Ia merupakan rangkaian gagasan matematika, mesin mekanis, listrik, dan elektronik.</p></div>
+<div class="grid">
+<div class="intro"><h3>Alat hitung awal</h3><p>Abakus membantu manusia melakukan perhitungan dengan memindahkan manik-manik. Alat seperti ini bukan komputer elektronik, tetapi menunjukkan kebutuhan lama untuk membantu perhitungan secara sistematis.</p></div>
+<div class="intro"><h3>Mesin mekanis</h3><p>Pada abad ke-17, Blaise Pascal mengembangkan mesin hitung mekanis, sementara Gottfried Wilhelm Leibniz mengembangkan mesin yang dapat menangani beberapa operasi aritmetika. Mesin-mesin ini memiliki fungsi lebih terbatas daripada komputer modern.</p></div>
+<div class="intro"><h3>Gagasan komputer yang dapat diprogram</h3><p>Charles Babbage merancang Difference Engine dan Analytical Engine pada abad ke-19. Analytical Engine memuat gagasan tentang unit pemrosesan, memori, dan instruksi yang dapat diprogram, walaupun rancangan lengkapnya tidak dibangun pada masanya.</p></div>
+<div class="intro"><h3>Algoritma dan pemrograman</h3><p>Ada Lovelace menulis catatan tentang Analytical Engine yang sering dikenang dalam sejarah pemrograman. Pada abad ke-20, kebutuhan ilmiah, militer, bisnis, dan sensus ikut mempercepat pengembangan komputer elektronik.</p></div>
+</div>
+</section>
+<section class="section" id="generation-detail">
+<div class="heading"><div class="eyebrow">05 · What changed?</div><h2>Perubahan penting dari generasi ke generasi.</h2>
+<p>Setiap generasi bukan sekadar komputer yang lebih kecil. Perubahan teknologi turut memengaruhi cara komputer diprogram, diproduksi, dan digunakan.</p></div>
+<div class="table-wrap"><table><thead><tr><th>Aspek</th><th>Generasi I–II</th><th>Generasi III–IV</th><th>Komputasi modern / AI</th></tr></thead><tbody>
+<tr><td>Komponen</td><td>Tabung vakum lalu transistor</td><td>IC dan mikroprosesor</td><td>CPU multi-core, GPU, akselerator AI, serta sistem terdistribusi</td></tr>
+<tr><td>Interaksi</td><td>Kartu berlubang, sakelar, dan terminal awal</td><td>Terminal, monitor, keyboard, GUI</td><td>GUI, layar sentuh, suara, sensor, dan antarmuka berbasis bahasa</td></tr>
+<tr><td>Perangkat lunak</td><td>Bahasa mesin, assembly, bahasa tingkat tinggi awal</td><td>Sistem operasi, aplikasi, jaringan, dan perangkat lunak personal</td><td>Aplikasi cloud, model machine learning, layanan berbasis data</td></tr>
+<tr><td>Penggunaan</td><td>Riset, perhitungan teknis, dan pengolahan data terpusat</td><td>Bisnis, pendidikan, kantor, rumah, dan komunikasi</td><td>Analitik data, otomatisasi, kolaborasi global, AI, dan komputasi edge</td></tr>
+<tr><td>Tantangan</td><td>Biaya, ukuran, panas, dan keandalan</td><td>Kompatibilitas, keamanan, dan pengelolaan sistem</td><td>Privasi, bias, keamanan siber, energi, dan dampak sosial</td></tr>
+</tbody></table></div>
+</section>
+<section class="section" id="terms">
+<div class="heading"><div class="eyebrow">06 · Glossary</div><h2>Istilah penting untuk diingat.</h2><p>Gunakan ringkasan ini sebagai catatan cepat sebelum presentasi atau pretest.</p></div>
+<div class="grid">
+<div class="intro"><h3>Hardware</h3><p>Komponen fisik komputer yang dapat dilihat atau disentuh, seperti CPU, RAM, motherboard, keyboard, dan monitor.</p></div>
+<div class="intro"><h3>Software</h3><p>Program dan instruksi yang mengarahkan hardware untuk menjalankan tugas, termasuk sistem operasi dan aplikasi.</p></div>
+<div class="intro"><h3>CPU</h3><p>Central Processing Unit; menjalankan instruksi program dan mengendalikan banyak aktivitas pemrosesan komputer.</p></div>
+<div class="intro"><h3>RAM</h3><p>Random Access Memory; menyimpan sementara data dan instruksi yang sedang digunakan agar cepat diakses prosesor.</p></div>
+<div class="intro"><h3>IC</h3><p>Integrated Circuit; rangkaian yang memuat banyak komponen elektronik dalam satu chip.</p></div>
+<div class="intro"><h3>AI</h3><p>Artificial Intelligence; metode dan sistem komputasi yang dapat menjalankan tugas seperti mengenali pola, memahami bahasa, atau menghasilkan prediksi.</p></div>
+</div>
+</section>
 
-    <div class="author">
-      <img
-        src="assets/author-profile.jpeg"
-        alt="Foto penulis"
-        onerror="this.style.display='none'">
+<section class="section"><div class="heading"><div class="eyebrow">03 · Timeline</div><h2>Garis waktu singkat.</h2><p>Rentang waktu bersifat perkiraan untuk pembelajaran dan dapat saling tumpang tindih.</p></div><div class="timeline"><div class="time"><strong>1940-an</strong><span>Tabung vakum dan komputer elektronik awal</span></div><div class="time"><strong>1950-an</strong><span>Transistor mulai digunakan</span></div><div class="time"><strong>1960-an</strong><span>IC dan sistem operasi berkembang</span></div><div class="time"><strong>1970-an</strong><span>Mikroprosesor dan komputer pribadi</span></div><div class="time"><strong>Sekarang</strong><span>AI, cloud, mobile, dan komputasi khusus</span></div></div></section>
+
+<section class="section" id="model-3d">
+  <div class="heading">
+    <div class="eyebrow">Interactive feature · 3D comparison</div>
+    <h2>Lima generasi, lima wujud komputer.</h2>
+    <p>Pilih generasi untuk melihat ilustrasi 3D dekoratif yang berubah bentuk, membaca ciri teknologi, dan membandingkan bagaimana komputer berkembang. Putar ilustrasi dengan tombol rotasi.</p>
+  </div>
+  <div class="evolution-lab">
+    <div class="evo-layout">
       <div>
-        <strong>Salsabillah Aurellya Utami</strong><br>
-        <span class="muted">NIM 8020250141 · Program Studi Teknik Informatika</span>
+        <div class="evo-stage" id="evoStage">
+          <div class="evo-object" id="evoObject">
+            <div class="evo-case" id="evoCase"></div>
+            <div class="evo-monitor" id="evoMonitor"></div>
+            <div class="evo-keyboard" id="evoKeyboard"></div>
+            <div class="evo-vacuum" id="evoVacuum" hidden></div>
+            <div class="evo-chip" id="evoChip" hidden></div>
+            <div class="evo-tower" id="evoTower" hidden></div>
+          </div>
+        </div>
+        <div class="evo-controls">
+          <button type="button" id="evoLeft">↶ Putar kiri</button>
+          <button type="button" id="evoRight">Putar kanan ↷</button>
+          <button type="button" id="evoReset">Reset tampilan</button>
+        </div>
+        <p class="evo-note">Model 3D CSS untuk pembelajaran konsep; bentuknya bukan replika fisik berskala dari komputer historis.</p>
+      </div>
+      <div class="evo-info" id="evoInfo" aria-live="polite">
+        <span class="tag">GENERATION I</span>
+        <h3>Tabung vakum</h3>
+        <p>Komputer elektronik awal menggunakan tabung vakum untuk memproses sinyal. Perangkat berukuran besar, mahal, menghasilkan panas tinggi, dan membutuhkan daya besar.</p>
+        <p class="evo-fact"><b>Contoh:</b> ENIAC, UNIVAC I.</p>
+        <p class="evo-fact"><b>Perubahan utama:</b> perhitungan elektronik otomatis.</p>
       </div>
     </div>
-  </div>
-
-  <div class="hero-image">
-    <img
-      src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1100&q=85"
-      alt="Close-up komponen dan jalur sirkuit elektronik"
-      fetchpriority="high">
-    <span class="image-caption">Dari rangkaian elektronik menuju sistem komputasi modern.</span>
-  </div>
-</section>
-
-<!-- 01 INTRODUCTION -->
-<section class="section" id="introduction">
-  <div class="heading">
-    <div class="eyebrow">01 · Introduction</div>
-    <h2>Mengapa sejarah komputer penting?</h2>
-    <p>
-      Komputer yang kita gunakan saat ini merupakan hasil perkembangan
-      pengetahuan matematika, elektronika, logika, dan rekayasa selama
-      berabad-abad. Memahami sejarahnya membantu kita melihat alasan
-      perubahan teknologi dan bagaimana setiap inovasi memengaruhi
-      kehidupan manusia.
-    </p>
-  </div>
-
-  <div class="intro">
-    <h3>Apa yang dimaksud dengan komputer?</h3>
-    <p>
-      Komputer adalah perangkat elektronik yang menerima data, memprosesnya
-      berdasarkan instruksi, menyimpan data atau hasil pemrosesan, lalu
-      menghasilkan informasi. Komputer dapat digunakan untuk perhitungan,
-      komunikasi, pengolahan dokumen, desain, penelitian, hiburan, dan
-      banyak kebutuhan lainnya.
-    </p>
-    <p>
-      Perkembangan komputer sering dijelaskan melalui lima generasi.
-      Pembagian ini terutama menyoroti teknologi perangkat keras yang
-      dominan pada suatu periode. Rentang waktunya merupakan perkiraan:
-      inovasi baru tidak langsung menggantikan seluruh teknologi lama
-      secara bersamaan.
-    </p>
-  </div>
-</section>
-
-<!-- 02 EARLY HISTORY -->
-<section class="section" id="before">
-  <div class="heading">
-    <div class="eyebrow">02 · Before the generations</div>
-    <h2>Sebelum lahirnya komputer modern.</h2>
-    <p>
-      Jauh sebelum komputer elektronik muncul, manusia sudah menciptakan
-      alat untuk membantu berhitung dan mengotomatisasi pekerjaan.
-      Beberapa gagasan awal menjadi dasar penting bagi komputer yang
-      dapat diprogram.
-    </p>
-  </div>
-
-  <div class="grid">
-    <article class="card">
-      <img class="card-image"
-        src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=900&q=85"
-        alt="Ilustrasi matematika dan angka" loading="lazy">
-      <div class="card-content">
-        <span class="tag">Alat hitung awal</span>
-        <h3>Abakus dan perhitungan manual</h3>
-        <p>
-          Abakus menggunakan manik-manik atau benda penghitung untuk
-          membantu operasi aritmetika. Alat ini bukan komputer elektronik,
-          tetapi menunjukkan kebutuhan manusia untuk menghitung secara
-          lebih sistematis dan efisien.
-        </p>
-        <details class="details">
-          <summary>Pelajari lebih dalam +</summary>
-          <p>
-            Alat hitung manual sangat bergantung pada tindakan manusia.
-            Pengguna harus menggerakkan penanda atau mengikuti aturan
-            tertentu untuk menyelesaikan perhitungan. Konsep membantu
-            proses berhitung inilah yang kemudian berkembang menjadi
-            alat mekanis dan elektronik.
-          </p>
-        </details>
-      </div>
-    </article>
-
-    <article class="card">
-      <img class="card-image"
-        src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=900&q=85"
-        alt="Peralatan mekanis dan teknologi" loading="lazy">
-      <div class="card-content">
-        <span class="tag">Abad ke-17</span>
-        <h3>Mesin hitung mekanis</h3>
-        <p>
-          Blaise Pascal mengembangkan mesin hitung mekanis pada abad
-          ke-17. Gottfried Wilhelm Leibniz kemudian mengembangkan
-          rancangan mesin yang dapat melakukan beberapa operasi
-          aritmetika.
-        </p>
-        <details class="details">
-          <summary>Pelajari lebih dalam +</summary>
-          <p>
-            Mesin mekanis menggunakan roda gigi, tuas, dan bagian fisik
-            lainnya untuk merepresentasikan angka dan melakukan operasi.
-            Kemampuannya masih terbatas dibandingkan komputer modern,
-            tetapi mesin ini membantu membuktikan bahwa sebagian
-            pekerjaan hitung dapat dilakukan secara otomatis.
-          </p>
-        </details>
-      </div>
-    </article>
-
-    <article class="card">
-      <img class="card-image"
-        src="https://images.unsplash.com/photo-1453738773917-9c3eff1db985?auto=format&fit=crop&w=900&q=85"
-        alt="Buku dan catatan ilmiah" loading="lazy">
-      <div class="card-content">
-        <span class="tag">Abad ke-19</span>
-        <h3>Charles Babbage dan Analytical Engine</h3>
-        <p>
-          Charles Babbage merancang Difference Engine dan Analytical
-          Engine. Analytical Engine memiliki gagasan tentang pemrosesan,
-          penyimpanan, serta instruksi yang dapat diprogram.
-        </p>
-        <details class="details">
-          <summary>Pelajari lebih dalam +</summary>
-          <p>
-            Analytical Engine dirancang sebagai mesin mekanis serbaguna,
-            bukan hanya kalkulator untuk satu jenis perhitungan. Rancangan
-            tersebut tidak selesai dibangun sepenuhnya pada masa Babbage,
-            tetapi gagasannya sering dibahas sebagai salah satu tonggak
-            penting dalam sejarah komputer yang dapat diprogram.
-          </p>
-          <p>
-            Ada Lovelace menulis catatan mengenai Analytical Engine dan
-            menjelaskan bagaimana instruksi dapat digunakan untuk
-            menghasilkan rangkaian operasi.
-          </p>
-        </details>
-      </div>
-    </article>
-
-    <article class="card">
-      <img class="card-image"
-        src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=85"
-        alt="Kode dan pemrograman" loading="lazy">
-      <div class="card-content">
-        <span class="tag">Abad ke-20</span>
-        <h3>Menuju komputer elektronik</h3>
-        <p>
-          Perkembangan listrik, elektronika, logika matematika, dan
-          kebutuhan pengolahan data mempercepat lahirnya komputer
-          elektronik pada abad ke-20.
-        </p>
-        <details class="details">
-          <summary>Pelajari lebih dalam +</summary>
-          <p>
-            Kebutuhan ilmiah, militer, sensus, dan bisnis mendorong
-            pengembangan mesin untuk melakukan perhitungan dalam jumlah
-            besar. Berbagai proyek menggunakan teknologi elektromekanis
-            dan elektronik, dengan rancangan yang berbeda-beda.
-          </p>
-          <p>
-            Tidak semua komputer awal memiliki tujuan atau teknologi yang
-            sama. Karena itu, sejarah komputer lebih tepat dipahami sebagai
-            rangkaian inovasi yang saling memengaruhi daripada satu
-            penemuan tunggal.
-          </p>
-        </details>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- 03 FIVE GENERATIONS -->
-<section class="section" id="generations">
-  <div class="heading">
-    <div class="eyebrow">03 · The five generations</div>
-    <h2>Lima bab dalam evolusi komputer.</h2>
-    <p>
-      Pelajari teknologi utama setiap generasi, contoh perangkat,
-      kelebihan, keterbatasan, dan pengaruhnya terhadap perkembangan
-      komputer. Gunakan pencarian dan filter untuk menemukan materi
-      yang kamu butuhkan.
-    </p>
-  </div>
-
-  <div class="tools">
-    <input id="search" type="search"
-      placeholder="Cari materi: transistor, ENIAC, mikroprosesor..."
-      aria-label="Cari materi generasi komputer">
-    <select id="filter" aria-label="Filter generasi">
-      <option value="all">Semua generasi</option>
-      <option value="1">Generasi I</option>
-      <option value="2">Generasi II</option>
-      <option value="3">Generasi III</option>
-      <option value="4">Generasi IV</option>
-      <option value="5">Generasi V</option>
-    </select>
-  </div>
-
-  <div class="grid" id="cards">
-
-    <!-- GENERATION 1 -->
-    <article class="card generation-card" data-gen="1"
-      data-words="tabung vakum vacuum tube ENIAC UNIVAC panas besar mahal drum magnetik kartu berlubang bahasa mesin">
-      <img class="card-image"
-        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=85"
-        alt="Rak perangkat elektronik dan server" loading="lazy">
-      <div class="card-content">
-        <span class="tag">Generation I · sekitar 1940-an–1950-an</span>
-        <h3>Generasi Pertama: Tabung Vakum</h3>
-        <p>
-          Komputer elektronik generasi awal menggunakan tabung vakum
-          sebagai komponen utama untuk mengendalikan sinyal listrik.
-          Ukurannya besar, membutuhkan daya tinggi, menghasilkan banyak
-          panas, dan memerlukan pemeliharaan yang rumit.
-        </p>
-
-        <details class="details">
-          <summary>Pelajari materi lengkap +</summary>
-          <h4>Teknologi dan cara kerja</h4>
-          <p>
-            Tabung vakum dapat digunakan untuk memperkuat atau
-            mengendalikan sinyal listrik. Rangkaian yang menggunakan
-            banyak tabung memungkinkan komputer menjalankan operasi
-            elektronik. Komputer generasi ini juga menggunakan media
-            seperti drum magnetik, kartu berlubang, atau pita untuk
-            menyimpan dan memasukkan data.
-          </p>
-          <p>
-            Pemrograman masih sangat dekat dengan bahasa mesin atau
-            instruksi yang spesifik terhadap perangkat. Menyiapkan
-            program dan memasukkan data dapat memerlukan proses yang
-            tidak sesederhana menggunakan komputer masa kini.
-          </p>
-
-          <h4>Contoh komputer</h4>
-          <ul>
-            <li><b>ENIAC:</b> komputer elektronik serbaguna awal yang terkenal karena ukurannya yang sangat besar dan penggunaan ribuan komponen elektronik.</li>
-            <li><b>UNIVAC I:</b> salah satu komputer komersial awal yang digunakan untuk pengolahan data.</li>
-          </ul>
-
-          <h4>Kelebihan</h4>
-          <ul>
-            <li>Memungkinkan perhitungan elektronik dalam skala besar.</li>
-            <li>Dapat melakukan operasi jauh lebih cepat daripada banyak proses hitung manual.</li>
-            <li>Menjadi dasar pengembangan komputer elektronik berikutnya.</li>
-          </ul>
-
-          <h4>Kekurangan</h4>
-          <ul>
-            <li>Memerlukan ruangan besar.</li>
-            <li>Konsumsi listrik dan panas tinggi.</li>
-            <li>Komponen membutuhkan perawatan dan dapat mengalami kerusakan.</li>
-            <li>Pengoperasian dan pemrograman relatif sulit.</li>
-          </ul>
-
-          <h4>Pengaruh terhadap kehidupan</h4>
-          <p>
-            Komputer elektronik awal membantu menangani persoalan
-            perhitungan ilmiah dan pengolahan data yang membutuhkan
-            banyak operasi. Walaupun belum digunakan secara luas oleh
-            masyarakat, teknologi ini membuka jalan bagi komputasi
-            elektronik modern.
-          </p>
-        </details>
-      </div>
-    </article>
-
-    <!-- GENERATION 2 -->
-    <article class="card generation-card" data-gen="2"
-      data-words="transistor IBM 1401 PDP-1 FORTRAN COBOL assembly memori inti magnetik lebih hemat daya">
-      <img class="card-image"
-        src="https://images.unsplash.com/photo-1527430253228-e93688616381?auto=format&fit=crop&w=1000&q=85"
-        alt="Perangkat komputer dan komponen elektronik" loading="lazy">
-      <div class="card-content">
-        <span class="tag">Generation II · sekitar 1950-an–1960-an</span>
-        <h3>Generasi Kedua: Transistor</h3>
-        <p>
-          Transistor menggantikan banyak fungsi tabung vakum. Komputer
-          menjadi lebih kecil, lebih andal, lebih hemat daya, dan
-          menghasilkan panas yang lebih rendah dibandingkan generasi
-          sebelumnya.
-        </p>
-
-        <details class="details">
-          <summary>Pelajari materi lengkap +</summary>
-          <h4>Teknologi dan cara kerja</h4>
-          <p>
-            Transistor adalah komponen semikonduktor yang dapat
-            mengendalikan atau memperkuat sinyal listrik. Ukurannya
-            lebih kecil daripada tabung vakum dan umumnya lebih efisien.
-            Komputer generasi ini juga menggunakan teknologi memori
-            seperti memori inti magnetik.
-          </p>
-          <p>
-            Bahasa assembly dan bahasa pemrograman tingkat tinggi
-            berkembang semakin penting. Bahasa seperti FORTRAN banyak
-            digunakan dalam komputasi ilmiah, sedangkan COBOL dirancang
-            untuk kebutuhan pengolahan data bisnis.
-          </p>
-
-          <h4>Contoh komputer</h4>
-          <ul>
-            <li><b>IBM 1401:</b> digunakan untuk pengolahan data bisnis.</li>
-            <li><b>PDP-1:</b> komputer yang berpengaruh dalam komunitas penelitian dan komputasi interaktif awal.</li>
-          </ul>
-
-          <h4>Kelebihan</h4>
-          <ul>
-            <li>Ukuran komponen lebih kecil.</li>
-            <li>Konsumsi daya dan panas berkurang.</li>
-            <li>Keandalan meningkat dibandingkan banyak sistem berbasis tabung vakum.</li>
-            <li>Bahasa pemrograman semakin praktis untuk kebutuhan tertentu.</li>
-          </ul>
-
-          <h4>Kekurangan</h4>
-          <ul>
-            <li>Komputer masih relatif mahal.</li>
-            <li>Sistem dapat membutuhkan ruangan dan tenaga khusus.</li>
-            <li>Transistor dan komponen pendukung masih dirakit dalam jumlah besar.</li>
-          </ul>
-
-          <h4>Pengaruh terhadap kehidupan</h4>
-          <p>
-            Komputer mulai digunakan semakin luas untuk administrasi,
-            pengolahan transaksi, penelitian, dan kegiatan bisnis.
-            Perkembangan bahasa pemrograman juga membantu memperluas
-            kelompok orang yang dapat mengembangkan perangkat lunak.
-          </p>
-        </details>
-      </div>
-    </article>
-
-    <!-- GENERATION 3 -->
-    <article class="card generation-card" data-gen="3"
-      data-words="integrated circuit IC IBM System 360 PDP-8 multiprogramming sistem operasi terminal">
-      <img class="card-image"
-        src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85"
-        alt="Papan sirkuit elektronik dan jalur rangkaian" loading="lazy">
-      <div class="card-content">
-        <span class="tag">Generation III · sekitar 1960-an–1970-an</span>
-        <h3>Generasi Ketiga: Integrated Circuit</h3>
-        <p>
-          Integrated Circuit atau IC menggabungkan sejumlah komponen
-          elektronik ke dalam satu chip. Teknologi ini meningkatkan
-          integrasi rangkaian dan membantu membuat komputer lebih
-          ringkas, cepat, dan efisien.
-        </p>
-
-        <details class="details">
-          <summary>Pelajari materi lengkap +</summary>
-          <h4>Teknologi dan cara kerja</h4>
-          <p>
-            IC memungkinkan beberapa komponen elektronik dibuat dalam
-            satu keping semikonduktor. Hal ini mengurangi kebutuhan
-            terhadap banyak komponen terpisah dan mempermudah
-            pengembangan sistem yang lebih kompleks.
-          </p>
-          <p>
-            Sistem operasi berkembang untuk membantu mengelola sumber
-            daya komputer. Multiprogramming memungkinkan sistem
-            mengatur beberapa pekerjaan sehingga sumber daya dapat
-            dimanfaatkan lebih efektif. Terminal interaktif juga
-            memperbaiki cara pengguna berkomunikasi dengan komputer.
-          </p>
-
-          <h4>Contoh komputer</h4>
-          <ul>
-            <li><b>IBM System/360:</b> keluarga komputer yang menawarkan berbagai model untuk kebutuhan organisasi berbeda.</li>
-            <li><b>PDP-8:</b> minicomputer yang berpengaruh karena relatif lebih terjangkau dibandingkan banyak komputer utama pada zamannya.</li>
-          </ul>
-
-          <h4>Kelebihan</h4>
-          <ul>
-            <li>Ukuran rangkaian menjadi lebih ringkas.</li>
-            <li>Kecepatan dan keandalan meningkat.</li>
-            <li>Efisiensi penggunaan daya dan ruang membaik.</li>
-            <li>Sistem operasi dan pengelolaan pekerjaan berkembang.</li>
-          </ul>
-
-          <h4>Kekurangan</h4>
-          <ul>
-            <li>Komputer kelas besar masih memerlukan investasi tinggi.</li>
-            <li>Perawatan dan administrasi sistem dapat tetap kompleks.</li>
-            <li>Pengguna masih bergantung pada fasilitas komputasi khusus untuk banyak kebutuhan.</li>
-          </ul>
-
-          <h4>Pengaruh terhadap kehidupan</h4>
-          <p>
-            Komputer semakin bermanfaat bagi perusahaan, lembaga
-            pendidikan, laboratorium, dan organisasi. Perkembangan IC
-            juga menjadi langkah penting menuju mikroprosesor dan
-            komputer pribadi.
-          </p>
-        </details>
-      </div>
-    </article>
-
-    <!-- GENERATION 4 -->
-    <article class="card generation-card" data-gen="4"
-      data-words="mikroprosesor microprocessor Intel 4004 IBM PC Apple II komputer pribadi personal computer laptop GUI internet">
-      <img class="card-image"
-        src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=1000&q=85"
-        alt="Chip prosesor modern" loading="lazy">
-      <div class="card-content">
-        <span class="tag">Generation IV · sejak 1970-an</span>
-        <h3>Generasi Keempat: Mikroprosesor</h3>
-        <p>
-          Mikroprosesor menempatkan fungsi utama CPU dalam satu chip.
-          Perkembangan ini membantu lahirnya komputer pribadi yang
-          lebih ringkas, terjangkau, dan semakin mudah digunakan.
-        </p>
-
-        <details class="details">
-          <summary>Pelajari materi lengkap +</summary>
-          <h4>Teknologi dan cara kerja</h4>
-          <p>
-            Mikroprosesor mengintegrasikan fungsi pemrosesan utama ke
-            dalam chip. Perkembangan teknologi semikonduktor meningkatkan
-            jumlah transistor yang dapat dipasang pada satu chip,
-            sehingga prosesor dapat menjalankan tugas yang semakin
-            kompleks.
-          </p>
-          <p>
-            Komputer pribadi berkembang bersama sistem operasi,
-            antarmuka grafis atau GUI, media penyimpanan yang lebih
-            baik, serta jaringan komputer. Perkembangan berikutnya
-            melahirkan laptop, perangkat mobile, dan berbagai bentuk
-            komputasi yang terhubung ke internet.
-          </p>
-
-          <h4>Contoh komputer</h4>
-          <ul>
-            <li><b>Apple II:</b> komputer pribadi yang membantu memperluas penggunaan komputer di rumah dan pendidikan.</li>
-            <li><b>IBM PC:</b> komputer pribadi yang berpengaruh besar pada ekosistem komputer bisnis.</li>
-          </ul>
-
-          <h4>Kelebihan</h4>
-          <ul>
-            <li>Komputer menjadi lebih kecil dan lebih mudah diperoleh.</li>
-            <li>Perangkat lunak untuk pekerjaan sehari-hari berkembang pesat.</li>
-            <li>Komputer dapat digunakan di rumah, sekolah, kantor, dan industri.</li>
-            <li>Jaringan dan internet memperluas komunikasi serta pertukaran informasi.</li>
-          </ul>
-
-          <h4>Kekurangan dan tantangan</h4>
-          <ul>
-            <li>Pengguna perlu memperhatikan keamanan data dan perangkat lunak.</li>
-            <li>Ketergantungan pada teknologi semakin meningkat.</li>
-            <li>Perkembangan perangkat keras dan perangkat lunak menimbulkan kebutuhan pemeliharaan dan pembaruan.</li>
-          </ul>
-
-          <h4>Pengaruh terhadap kehidupan</h4>
-          <p>
-            Komputer menjadi alat umum untuk pendidikan, administrasi,
-            desain, bisnis, komunikasi, dan hiburan. Komputasi tidak
-            lagi terbatas pada pusat komputer besar, tetapi semakin
-            dekat dengan kehidupan sehari-hari.
-          </p>
-        </details>
-      </div>
-    </article>
-
-    <!-- GENERATION 5 -->
-    <article class="card generation-card" data-gen="5"
-      data-words="AI kecerdasan buatan artificial intelligence machine learning deep learning NLP robotika komputasi paralel">
-      <img class="card-image"
-        src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1000&q=85"
-        alt="Ilustrasi kecerdasan buatan dan teknologi digital" loading="lazy">
-      <div class="card-content">
-        <span class="tag">Generation V · konsep yang terus berkembang</span>
-        <h3>Generasi Kelima: AI dan Komputasi Cerdas</h3>
-        <p>
-          Generasi kelima sering dikaitkan dengan upaya mengembangkan
-          komputer yang dapat membantu tugas seperti mengenali pola,
-          memproses bahasa, belajar dari data, dan mendukung pengambilan
-          keputusan.
-        </p>
-
-        <details class="details">
-          <summary>Pelajari materi lengkap +</summary>
-          <h4>Teknologi dan cara kerja</h4>
-          <p>
-            Kecerdasan buatan atau Artificial Intelligence (AI) mencakup
-            berbagai teknik yang membuat sistem mampu melakukan tugas
-            tertentu yang biasanya membutuhkan kemampuan manusia.
-            Machine learning memungkinkan model mempelajari pola dari
-            data, sedangkan deep learning menggunakan jaringan saraf
-            berlapis untuk menangani berbagai jenis masalah.
-          </p>
-          <p>
-            Teknologi pendukungnya meliputi pemrosesan bahasa alami,
-            pengenalan gambar, robotika, komputasi paralel, GPU,
-            akselerator AI, serta infrastruktur cloud.
-          </p>
-
-          <h4>Contoh penerapan</h4>
-          <ul>
-            <li>Penerjemahan bahasa otomatis.</li>
-            <li>Pengenalan objek dalam gambar dan video.</li>
-            <li>Sistem rekomendasi konten atau produk.</li>
-            <li>Asisten digital dan chatbot.</li>
-            <li>Analisis data dan dukungan penelitian.</li>
-            <li>Robotika dan otomatisasi proses tertentu.</li>
-          </ul>
-
-          <h4>Kelebihan</h4>
-          <ul>
-            <li>Membantu menganalisis pola dalam data berukuran besar.</li>
-            <li>Dapat mengotomatisasi sebagian pekerjaan berulang.</li>
-            <li>Mendukung penelitian, layanan, dan pengambilan keputusan.</li>
-            <li>Dapat beradaptasi pada tugas tertentu melalui pelatihan model.</li>
-          </ul>
-
-          <h4>Tantangan dan keterbatasan</h4>
-          <ul>
-            <li>Hasil dapat salah atau tidak sesuai konteks.</li>
-            <li>Data pelatihan dapat mengandung bias.</li>
-            <li>Privasi, keamanan, hak cipta, dan transparansi perlu diperhatikan.</li>
-            <li>Pelatihan serta penggunaan sistem tertentu dapat membutuhkan energi dan perangkat keras yang besar.</li>
-            <li>Hasil penting tetap memerlukan pemeriksaan manusia.</li>
-          </ul>
-
-          <h4>Pengaruh terhadap kehidupan</h4>
-          <p>
-            AI memperluas kemampuan komputer untuk membantu pengolahan
-            bahasa, analisis, otomatisasi, dan pembuatan konten.
-            Namun, kecerdasan buatan bukan berarti komputer otomatis
-            memiliki kesadaran atau pemahaman seperti manusia.
-          </p>
-        </details>
-      </div>
-    </article>
-
-  </div>
-
-  <p id="empty" class="empty" hidden>
-    Tidak ada materi yang cocok. Coba kata kunci atau filter generasi lain.
-  </p>
-</section>
-
-<!-- 04 TIMELINE -->
-<section class="section" id="timeline">
-  <div class="heading">
-    <div class="eyebrow">04 · Historical timeline</div>
-    <h2>Garis waktu perkembangan komputer.</h2>
-    <p>
-      Garis waktu ini menunjukkan beberapa tonggak penting. Tahun yang
-      ditampilkan merupakan perkiraan atau tahun peristiwa tertentu,
-      bukan batas mutlak pergantian generasi.
-    </p>
-  </div>
-
-  <div class="timeline">
-    <div class="time">
-      <strong>Abad ke-17</strong>
-      <span>Mesin hitung mekanis dikembangkan.</span>
-    </div>
-    <div class="time">
-      <strong>Abad ke-19</strong>
-      <span>Rancangan mesin yang dapat diprogram muncul.</span>
-    </div>
-    <div class="time">
-      <strong>1940-an</strong>
-      <span>Komputer elektronik awal berkembang.</span>
-    </div>
-    <div class="time">
-      <strong>1950–1960-an</strong>
-      <span>Transistor dan IC mengubah desain komputer.</span>
-    </div>
-    <div class="time">
-      <strong>1970-an+</strong>
-      <span>Mikroprosesor, PC, jaringan, mobile, dan AI berkembang.</span>
-    </div>
-  </div>
-
-  <div class="callout">
-    <strong>Catatan:</strong>
-    <p>
-      Sejarah teknologi tidak berlangsung dalam lima tahap yang benar-benar
-      terpisah. Komputer berbasis transistor, IC, mikroprosesor, dan sistem
-      AI dapat hidup berdampingan. Klasifikasi generasi membantu memahami
-      kecenderungan utama, bukan menentukan usia setiap komputer secara
-      mutlak.
-    </p>
-  </div>
-</section>
-
-<!-- 05 COMPARISON GALLERY -->
-<section class="section" id="compare">
-  <div class="heading">
-    <div class="eyebrow">05 · Visual comparison</div>
-    <h2>Perbandingan visual generasi I–V.</h2>
-    <p>
-      Perhatikan perubahan dari perangkat elektronik awal hingga
-      komputasi modern. Foto di bawah adalah ilustrasi visual yang
-      mewakili teknologi atau tema masing-masing generasi; foto tersebut
-      tidak semuanya merupakan foto historis dari model komputer yang
-      disebutkan.
-    </p>
-  </div>
-
-  <div class="comparison-intro">
-    <figure>
-      <img
-        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85"
-        alt="Perangkat elektronik berukuran besar" loading="lazy">
-      <figcaption>Komputer elektronik awal: banyak perangkat membutuhkan ruang besar.</figcaption>
-    </figure>
-    <figure>
-      <img
-        src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=900&q=85"
-        alt="Chip prosesor" loading="lazy">
-      <figcaption>Komputer modern: pemrosesan utama terintegrasi dalam chip.</figcaption>
-    </figure>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Generasi</th>
-          <th>Teknologi utama</th>
-          <th>Ukuran dan efisiensi</th>
-          <th>Interaksi dan kemampuan</th>
-          <th>Contoh</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>I</strong></td>
-          <td>Tabung vakum</td>
-          <td>Sangat besar; panas dan konsumsi daya tinggi.</td>
-          <td>Bahasa mesin, input kartu berlubang atau media awal.</td>
-          <td>ENIAC, UNIVAC I</td>
-        </tr>
-        <tr>
-          <td><strong>II</strong></td>
-          <td>Transistor</td>
-          <td>Lebih kecil dan lebih andal.</td>
-          <td>Assembly dan bahasa tingkat tinggi berkembang.</td>
-          <td>IBM 1401, PDP-1</td>
-        </tr>
-        <tr>
-          <td><strong>III</strong></td>
-          <td>Integrated Circuit</td>
-          <td>Rangkaian lebih ringkas dan efisien.</td>
-          <td>Sistem operasi, terminal, dan multiprogramming berkembang.</td>
-          <td>IBM System/360, PDP-8</td>
-        </tr>
-        <tr>
-          <td><strong>IV</strong></td>
-          <td>Mikroprosesor</td>
-          <td>Komputer pribadi dan perangkat portabel meluas.</td>
-          <td>GUI, aplikasi, jaringan, dan komputasi personal.</td>
-          <td>Apple II, IBM PC</td>
-        </tr>
-        <tr>
-          <td><strong>V</strong></td>
-          <td>AI dan komputasi paralel</td>
-          <td>Beragam ukuran perangkat, dari ponsel hingga pusat data.</td>
-          <td>Machine learning, bahasa alami, analisis, dan otomatisasi.</td>
-          <td>Sistem AI, robotika, akselerator komputasi</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- 06 EVOLUTION -->
-<section class="section" id="evolution">
-  <div class="heading">
-    <div class="eyebrow">06 · How technology evolved</div>
-    <h2>Apa yang berubah dari waktu ke waktu?</h2>
-    <p>
-      Perubahan teknologi memengaruhi bukan hanya kecepatan komputer,
-      tetapi juga ukuran perangkat, cara pengguna berinteraksi, biaya
-      penggunaan, dan jenis pekerjaan yang dapat dilakukan.
-    </p>
-  </div>
-
-  <div class="grid">
-    <article class="intro">
-      <h3>1. Ukuran perangkat semakin beragam</h3>
-      <p>
-        Komputer awal dapat memenuhi ruangan. Kemudian, komputer pribadi,
-        laptop, ponsel pintar, dan perangkat tertanam memungkinkan
-        komputasi hadir dalam berbagai ukuran. Pusat data modern tetap
-        dapat berisi ribuan server.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>2. Kecepatan dan integrasi meningkat</h3>
-      <p>
-        Tabung vakum digantikan oleh transistor pada banyak sistem,
-        kemudian IC dan mikroprosesor meningkatkan integrasi komponen.
-        Prosesor modern dapat memiliki banyak inti dan bekerja bersama
-        akselerator khusus.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>3. Penyimpanan berkembang</h3>
-      <p>
-        Media seperti kartu berlubang, drum magnetik, dan pita magnetik
-        digunakan dalam sistem awal. Hard disk, media optik, flash
-        storage, dan SSD kemudian memperluas kapasitas serta kemudahan
-        penyimpanan.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>4. Interaksi menjadi lebih mudah</h3>
-      <p>
-        Penggunaan komputer berkembang dari instruksi dan media input
-        khusus menjadi terminal, monitor, keyboard, mouse, GUI, layar
-        sentuh, perintah suara, dan antarmuka bahasa alami.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>5. Komputer saling terhubung</h3>
-      <p>
-        Jaringan komputer memungkinkan pertukaran data antarmesin.
-        Internet, komputasi awan, dan layanan terdistribusi membuat
-        aplikasi serta data dapat diakses dari banyak lokasi.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>6. Perangkat lunak semakin kompleks</h3>
-      <p>
-        Perangkat lunak berkembang dari program yang sangat dekat dengan
-        mesin menjadi sistem operasi, aplikasi grafis, layanan web,
-        sistem analitik, serta model pembelajaran mesin.
-      </p>
-    </article>
-  </div>
-</section>
-
-<!-- 07 COMPUTER WORKFLOW -->
-<section class="section" id="workflow">
-  <div class="heading">
-    <div class="eyebrow">07 · Under the hood</div>
-    <h2>Bagaimana komputer bekerja?</h2>
-    <p>
-      Meskipun teknologi berubah, konsep input, pemrosesan, penyimpanan,
-      dan output tetap berguna untuk memahami cara kerja komputer.
-    </p>
-  </div>
-
-  <div class="grid">
-    <article class="card">
-      <div class="card-content">
-        <span class="tag">Step 01</span>
-        <h3>Input — menerima data</h3>
-        <p>
-          Data dan instruksi dimasukkan melalui keyboard, mouse,
-          mikrofon, kamera, sensor, jaringan, atau perangkat input lain.
-          Komputer lama juga menggunakan kartu berlubang dan media input
-          khusus.
-        </p>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-content">
-        <span class="tag">Step 02</span>
-        <h3>Processing — mengolah data</h3>
-        <p>
-          CPU menjalankan instruksi program. Control Unit membantu
-          mengatur aliran instruksi, sedangkan ALU menjalankan operasi
-          aritmetika dan logika. GPU atau prosesor khusus dapat
-          membantu pekerjaan tertentu.
-        </p>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-content">
-        <span class="tag">Step 03</span>
-        <h3>Storage — menyimpan data</h3>
-        <p>
-          RAM menampung data yang sedang digunakan dan umumnya bersifat
-          volatil. SSD dan HDD menyimpan file serta program dalam jangka
-          panjang. Sistem juga dapat menggunakan penyimpanan jaringan
-          atau cloud.
-        </p>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-content">
-        <span class="tag">Step 04</span>
-        <h3>Output — menghasilkan informasi</h3>
-        <p>
-          Hasil pemrosesan disampaikan melalui monitor, printer,
-          speaker, aktuator, atau jaringan. Output dapat berupa teks,
-          gambar, suara, data numerik, maupun tindakan perangkat.
-        </p>
-      </div>
-    </article>
-  </div>
-
-  <div class="callout">
-    <h3>Siklus instruksi CPU</h3>
-    <p>
-      <strong>Fetch → Decode → Execute → Write back.</strong>
-      CPU mengambil instruksi, menerjemahkan instruksi, menjalankan
-      operasi, lalu menulis hasil jika diperlukan. Ini adalah gambaran
-      sederhana; detail siklus berbeda menurut arsitektur prosesor.
-    </p>
-  </div>
-</section>
-
-<!-- 08 COMPARISON OF CAPABILITIES -->
-<section class="section" id="capabilities">
-  <div class="heading">
-    <div class="eyebrow">08 · Big-picture comparison</div>
-    <h2>Dari mesin khusus menuju komputasi sehari-hari.</h2>
-    <p>
-      Tabel berikut merangkum kecenderungan umum, bukan pengukuran
-      numerik. Perangkat pada generasi yang sama dapat memiliki
-      kemampuan yang sangat berbeda.
-    </p>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Aspek</th>
-          <th>Generasi I–II</th>
-          <th>Generasi III–IV</th>
-          <th>Komputasi modern dan AI</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Komponen</td>
-          <td>Tabung vakum, lalu transistor.</td>
-          <td>IC dan mikroprosesor.</td>
-          <td>CPU multicore, GPU, akselerator, dan sistem terdistribusi.</td>
-        </tr>
-        <tr>
-          <td>Interaksi</td>
-          <td>Media input khusus dan terminal awal.</td>
-          <td>Terminal, monitor, keyboard, dan GUI.</td>
-          <td>GUI, layar sentuh, suara, sensor, dan bahasa alami.</td>
-        </tr>
-        <tr>
-          <td>Pemrograman</td>
-          <td>Bahasa mesin, assembly, dan bahasa tingkat tinggi awal.</td>
-          <td>Bahasa pemrograman, sistem operasi, aplikasi, dan jaringan berkembang.</td>
-          <td>Ekosistem perangkat lunak, cloud, data science, dan machine learning.</td>
-        </tr>
-        <tr>
-          <td>Penggunaan</td>
-          <td>Perhitungan teknis dan pengolahan data terpusat.</td>
-          <td>Bisnis, pendidikan, kantor, rumah, dan komunikasi.</td>
-          <td>Analitik data, otomatisasi, layanan digital, dan AI.</td>
-        </tr>
-        <tr>
-          <td>Tantangan</td>
-          <td>Ukuran, panas, biaya, dan keandalan.</td>
-          <td>Kompatibilitas, keamanan, dan pengelolaan sistem.</td>
-          <td>Privasi, bias, keamanan siber, energi, dan dampak sosial.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- 09 GLOSSARY -->
-<section class="section" id="glossary">
-  <div class="heading">
-    <div class="eyebrow">09 · Glossary</div>
-    <h2>Istilah penting yang wajib dipahami.</h2>
-    <p>
-      Gunakan bagian ini sebagai catatan ringkas saat belajar,
-      mengerjakan tugas, atau mempersiapkan presentasi.
-    </p>
-  </div>
-
-  <div class="grid">
-    <article class="intro">
-      <h3>Hardware</h3>
-      <p>
-        Komponen fisik komputer, seperti CPU, RAM, motherboard, monitor,
-        keyboard, dan perangkat penyimpanan.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>Software</h3>
-      <p>
-        Program dan instruksi yang mengarahkan komputer untuk melakukan
-        tugas, termasuk sistem operasi dan aplikasi.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>Vacuum Tube</h3>
-      <p>
-        Komponen elektronik yang digunakan secara luas pada komputer
-        generasi pertama untuk mengendalikan sinyal listrik.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>Transistor</h3>
-      <p>
-        Komponen semikonduktor yang dapat mengendalikan atau memperkuat
-        sinyal listrik dan menggantikan banyak penggunaan tabung vakum.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>Integrated Circuit (IC)</h3>
-      <p>
-        Rangkaian elektronik yang menggabungkan banyak komponen dalam
-        satu chip semikonduktor.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>Microprocessor</h3>
-      <p>
-        Chip yang mengintegrasikan fungsi pemrosesan utama CPU dan
-        menjadi salah satu dasar perkembangan komputer pribadi.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>RAM</h3>
-      <p>
-        Random Access Memory; memori kerja yang menyimpan data dan
-        instruksi yang sedang digunakan program.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>Operating System</h3>
-      <p>
-        Perangkat lunak sistem yang mengelola sumber daya komputer
-        serta menyediakan layanan bagi aplikasi dan pengguna.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>Artificial Intelligence</h3>
-      <p>
-        Bidang komputasi yang mengembangkan sistem untuk tugas seperti
-        pengenalan pola, pemrosesan bahasa, prediksi, dan perencanaan.
-      </p>
-    </article>
-
-    <article class="intro">
-      <h3>Machine Learning</h3>
-      <p>
-        Metode yang memungkinkan model menemukan pola dari data
-        untuk menghasilkan prediksi atau keluaran tertentu.
-      </p>
-    </article>
-  </div>
-</section>
-
-<!-- 10 QUIZ -->
-<section class="section" id="quiz">
-  <div class="heading">
-    <div class="eyebrow">10 · Moonlight challenge</div>
-    <h2>Test your knowledge ✧</h2>
-    <p>
-      Jawab lima pertanyaan untuk menguji pemahamanmu tentang sejarah
-      komputer dan karakteristik setiap generasi.
-    </p>
-  </div>
-
-  <div class="quiz">
-    <div class="quiz-top">
-      <span id="quizCount">READY TO PLAY</span>
-      <strong id="scoreLabel">Score: 0</strong>
-    </div>
-
-    <div style="height:6px;background:#e6d9f1;border-radius:9px;overflow:hidden;margin:15px 0">
-      <div id="progressBar" style="height:100%;width:0;background:#7956a6;transition:width .3s"></div>
-    </div>
-
-    <h3 class="question" id="question">Ready to explore the history of computers?</h3>
-    <p class="muted" id="quizHint">Tekan tombol mulai untuk mengerjakan kuis.</p>
-    <div class="answers" id="answers"></div>
-    <p class="feedback" id="feedback" aria-live="polite"></p>
-
-    <div class="actions">
-      <button class="action" id="startQuiz">Start the quiz ✨</button>
-      <button class="action" id="nextQuestion" hidden>Next question →</button>
+    <div class="evo-picks" aria-label="Pilih generasi komputer">
+      <button type="button" class="evo-pick active" data-evo="1"><b>GEN I</b>Tabung vakum</button>
+      <button type="button" class="evo-pick" data-evo="2"><b>GEN II</b>Transistor</button>
+      <button type="button" class="evo-pick" data-evo="3"><b>GEN III</b>Integrated Circuit</button>
+      <button type="button" class="evo-pick" data-evo="4"><b>GEN IV</b>Mikroprosesor</button>
+      <button type="button" class="evo-pick" data-evo="5"><b>GEN V</b>AI & komputasi modern</button>
     </div>
   </div>
 </section>
 
-<!-- 11 CONCLUSION -->
-<section class="section" id="conclusion">
-  <div class="heading">
-    <div class="eyebrow">11 · Conclusion</div>
-    <h2>Perjalanan yang belum selesai.</h2>
-  </div>
-
-  <div class="intro">
-    <p>
-      Sejarah komputer menunjukkan bahwa kemajuan teknologi lahir dari
-      banyak inovasi yang saling berkaitan. Tabung vakum membuka jalan
-      bagi komputer elektronik awal, transistor meningkatkan efisiensi,
-      IC memperbesar integrasi komponen, dan mikroprosesor membantu
-      komputer pribadi berkembang.
-    </p>
-    <p>
-      Komputasi modern melanjutkan perkembangan tersebut melalui
-      jaringan, perangkat mobile, cloud, GPU, dan kecerdasan buatan.
-      Setiap teknologi membawa manfaat sekaligus tantangan, sehingga
-      pemahaman sejarah membantu kita menggunakan dan mengembangkan
-      teknologi secara lebih kritis.
-    </p>
-  </div>
-</section>
-
-<!-- REFERENCES -->
-<section class="section" id="references">
-  <div class="heading">
-    <div class="eyebrow">12 · Further reading</div>
-    <h2>Referensi untuk belajar lebih lanjut.</h2>
-    <p>
-      Gunakan sumber berikut untuk memperdalam materi dan memverifikasi
-      detail sejarah, teknologi, serta contoh komputer.
-    </p>
-  </div>
-
-  <div class="refs">
-    <a class="ref" href="https://www.computerhistory.org/" target="_blank" rel="noopener noreferrer">
-      <strong>Computer History Museum ↗</strong>
-      <span>Sejarah komputer, artefak, tokoh, dan perkembangan teknologi.</span>
-    </a>
-
-    <a class="ref" href="https://www.britannica.com/technology/computer" target="_blank" rel="noopener noreferrer">
-      <strong>Encyclopaedia Britannica — Computer ↗</strong>
-      <span>Ikhtisar perkembangan dan konsep komputer.</span>
-    </a>
-
-    <a class="ref" href="https://www.ibm.com/history" target="_blank" rel="noopener noreferrer">
-      <strong>IBM History ↗</strong>
-      <span>Sejarah produk, perusahaan, dan perkembangan komputasi.</span>
-    </a>
-
-    <a class="ref" href="https://www.computerhistory.org/timeline/" target="_blank" rel="noopener noreferrer">
-      <strong>Computer History Timeline ↗</strong>
-      <span>Garis waktu peristiwa penting dalam sejarah komputasi.</span>
-    </a>
-
-    <a class="ref" href="https://www.britannica.com/biography/Charles-Babbage" target="_blank" rel="noopener noreferrer">
-      <strong>Charles Babbage ↗</strong>
-      <span>Biografi dan kontribusi terhadap rancangan mesin komputasi.</span>
-    </a>
-
-    <a class="ref" href="https://www.britannica.com/technology/artificial-intelligence" target="_blank" rel="noopener noreferrer">
-      <strong>Artificial Intelligence ↗</strong>
-      <span>Penjelasan umum tentang kecerdasan buatan.</span>
-    </a>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div class="wrap foot">
-    <div>
-      <strong>VELOURERIA ✿</strong><br>
-      <span>The digital study journal</span>
-    </div>
-    <div>
-      Written by Salsabillah Aurellya Utami · NIM 8020250141<br>
-      <a href="index.html">Return to Welcome ↗</a>
-    </div>
-  </div>
-</footer>
-
+<section class="section" id="compare"><div class="heading"><div class="eyebrow">04 · Side by side</div><h2>Perbandingan lima generasi.</h2><p>Ringkasan karakteristik umum; kinerja sebenarnya berbeda menurut model dan tujuan komputer.</p></div><div class="table-wrap"><table><thead><tr><th>Generasi</th><th>Teknologi</th><th>Ukuran & efisiensi</th><th>Kemampuan</th><th>Contoh</th></tr></thead><tbody><tr><td>I</td><td>Tabung vakum</td><td>Sangat besar; panas dan daya tinggi</td><td>Bahasa mesin; perhitungan elektronik awal</td><td>ENIAC, UNIVAC I</td></tr><tr><td>II</td><td>Transistor</td><td>Lebih kecil dan andal</td><td>Assembly dan bahasa tingkat tinggi awal</td><td>IBM 1401, PDP-1</td></tr><tr><td>III</td><td>Integrated Circuit</td><td>Lebih ringkas dan efisien</td><td>Sistem operasi dan multiprogramming berkembang</td><td>IBM System/360, PDP-8</td></tr><tr><td>IV</td><td>Mikroprosesor</td><td>Komputer pribadi dan portabel</td><td>GUI, aplikasi, jaringan</td><td>IBM PC, Apple II</td></tr><tr><td>V</td><td>AI, komputasi paralel</td><td>Perangkat kecil hingga pusat data</td><td>Pengenalan pola, bahasa alami, sistem cerdas</td><td>Sistem AI modern, robotika</td></tr></tbody></table></div></section>
+<section class="section"><div class="heading"><div class="eyebrow">05 · Beyond the machine</div><h2>Dampak komputer bagi kehidupan.</h2></div><div class="grid"><div class="intro"><h3>Pendidikan & penelitian</h3><p>Komputer mendukung pembelajaran digital, simulasi, analisis data, dan kolaborasi jarak jauh.</p></div><div class="intro"><h3>Bisnis & industri</h3><p>Sistem digital membantu pencatatan, inventaris, analisis, otomatisasi, dan keputusan.</p></div><div class="intro"><h3>Komunikasi & kreativitas</h3><p>Komputer memudahkan komunikasi, desain, produksi media, dan akses pengetahuan.</p></div><div class="intro"><h3>Etika & tanggung jawab</h3><p>Privasi, keamanan siber, kesenjangan akses, limbah elektronik, dan bias AI perlu diperhatikan.</p></div></div></section>
+<section class="section" id="quiz"><div class="heading"><div class="eyebrow">06 · Test your knowledge</div><h2>Moonlight Quiz ✧</h2><p>Setiap ronde memilih 5 soal secara acak dari kumpulan soal, lalu mengacak pilihan jawaban. Klik “Acak ronde baru” untuk soal yang berubah.</p></div><div class="quiz"><div class="quiz-top"><span id="progress">Pertanyaan 1 dari 5</span><span id="score">Skor: 0</span></div><div class="question" id="question">Memuat pertanyaan…</div><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="actions"><button class="action" id="next" disabled>Pertanyaan berikutnya →</button><button class="action alt" id="restart">Acak ronde baru ↻</button></div></div></section>
+<section class="section"><div class="heading"><div class="eyebrow">07 · References</div><h2>Explore further.</h2><p>Gunakan sumber tepercaya untuk memeriksa fakta dan memperdalam materi.</p></div><div class="refs"><a class="ref" href="https://www.computerhistory.org/" target="_blank" rel="noopener"><strong>Computer History Museum ↗</strong><span>Koleksi dan sejarah komputasi.</span></a><a class="ref" href="https://www.britannica.com/technology/computer" target="_blank" rel="noopener"><strong>Encyclopaedia Britannica ↗</strong><span>Gambaran sejarah dan konsep komputer.</span></a><a class="ref" href="https://www.computer.org/" target="_blank" rel="noopener"><strong>IEEE Computer Society ↗</strong><span>Referensi profesional ilmu komputer.</span></a><a class="ref" href="https://www.intel.com/content/www/us/en/history/museum-story-of-intel.html" target="_blank" rel="noopener"><strong>Intel Museum ↗</strong><span>Sejarah mikroprosesor dan semikonduktor.</span></a></div></section>
+<section class="section"><div class="author"><img src="assets/author-profile.jpeg" alt="Foto penulis"><div><div class="eyebrow">Written by</div><strong>SALSABILLAH AURELLYA UTAMI</strong><p>NIM: 8020250141 · Program Studi Teknik Informatika<br>Mata Kuliah: Arsitektur dan Organisasi Komputer (ARSIKOM)</p><a class="btn" href="index.html">← Back to Welcome</a></div></div></section>
+</main><footer><div class="wrap foot"><a class="brand" href="index.html">VELOURERIA <b>✿</b></a><span>Study with curiosity · <span id="year"></span></span><button class="btn" onclick="window.print()">Print / Save PDF</button></div></footer>
 <script>
-// Pencarian dan filter generasi
-const searchInput = document.getElementById("search");
-const filterSelect = document.getElementById("filter");
-const generationCards = [...document.querySelectorAll(".generation-card")];
-const emptyMessage = document.getElementById("empty");
-
-function filterGenerations() {
-  const term = searchInput.value.trim().toLowerCase();
-  const selected = filterSelect.value;
-  let visible = 0;
-
-  generationCards.forEach(card => {
-    const searchable = (
-      card.innerText + " " + (card.dataset.words || "")
-    ).toLowerCase();
-
-    const matchesSearch = searchable.includes(term);
-    const matchesGeneration =
-      selected === "all" || card.dataset.gen === selected;
-
-    const show = matchesSearch && matchesGeneration;
-    card.hidden = !show;
-
-    if (show) visible++;
-  });
-
-  emptyMessage.hidden = visible !== 0;
-}
-
-searchInput.addEventListener("input", filterGenerations);
-filterSelect.addEventListener("change", filterGenerations);
-
-// Kuis interaktif
-const questionBank = [
-  {
-    q: "Teknologi utama komputer generasi pertama adalah ...",
-    a: ["Transistor", "Tabung vakum", "Mikroprosesor", "GPU"],
-    c: 1,
-    e: "Generasi pertama menggunakan tabung vakum sebagai komponen elektronik utama."
-  },
-  {
-    q: "Apa yang menjadi ciri penting generasi kedua?",
-    a: ["Transistor", "Cloud computing", "Layar sentuh", "Deep learning"],
-    c: 0,
-    e: "Transistor menggantikan banyak fungsi tabung vakum dan meningkatkan efisiensi."
-  },
-  {
-    q: "Integrated Circuit dikenal juga sebagai ...",
-    a: ["GUI", "IC", "AI", "RAM"],
-    c: 1,
-    e: "IC adalah singkatan dari Integrated Circuit."
-  },
-  {
-    q: "Teknologi yang membantu perkembangan komputer pribadi adalah ...",
-    a: ["Tabung vakum saja", "Kartu berlubang saja", "Mikroprosesor", "Mesin uap"],
-    c: 2,
-    e: "Mikroprosesor mengintegrasikan fungsi utama pemrosesan CPU ke dalam sebuah chip."
-  },
-  {
-    q: "Generasi kelima sering dikaitkan dengan perkembangan ...",
-    a: ["Abakus", "AI dan komputasi cerdas", "Tabung vakum", "Roda gigi"],
-    c: 1,
-    e: "Generasi kelima sering dikaitkan dengan AI, komputasi paralel, dan sistem cerdas."
-  },
-  {
-    q: "Komputer ENIAC dikenal sebagai ...",
-    a: ["Komputer elektronik serbaguna awal", "Smartphone pertama", "Laptop modern", "Mesin pencari"],
-    c: 0,
-    e: "ENIAC merupakan komputer elektronik serbaguna awal yang terkenal dalam sejarah komputasi."
-  },
-  {
-    q: "Siapa yang merancang Analytical Engine?",
-    a: ["Charles Babbage", "Alan Turing saja", "Bill Gates", "Steve Jobs"],
-    c: 0,
-    e: "Charles Babbage merancang Analytical Engine pada abad ke-19."
-  },
-  {
-    q: "Bahasa yang banyak dikaitkan dengan komputasi ilmiah generasi kedua adalah ...",
-    a: ["HTML", "FORTRAN", "CSS", "SQL saja"],
-    c: 1,
-    e: "FORTRAN dikembangkan untuk berbagai kebutuhan komputasi ilmiah dan numerik."
-  },
-  {
-    q: "Apa fungsi utama RAM?",
-    a: ["Mencetak kertas", "Menyimpan data kerja sementara", "Menggantikan monitor", "Menghasilkan suara"],
-    c: 1,
-    e: "RAM menyimpan data dan instruksi yang sedang digunakan program."
-  },
-  {
-    q: "Komputer pribadi berkembang luas pada era yang sangat dipengaruhi oleh ...",
-    a: ["Mikroprosesor", "Abakus", "Mesin hitung Pascal saja", "Tabung vakum saja"],
-    c: 0,
-    e: "Mikroprosesor menjadi teknologi penting bagi perkembangan komputer pribadi."
-  },
-  {
-    q: "Apa kepanjangan AI?",
-    a: ["Automated Input", "Artificial Intelligence", "Advanced Internet", "Analog Interface"],
-    c: 1,
-    e: "AI berarti Artificial Intelligence atau kecerdasan buatan."
-  },
-  {
-    q: "Manakah contoh media penyimpanan jangka panjang modern?",
-    a: ["Register", "SSD", "ALU", "Control Unit"],
-    c: 1,
-    e: "SSD menyimpan data secara nonvolatil."
-  },
-  {
-    q: "Apa tujuan utama sistem operasi?",
-    a: ["Mengelola sumber daya komputer", "Menggantikan seluruh hardware", "Menjadi keyboard", "Menghilangkan semua data"],
-    c: 0,
-    e: "Sistem operasi mengelola sumber daya dan menyediakan layanan bagi aplikasi."
-  },
-  {
-    q: "Mengapa transistor menjadi peningkatan penting dibandingkan tabung vakum?",
-    a: ["Selalu lebih besar", "Umumnya lebih kecil dan efisien", "Tidak menggunakan listrik", "Tidak dapat mengendalikan sinyal"],
-    c: 1,
-    e: "Transistor umumnya lebih kecil, lebih efisien, dan lebih andal dalam banyak aplikasi."
-  },
-  {
-    q: "Pernyataan mana yang paling tepat mengenai generasi komputer?",
-    a: [
-      "Setiap generasi berganti pada tanggal yang sama di seluruh dunia",
-      "Generasi merupakan klasifikasi teknologi yang waktunya dapat tumpang tindih",
-      "Semua komputer modern hanya menggunakan AI",
-      "Komputer tidak berubah setelah generasi keempat"
-    ],
-    c: 1,
-    e: "Pembagian generasi adalah kerangka pembelajaran; perkembangan teknologi berlangsung bertahap dan saling tumpang tindih."
-  }
+const bank=[
+{q:"Teknologi utama yang menjadi ciri generasi pertama komputer adalah…",a:["Tabung vakum","Transistor","Mikroprosesor","Integrated Circuit"],c:0,e:"Generasi pertama menggunakan tabung vakum."},
+{q:"Apa keuntungan utama transistor dibanding tabung vakum?",a:["Lebih kecil dan hemat daya","Membutuhkan ruangan lebih luas","Tidak bisa memproses sinyal","Selalu memakai kartu berlubang"],c:0,e:"Transistor membantu mengecilkan ukuran dan mengurangi panas serta konsumsi daya."},
+{q:"Integrated Circuit (IC) menggabungkan…",a:["Banyak komponen elektronik dalam satu chip","Banyak monitor dalam satu meja","Semua komputer di internet","Kumpulan dokumen di satu folder"],c:0,e:"IC mengintegrasikan komponen elektronik pada satu chip."},
+{q:"Teknologi yang mendukung perkembangan komputer pribadi secara luas adalah…",a:["Mikroprosesor","Tabung vakum saja","Kartu punch saja","Mesin ketik mekanis"],c:0,e:"Mikroprosesor memungkinkan CPU berada pada satu chip dan membantu lahirnya PC."},
+{q:"Generasi kelima sering dikaitkan dengan perkembangan…",a:["Kecerdasan buatan","Tabung vakum","Abakus","Kartu berlubang sebagai teknologi utama"],c:0,e:"AI, pemrosesan paralel, dan sistem cerdas sering dikaitkan dengan generasi kelima."},
+{q:"Manakah contoh komputer generasi pertama?",a:["ENIAC","Apple II","IBM PC","Laptop modern"],c:0,e:"ENIAC merupakan komputer elektronik awal yang terkenal."},
+{q:"FORTRAN dan COBOL menjadi penting karena…",a:["Membantu pemrograman tingkat tinggi","Menggantikan seluruh perangkat keras","Merupakan jenis monitor","Hanya digunakan untuk menghidupkan komputer"],c:0,e:"Bahasa tingkat tinggi membuat penulisan program lebih praktis untuk bidang tertentu."},
+{q:"Contoh komputer generasi kedua yang dikenal dalam sejarah adalah…",a:["IBM 1401","ENIAC","Smartphone modern","Tablet AI terbaru"],c:0,e:"IBM 1401 adalah contoh komputer transistor yang digunakan untuk pengolahan data bisnis."},
+{q:"Apa arti multiprogramming secara umum?",a:["Mengelola beberapa program/pekerjaan dalam sistem secara bergantian","Membuat komputer tanpa memori","Memasang banyak keyboard","Menyimpan satu file saja"],c:0,e:"Multiprogramming membantu sistem memanfaatkan sumber daya dengan menjalankan beberapa pekerjaan."},
+{q:"Manakah yang merupakan contoh dampak komputer pada pendidikan?",a:["Simulasi dan pembelajaran digital","Menghapus kebutuhan berpikir kritis","Menjamin semua informasi benar","Meniadakan kebutuhan privasi"],c:0,e:"Komputer mendukung simulasi, pembelajaran digital, dan kolaborasi."},
+{q:"GUI adalah singkatan dari…",a:["Graphical User Interface","General Unit Internet","Generated Utility Input","Global User Instruction"],c:0,e:"GUI adalah antarmuka grafis yang membantu pengguna berinteraksi melalui elemen visual."},
+{q:"Salah satu tantangan etika pada AI adalah…",a:["Bias data dan privasi","Warna casing komputer","Ukuran mousepad","Jenis wallpaper desktop"],c:0,e:"Bias data, privasi, keamanan, dan transparansi adalah isu penting pada AI."},
+{q:"Komputer generasi ketiga terutama ditandai oleh…",a:["Integrated Circuit (IC)","Tabung vakum","Abakus","Pita kaset sebagai CPU"],c:0,e:"IC menggabungkan banyak komponen elektronik dalam satu chip."},
+{q:"Mengapa pembagian generasi komputer perlu dipahami sebagai perkiraan?",a:["Perkembangan teknologi saling tumpang tindih","Semua komputer berubah pada hari yang sama","Tidak ada perubahan teknologi","Generasi ditentukan oleh warna komputer"],c:0,e:"Batas waktu generasi berbeda antar sumber dan teknologi baru tidak langsung menggantikan semua sistem lama."},
+{q:"Manakah contoh penggunaan AI modern?",a:["Penerjemahan otomatis","Tabung vakum sebagai komponen utama","Kartu berlubang sebagai satu-satunya input","Mesin hitung mekanis sederhana"],c:0,e:"Penerjemahan otomatis merupakan salah satu aplikasi AI."}
 ];
+let round=[],idx=0,score=0,answered=false;
+const $=id=>document.getElementById(id);
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function startRound(){round=shuffle(bank).slice(0,5);idx=0;score=0;answered=false;$("score").textContent="Skor: 0";showQuestion();}
+function showQuestion(){answered=false;const item=round[idx];$("progress").textContent=`Pertanyaan ${idx+1} dari ${round.length}`;$("question").textContent=item.q;$("feedback").textContent="";$("answers").innerHTML="";$("next").disabled=true;$("next").textContent=idx===round.length-1?"Lihat hasil akhir →":"Pertanyaan berikutnya →";
+const choices=shuffle(item.a.map((text,i)=>({text,correct:i===item.c})));
+choices.forEach(choice=>{const b=document.createElement("button");b.className="answer";b.textContent=choice.text;b.addEventListener("click",()=>choose(b,choice.correct,item.e));$("answers").appendChild(b);});}
+function choose(button,correct,explanation){if(answered)return;answered=true;document.querySelectorAll(".answer").forEach(b=>b.disabled=true);if(correct){score++;button.classList.add("correct");$("feedback").textContent="Benar! ✨ "+explanation;}else{button.classList.add("wrong");$("feedback").textContent="Belum tepat. "+explanation;document.querySelectorAll(".answer").forEach(b=>{if(b.textContent===round[idx].a[round[idx].c])b.classList.add("correct");});}$("score").textContent=`Skor: ${score}`;$("next").disabled=false;}
+$("next").addEventListener("click",()=>{if(!answered)return;if(idx<round.length-1){idx++;showQuestion();}else{$("progress").textContent="Ronde selesai";$("question").textContent=`Kamu memperoleh ${score} dari ${round.length} poin!`;const percent=score/round.length;if(percent===1)$("feedback").textContent="Perfect score! Kamu menguasai materi ini. Moonlight fireworks untukmu! 🌙✨";else if(percent>=.6)$("feedback").textContent="Bagus! Kamu sudah berkembang—nikmati kembang api kecil dan coba ronde baru.";else $("feedback").textContent="Setiap percobaan bikin kamu lebih paham. Ini kembang api penyemangat—coba ronde baru lagi!"; $("answers").innerHTML="";$("next").disabled=true;$("next").textContent="Ronde selesai ✓";celebrate();}});
+$("restart").addEventListener("click",startRound);
 
-const quiz = {
-  round: [],
-  index: 0,
-  score: 0,
-  locked: false
-};
-
-const $ = id => document.getElementById(id);
-
-function shuffle(array) {
-  const result = [...array];
-
-  for (let i = result.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [result[i], result[j]] = [result[j], result[i]];
-  }
-
-  return result;
+function celebrate(){
+ const canvas=$("fireworks"),ctx=canvas.getContext("2d");
+ canvas.width=window.innerWidth*devicePixelRatio;canvas.height=window.innerHeight*devicePixelRatio;
+ canvas.style.width=window.innerWidth+"px";canvas.style.height=window.innerHeight+"px";
+ ctx.scale(devicePixelRatio,devicePixelRatio);canvas.style.display="block";
+ const particles=[];const colors=["#b99add","#8c69b8","#e9d9ff","#fff0c9","#d8b5e8","#ffffff"];
+ for(let burst=0;burst<5;burst++){const cx=window.innerWidth*(.18+Math.random()*.64),cy=window.innerHeight*(.15+Math.random()*.45);
+  for(let i=0;i<65;i++){const angle=Math.PI*2*i/65+Math.random()*.12,speed=1.2+Math.random()*4;
+   particles.push({x:cx,y:cy,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:55+Math.random()*30,max:85,size:1.5+Math.random()*2.5,color:colors[Math.floor(Math.random()*colors.length)]});}}
+ let frame=0;
+ function draw(){ctx.clearRect(0,0,window.innerWidth,window.innerHeight);let alive=false;
+  for(const p of particles){if(p.life<=0)continue;alive=true;p.x+=p.vx;p.y+=p.vy;p.vy+=.035;p.vx*=.99;p.vy*=.99;p.life--;
+   ctx.globalAlpha=Math.max(0,p.life/p.max);ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();}
+  ctx.globalAlpha=1;frame++;if(alive&&frame<150){requestAnimationFrame(draw);}else{canvas.style.display="none";ctx.clearRect(0,0,window.innerWidth,window.innerHeight);}}
+ draw();$("quiz").classList.remove("quiz-win");void $("quiz").offsetWidth;$("quiz").classList.add("quiz-win");
 }
 
-function startQuiz() {
-  quiz.round = shuffle(questionBank).slice(0, 5);
-  quiz.index = 0;
-  quiz.score = 0;
-  quiz.locked = false;
-
-  $("scoreLabel").textContent = "Score: 0";
-  $("startQuiz").hidden = true;
-  $("nextQuestion").hidden = false;
-
-  showQuestion();
-}
-
-function showQuestion() {
-  quiz.locked = false;
-  const item = quiz.round[quiz.index];
-
-  $("quizCount").textContent =
-    `QUESTION ${quiz.index + 1} / ${quiz.round.length}`;
-
-  $("progressBar").style.width =
-    (quiz.index / quiz.round.length * 100) + "%";
-
-  $("question").textContent = item.q;
-  $("quizHint").textContent = "Pilih satu jawaban yang paling tepat.";
-  $("feedback").textContent = "";
-  $("answers").innerHTML = "";
-  $("nextQuestion").textContent = "Check answer";
-
-  const choices = shuffle(
-    item.a.map((text, i) => ({
-      text,
-      correct: i === item.c
-    }))
-  );
-
-  choices.forEach(choice => {
-    const button = document.createElement("button");
-    button.className = "answer";
-    button.textContent = choice.text;
-
-    button.addEventListener("click", () => {
-      if (quiz.locked) return;
-
-      quiz.locked = true;
-
-      document.querySelectorAll(".answer").forEach(answer => {
-        answer.disabled = true;
-      });
-
-      if (choice.correct) {
-        quiz.score++;
-        button.classList.add("correct");
-        $("feedback").textContent = "Benar! " + item.e;
-      } else {
-        button.classList.add("wrong");
-
-        document.querySelectorAll(".answer").forEach(answer => {
-          if (answer.textContent === item.a[item.c]) {
-            answer.classList.add("correct");
-          }
-        });
-
-        $("feedback").textContent = "Belum tepat. " + item.e;
-      }
-
-      $("scoreLabel").textContent = "Score: " + quiz.score;
-
-      $("nextQuestion").textContent =
-        quiz.index === quiz.round.length - 1
-          ? "Finish round ✨"
-          : "Next question →";
-    });
-
-    $("answers").appendChild(button);
-  });
-}
-
-function finishQuiz() {
-  $("progressBar").style.width = "100%";
-  $("quizCount").textContent = "ROUND COMPLETE";
-  $("question").textContent =
-    `You scored ${quiz.score} / ${quiz.round.length} ✧`;
-
-  $("quizHint").textContent =
-    quiz.score === 5
-      ? "Perfect score! Kamu memahami materi dengan sangat baik."
-      : quiz.score >= 3
-        ? "Bagus! Baca kembali materi yang masih membingungkan."
-        : "Terus belajar. Baca materi lalu coba ronde berikutnya.";
-
-  $("answers").innerHTML = "";
-  $("feedback").textContent =
-    "Setiap jawaban adalah kesempatan untuk belajar.";
-
-  $("nextQuestion").hidden = true;
-  $("startQuiz").hidden = false;
-  $("startQuiz").textContent = "Play another round ↻";
-}
-
-$("startQuiz").addEventListener("click", startQuiz);
-
-$("nextQuestion").addEventListener("click", () => {
-  if (!quiz.round.length) return;
-
-  if (!quiz.locked) {
-    $("feedback").textContent = "Pilih jawaban terlebih dahulu.";
-    return;
-  }
-
-  if (quiz.index < quiz.round.length - 1) {
-    quiz.index++;
-    showQuestion();
+const search=$("search"),filter=$("filter");
+function filterCards(){const term=search.value.toLowerCase().trim();let shown=0;document.querySelectorAll(".gen-card").forEach(card=>{const matchesGen=filter.value==="all"||card.dataset.gen===filter.value;const matchesText=(card.innerText+" "+card.dataset.words).toLowerCase().includes(term);const visible=matchesGen&&matchesText;card.hidden=!visible;if(visible)shown++;});$("empty").hidden=shown!==0;}
+search.addEventListener("input",filterCards);filter.addEventListener("change",filterCards);
+// Interactive CSS 3D computer-generation comparison
+(() => {
+ const generations = {
+  1:{title:"Tabung vakum",desc:"Komputer generasi pertama memakai tabung vakum sebagai komponen elektronik utama. Mesin seperti ENIAC memenuhi ruangan, memerlukan daya besar, dan menghasilkan banyak panas.",example:"ENIAC, UNIVAC I",change:"Perhitungan elektronik otomatis menjadi mungkin dalam skala besar.",shape:"vacuum"},
+  2:{title:"Transistor",desc:"Transistor menggantikan banyak fungsi tabung vakum. Komputer menjadi lebih kecil, lebih hemat energi, lebih andal, dan menghasilkan panas lebih sedikit.",example:"IBM 1401, PDP-1",change:"Peralihan dari tabung vakum ke komponen semikonduktor.",shape:"tower"},
+  3:{title:"Integrated Circuit (IC)",desc:"Integrated Circuit menggabungkan banyak komponen dalam chip. Integrasi meningkatkan keandalan dan membantu komputer menjadi lebih ringkas serta mampu menjalankan sistem yang lebih kompleks.",example:"IBM System/360, PDP-8",change:"Banyak komponen elektronik terintegrasi dalam satu chip.",shape:"chip"},
+  4:{title:"Mikroprosesor",desc:"Mikroprosesor mengintegrasikan fungsi CPU ke satu chip. Teknologi ini membantu perkembangan komputer pribadi, perangkat portabel, antarmuka grafis, dan perangkat lunak untuk pengguna umum.",example:"IBM PC, Apple II",change:"Komputer makin terjangkau dan menyebar ke rumah serta sekolah.",shape:"personal"},
+  5:{title:"AI dan komputasi modern",desc:"Pengelompokan generasi kelima sering dikaitkan dengan AI, machine learning, pemrosesan paralel, GPU, robotika, dan pemahaman bahasa. Batas generasi ini tidak mutlak; teknologi modern terus berkembang.",example:"Sistem AI, robotika, akselerator GPU",change:"Komputer semakin banyak membantu mengenali pola dan mengolah tugas kompleks.",shape:"ai"}
+ };
+ const object=document.getElementById("evoObject");
+ const monitor=document.getElementById("evoMonitor");
+ const keyboard=document.getElementById("evoKeyboard");
+ const vacuum=document.getElementById("evoVacuum");
+ const chip=document.getElementById("evoChip");
+ const tower=document.getElementById("evoTower");
+ const box=document.getElementById("evoCase");
+ const info=document.getElementById("evoInfo");
+ let ry=-24;
+ function rotate(){object.style.transform=`rotateX(12deg) rotateY(${ry}deg)`;}
+ function selectGeneration(id){
+  const item=generations[id];
+  document.querySelectorAll(".evo-pick").forEach(b=>b.classList.toggle("active",b.dataset.evo===String(id)));
+  monitor.hidden=false; keyboard.hidden=false; vacuum.hidden=true; chip.hidden=true; tower.hidden=true;
+  object.style.width="210px";object.style.height="170px";
+  box.style.inset="35px 25px 15px";box.style.background="";
+  monitor.style.width="115px";monitor.style.height="85px";monitor.style.left="48px";
+  chip.style.borderRadius="8px";chip.style.width="90px";chip.style.height="80px";
+  if(id===1){
+   monitor.hidden=true;keyboard.hidden=true;vacuum.hidden=false;
+   object.style.width="230px";object.style.height="180px";
+   box.style.inset="45px 20px 12px";
+  } else if(id===2){
+   monitor.hidden=true;keyboard.hidden=true;tower.hidden=false;
+   object.style.width="210px";object.style.height="170px";
+  } else if(id===3){
+   monitor.hidden=true;keyboard.hidden=true;chip.hidden=false;
+   box.style.background="repeating-linear-gradient(0deg,#bca6d0 0 12px,#82689a 13px 16px)";
+  } else if(id===4){
+   box.style.background="linear-gradient(135deg,#d7c4e8,#77588f)";
   } else {
-    finishQuiz();
+   chip.hidden=false;
+   monitor.style.background="linear-gradient(135deg,#8ed8e5,#7778d5)";
+   chip.style.borderRadius="50%";
+   chip.style.background="repeating-radial-gradient(circle,#302439 0 5px,#8c71bd 6px 10px)";
+   box.style.background="linear-gradient(135deg,#b9d6f0,#6f7cc1)";
   }
-});
-</script>
+  info.innerHTML=`<span class="tag">GENERATION ${id}</span><h3>${item.title}</h3><p>${item.desc}</p><p class="evo-fact"><b>Contoh:</b> ${item.example}.</p><p class="evo-fact"><b>Perubahan utama:</b> ${item.change}</p>`;
+ }
+ document.querySelectorAll(".evo-pick").forEach(button=>button.addEventListener("click",()=>selectGeneration(Number(button.dataset.evo))));
+ document.getElementById("evoLeft").addEventListener("click",()=>{ry-=25;rotate();});
+ document.getElementById("evoRight").addEventListener("click",()=>{ry+=25;rotate();});
+ document.getElementById("evoReset").addEventListener("click",()=>{ry=-24;rotate();});
+ const stage=document.getElementById("evoStage");
+ stage.addEventListener("pointermove",e=>{if(e.pointerType==="touch")return;const r=stage.getBoundingClientRect();ry=-24+((e.clientX-r.left)/r.width-.5)*45;rotate();});
+ stage.addEventListener("pointerleave",()=>{ry=-24;rotate();});
+})();
 
-</body>
-</html>
+$("year").textContent=new Date().getFullYear();startRound();
+</script></body></html>
