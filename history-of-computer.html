@@ -502,7 +502,37 @@ const eras=[
 {range:'ERA IV · PERSONAL COMPUTING',title:'Mikroprosesor membawa komputer ke meja kerja',text:'Sejak 1970-an, fungsi pemrosesan utama semakin terintegrasi ke mikroprosesor. Perkembangan ini ikut mendorong komputer pribadi, antarmuka grafis, perangkat lunak yang lebih luas, dan jaringan komputer menjadi bagian dari aktivitas sehari-hari.',milestone:'Intel 4004 · 1971',tech:'Mikroprosesor',impact:'Komputer pribadi berkembang',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Altair_8800_Computer.jpg',alt:'Altair 8800, komputer pribadi awal',source:'https://commons.wikimedia.org/wiki/Category:Altair_8800'},
 {range:'ERA V · CONNECTED & INTELLIGENT SYSTEMS',title:'Komputasi modern semakin terhubung dan cerdas',text:'Pada 2000-an hingga sekarang, komputasi berkembang melalui ponsel pintar, cloud, GPU, data berskala besar, serta AI. “Generasi kelima” sering dikaitkan dengan komputasi cerdas, tetapi tidak ada satu batas tahun yang disepakati secara universal.',milestone:'AI modern · perkembangan berkelanjutan',tech:'AI, cloud, GPU, komputasi khusus',impact:'Komputasi hadir di banyak aspek hidup',image:'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1000&q=85',alt:'Robot modern sebagai representasi komputasi cerdas dan AI',source:'https://unsplash.com/'}
 ];
-document.querySelectorAll('.era-btn').forEach(btn=>btn.addEventListener('click',()=>{const item=eras[Number(btn.dataset.era)];document.querySelectorAll('.era-btn').forEach(b=>b.classList.toggle('active',b===btn));document.getElementById('eraKicker').textContent=item.range;document.getElementById('eraTitle').textContent=item.title;document.getElementById('eraText').textContent=item.text;document.getElementById('eraMilestone').textContent=item.milestone;document.getElementById('eraTech').textContent=item.tech;document.getElementById('eraImpact').textContent=item.impact;const img=document.getElementById('eraImage');img.onerror=()=>{img.onerror=null;img.src='https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85';};img.src=item.image;img.alt=item.alt;document.getElementById('eraSource').href=item.source;}));
+// Fallback per era: jika foto utama gagal dimuat, jangan pakai satu foto motherboard untuk semuanya.
+const eraFallbackImages = [
+  'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=85',
+  'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=85',
+  'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85',
+  'https://images.unsplash.com/photo-1593642634367-d91a135587b5?auto=format&fit=crop&w=1000&q=85',
+  'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1000&q=85'
+];
+function showEra(index) {
+  const item = eras[index];
+  document.querySelectorAll('.era-btn').forEach(b => b.classList.toggle('active', Number(b.dataset.era) === index));
+  document.getElementById('eraKicker').textContent = item.range;
+  document.getElementById('eraTitle').textContent = item.title;
+  document.getElementById('eraText').textContent = item.text;
+  document.getElementById('eraMilestone').textContent = item.milestone;
+  document.getElementById('eraTech').textContent = item.tech;
+  document.getElementById('eraImpact').textContent = item.impact;
+  const img = document.getElementById('eraImage');
+  img.onerror = () => {
+    img.onerror = null;
+    img.src = eraFallbackImages[index];
+  };
+  img.src = item.image;
+  img.alt = item.alt;
+  document.getElementById('eraSource').href = item.source;
+}
+document.querySelectorAll('.era-btn').forEach(btn =>
+  btn.addEventListener('click', () => showEra(Number(btn.dataset.era)))
+);
+// Set the initial image through the same per-era image handler.
+showEra(0);
 
 // Interactive history milestones
 const milestoneData=[
