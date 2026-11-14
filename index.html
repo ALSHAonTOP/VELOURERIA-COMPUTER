@@ -25,9 +25,9 @@
             --muted: #766c84;
             --purple: #7956a6;
             --deep: #4d356c;
-            --cream: #fffaf4;
-            --line: #e6d9f1;
-            --pale: #f1e9fa;
+            --cream: #f3edfb;
+            --line: #dfd2ef;
+            --pale: #eae0f6;
         }
 
         * {
@@ -44,7 +44,11 @@
             width: 100%;
             min-width: 0;
             overflow-x: clip;
-            background: var(--cream);
+            background:
+                radial-gradient(ellipse at 8% 5%, #e8dcf7 0, transparent 34%),
+                radial-gradient(ellipse at 92% 24%, #eee5f8 0, transparent 32%),
+                linear-gradient(180deg, #f6f1fc 0%, #f1eafb 52%, #f7f3fc 100%);
+            background-attachment: fixed;
             color: var(--ink);
             font-family: "DM Sans", sans-serif;
             line-height: 1.7;
@@ -54,6 +58,26 @@
             display: block;
             max-width: 100%;
         }
+        /* Delicate lilac blossom accents along the outer edges */
+        body::before, body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: min(25vw, 290px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: .34;
+            background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22260%22%20height%3D%22520%22%20viewBox%3D%220%200%20260%20520%22%3E%0A%3Cdefs%3E%0A%20%3CradialGradient%20id%3D%22p%22%20cx%3D%2235%25%22%20cy%3D%2225%25%22%3E%3Cstop%20stop-color%3D%22%23fff8ff%22%2F%3E%3Cstop%20offset%3D%22.58%22%20stop-color%3D%22%23dfc8ef%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b99bd5%22%2F%3E%3C%2FradialGradient%3E%0A%20%3CradialGradient%20id%3D%22q%22%20cx%3D%2235%25%22%20cy%3D%2225%25%22%3E%3Cstop%20stop-color%3D%22%23fffaff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23c5a6df%22%2F%3E%3C%2FradialGradient%3E%0A%20%3Cg%20id%3D%22flower%22%20stroke%3D%22%23b49acb%22%20stroke-width%3D%22.7%22%3E%0A%20%20%3Cellipse%20cx%3D%220%22%20cy%3D%22-8%22%20rx%3D%225.2%22%20ry%3D%228%22%20fill%3D%22url%28%23p%29%22%2F%3E%0A%20%20%3Cellipse%20cx%3D%228%22%20cy%3D%220%22%20rx%3D%228%22%20ry%3D%225.2%22%20fill%3D%22url%28%23p%29%22%2F%3E%0A%20%20%3Cellipse%20cx%3D%220%22%20cy%3D%228%22%20rx%3D%225.2%22%20ry%3D%228%22%20fill%3D%22url%28%23p%29%22%2F%3E%0A%20%20%3Cellipse%20cx%3D%22-8%22%20cy%3D%220%22%20rx%3D%228%22%20ry%3D%225.2%22%20fill%3D%22url%28%23p%29%22%2F%3E%0A%20%20%3Ccircle%20r%3D%222.5%22%20fill%3D%22%23f8e8c9%22%20stroke%3D%22none%22%2F%3E%0A%20%3C%2Fg%3E%0A%3C%2Fdefs%3E%0A%3C%21--%20Loose%2C%20floating%20lilac%20flower%20clusters%3B%20no%20stems%20or%20leaves%20--%3E%0A%3Cg%20opacity%3D%22.86%22%3E%0A%20%3Cg%20transform%3D%22translate%28148%2055%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20x%3D%2222%22%20y%3D%2212%22%20transform%3D%22translate%2822%2012%29%20scale%28.85%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20x%3D%22-22%22%20y%3D%2219%22%20transform%3D%22translate%28-22%2019%29%20scale%28.72%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%283%2031%29%20scale%28.78%29%22%2F%3E%3C%2Fg%3E%0A%20%3Cg%20transform%3D%22translate%28205%20145%29%20scale%28.65%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2017%29%20scale%28.8%29%22%2F%3E%3C%2Fg%3E%0A%20%3Cg%20transform%3D%22translate%2862%20290%29%20scale%28.78%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2822%2017%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-17%2022%29%20scale%28.66%29%22%2F%3E%3C%2Fg%3E%0A%20%3Cg%20transform%3D%22translate%28178%20390%29%20scale%28.82%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2822%2016%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2020%29%20scale%28.7%29%22%2F%3E%3C%2Fg%3E%0A%20%3Cg%20transform%3D%22translate%2855%20465%29%20scale%28.58%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2819%2014%29%20scale%28.75%29%22%2F%3E%3C%2Fg%3E%0A%0A%20%3Cg%20transform%3D%22translate%2832%20190%29%20scale%28.68%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2014%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-15%2018%29%20scale%28.65%29%22%2F%3E%3C%2Fg%3E%0A%20%3Cg%20transform%3D%22translate%28220%20315%29%20scale%28.72%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2014%29%20scale%28.78%29%22%2F%3E%3C%2Fg%3E%0A%20%3Cg%20transform%3D%22translate%28125%20245%29%20scale%28.55%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2818%2013%29%20scale%28.72%29%22%2F%3E%3C%2Fg%3E%0A%20%3Cg%20transform%3D%22translate%28105%20505%29%20scale%28.58%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2818%2013%29%20scale%28.72%29%22%2F%3E%3C%2Fg%3E%0A%20%3Cg%20transform%3D%22translate%28235%2030%29%20scale%28.58%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2818%2013%29%20scale%28.72%29%22%2F%3E%3C%2Fg%3E%0A%20%3Cg%20transform%3D%22translate%2828%2055%29%20scale%28.52%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2818%2013%29%20scale%28.72%29%22%2F%3E%3C%2Fg%3E%0A%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%2818%2022%29%20scale%280.95%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%28225%2075%29%20scale%280.9%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%2835%20135%29%20scale%280.88%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%28195%20190%29%20scale%281.0%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%2870%20235%29%20scale%280.9%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%28238%20270%29%20scale%280.95%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%2825%20330%29%20scale%281.0%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%28175%20365%29%20scale%280.92%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%2895%20420%29%20scale%280.98%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%28225%20465%29%20scale%280.9%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%28130%20115%29%20scale%280.82%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%28130%20310%29%20scale%280.84%29%22%3E%3Cuse%20href%3D%22%23flower%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2820%2012%29%20scale%28.88%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%28-18%2016%29%20scale%28.82%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%285%2031%29%20scale%28.78%29%22%2F%3E%3Cuse%20href%3D%22%23flower%22%20transform%3D%22translate%2834%2029%29%20scale%28.68%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20fill%3D%22%23eadcf4%22%20opacity%3D%22.75%22%3E%0A%20%3Ccircle%20cx%3D%2234%22%20cy%3D%22120%22%20r%3D%223%22%2F%3E%3Ccircle%20cx%3D%22224%22%20cy%3D%22250%22%20r%3D%222.5%22%2F%3E%3Ccircle%20cx%3D%22116%22%20cy%3D%22210%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%2228%22%20cy%3D%22405%22%20r%3D%222.5%22%2F%3E%3Ccircle%20cx%3D%22232%22%20cy%3D%22480%22%20r%3D%222%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+            background-repeat: repeat-y;
+            background-size: 300px 600px;
+            background-position: top left;
+        }
+        body::before { left: 0; }
+        body::after { right: 0; transform: scaleX(-1); }
+        header, main, .foot { position: relative; z-index: 1; }
+        body.dark-mode::before, body.dark-mode::after { opacity: .16; }
+
 
         a {
             color: inherit;
@@ -65,6 +89,24 @@
             margin-inline: auto;
         }
 
+        main {
+            position: relative;
+            isolation: isolate;
+        }
+
+        main::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 50%;
+            width: min(1200px, 100%);
+            height: 720px;
+            transform: translateX(-50%);
+            pointer-events: none;
+            background: radial-gradient(ellipse at 50% 18%, #e9def766 0, transparent 68%);
+        }
+
         /* =========================
            2. NAVIGATION
         ========================= */
@@ -73,7 +115,7 @@
             position: sticky;
             top: 0;
             z-index: 5;
-            background: #fffaf4e8;
+            background: #f6f1fce8;
             backdrop-filter: blur(15px);
             border-bottom: 1px solid #e6d9f188;
         }
@@ -251,7 +293,7 @@
             position: absolute;
             z-index: 2;
             max-width: 90%;
-            background: #fffaf4ed;
+            background: #f8f4fce8;
             border: 1px solid var(--line);
             border-radius: 15px;
             padding: 12px 15px;
@@ -471,7 +513,7 @@
             grid-template-columns: 145px minmax(0, 1fr);
             gap: 25px;
             align-items: center;
-            background: linear-gradient(120deg, #f0e6f9, #fffaf4);
+            background: linear-gradient(120deg, #e9def7, #f7f2fc);
             border: 1px solid var(--line);
             padding: 25px;
             border-radius: 24px;
@@ -556,6 +598,211 @@
             color: white;
             font-size: 1.2rem;
             cursor: pointer;
+        }
+
+
+        /* =========================
+           12. VELOURERIA INTERACTIVE DETAILS
+        ========================= */
+
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: #fff;
+            color: var(--deep);
+            cursor: pointer;
+            font-size: 1.05rem;
+            transition: .25s ease;
+        }
+        .theme-toggle:hover { transform: rotate(-14deg) translateY(-2px); box-shadow: 0 7px 18px #4d356c18; }
+
+        .hero-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 30px;
+            padding: 10px 15px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: #ffffffa8;
+            color: var(--muted);
+            font-size: .78rem;
+        }
+        .hero-note strong { color: var(--deep); font-weight: 700; }
+        .note-sparkle { color: var(--purple); font-size: 1.15rem; }
+
+        .library-tools {
+            max-width: 760px;
+            margin: 0 auto 28px;
+            text-align: center;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: min(100%, 570px);
+            margin: 0 auto 15px;
+            padding: 5px 15px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: #fff;
+            box-shadow: 0 8px 25px #4d356c0a;
+            color: var(--purple);
+        }
+        .search-box > span { font-size: 1.45rem; line-height: 1; }
+        .search-box input {
+            width: 100%;
+            min-width: 0;
+            padding: 10px 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--ink);
+            font: inherit;
+            font-size: .86rem;
+        }
+        .search-box kbd {
+            flex-shrink: 0;
+            color: #a49aaf;
+            font: 600 .58rem "DM Sans", sans-serif;
+            letter-spacing: .12em;
+        }
+        .filter-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+        .filter-chip {
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            padding: 8px 14px;
+            background: #fff;
+            color: var(--muted);
+            font: 600 .75rem "DM Sans", sans-serif;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+        .filter-chip:hover, .filter-chip.active {
+            border-color: var(--deep);
+            background: var(--deep);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .results-count { margin: 11px 0 0; color: var(--muted); font-size: .72rem; }
+        .library-item.is-hidden { display: none !important; }
+        .library-empty {
+            display: none;
+            grid-column: 1 / -1;
+            padding: 35px 20px;
+            border: 1px dashed var(--line);
+            border-radius: 20px;
+            color: var(--muted);
+            text-align: center;
+        }
+        .library-empty.show { display: block; }
+
+        .moonlit-section { padding: 30px 0 70px; }
+        .moonlit-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            min-height: 330px;
+            overflow: hidden;
+            border: 1px solid #d9c9eb;
+            border-radius: 28px;
+            background: linear-gradient(118deg, #f0e8fa 0%, #e9def6 48%, #e2d5f1 100%);
+            box-shadow: 0 20px 55px #4d356c10;
+        }
+        .moonlit-copy { position: relative; z-index: 1; padding: 38px 42px; }
+        .moonlit-copy h2 {
+            margin: 9px 0 10px;
+            color: var(--deep);
+            font: 600 clamp(2rem, 4vw, 3rem)/1.1 "Playfair Display", serif;
+        }
+        .moonlit-copy h2 span { color: #9b7ac0; }
+        .moonlit-intro { max-width: 490px; margin: 0; color: #766c84; font-size: .88rem; }
+        .daily-quote { position: relative; max-width: 500px; margin-top: 23px; padding-left: 18px; border-left: 2px solid #a88ac8; }
+        .quote-mark { position: absolute; top: -15px; left: 0; color: #a88ac8; font: 2.5rem "Playfair Display", serif; opacity: .75; }
+        .daily-quote p { margin: 0 0 7px; color: #4d356c; font: italic 1.2rem/1.45 "Playfair Display", serif; }
+        .quote-credit { color: #8b7a9d; font-size: .72rem; }
+        .quote-button {
+            margin-top: 19px; padding: 9px 15px; border: 1px solid #cbb8df;
+            border-radius: 30px; background: #ffffffa8; color: var(--deep);
+            font: 700 .76rem "DM Sans", sans-serif; cursor: pointer; transition: .2s;
+        }
+        .quote-button:hover { background: #fff; transform: translateY(-2px); }
+        .moonlit-art { position: relative; min-height: 300px; display: grid; place-items: center; overflow: hidden; }
+        .moon-disc {
+            z-index: 2; display: grid; place-items: center; width: 150px; height: 150px;
+            border-radius: 50%; background: linear-gradient(145deg, #fff 5%, #e8dcf5 60%, #c9b3e2);
+            color: #8c70ad; font-size: 5.8rem; line-height: 1;
+            box-shadow: 0 15px 55px #80639d38, inset -12px -12px 25px #b49bcf55;
+            animation: moonFloat 6s ease-in-out infinite;
+        }
+        .moon-orbit { position: absolute; width: 240px; height: 240px; border: 1px solid #b49bcf88; border-radius: 50%; transform: rotate(-25deg) scaleY(.42); }
+        .orbit-two { width: 300px; height: 300px; transform: rotate(35deg) scaleY(.42); border-color: #fff9; }
+        .moon-star { position: absolute; z-index: 3; color: #9273b4; }
+        .star-one { top: 22%; left: 23%; font-size: 1.2rem; }
+        .star-two { right: 19%; top: 29%; font-size: 1.8rem; }
+        .star-three { left: 27%; bottom: 23%; font-size: 2rem; }
+        .moon-caption { position: absolute; right: 8%; bottom: 10%; color: #8c76a4; font-size: .56rem; font-weight: 700; letter-spacing: .2em; line-height: 1.8; text-align: right; }
+        @keyframes moonFloat { 50% { transform: translateY(-9px) rotate(5deg); } }
+
+        .mini-manifesto {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px;
+        }
+        .mini-manifesto > div {
+            display: grid; grid-template-columns: 34px 1fr; column-gap: 10px; align-items: center;
+            padding: 15px 17px; border: 1px solid var(--line); border-radius: 16px; background: #ffffffa6;
+        }
+        .mini-manifesto span { grid-row: span 2; color: #a58abe; font: 600 1rem "Playfair Display", serif; }
+        .mini-manifesto strong { color: var(--deep); font: 600 1rem "Playfair Display", serif; }
+        .mini-manifesto small { color: var(--muted); font-size: .7rem; }
+
+        /* Gentle reveal on scroll */
+        .reveal-ready .content, .reveal-ready .moonlit-section, .reveal-ready .author { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+        .reveal-ready .content.in-view, .reveal-ready .moonlit-section.in-view, .reveal-ready .author.in-view { opacity: 1; transform: translateY(0); }
+
+        /* Night library */
+        body.dark-mode {
+            --ink: #eee8f6; --muted: #b7abc7; --purple: #c4a6e8; --deep: #d9c4f1;
+            --cream: #171321; --line: #40334f; --pale: #2a2037;
+            background: #171321; color: var(--ink);
+        }
+        body.dark-mode header { background: #171321e8; border-color: #40334f; }
+        body.dark-mode .btn, body.dark-mode .card, body.dark-mode .material-card,
+        body.dark-mode .search-box, body.dark-mode .filter-chip, body.dark-mode .theme-toggle,
+        body.dark-mode .hero-note, body.dark-mode .mini-manifesto > div { background: #241d30; color: var(--ink); border-color: #40334f; }
+        body.dark-mode .btn.primary, body.dark-mode .filter-chip.active { background: #6f5590; color: #fff; border-color: #6f5590; }
+        body.dark-mode .card p, body.dark-mode .material-card p { color: #b7abc7; }
+        body.dark-mode .author { background: linear-gradient(120deg, #2a2037, #211a2c); }
+        body.dark-mode .chips span { background: #241d30; border-color: #40334f; color: #d9c4f1; }
+        body.dark-mode .moonlit-card { background: linear-gradient(118deg, #2d243b, #342746 55%, #3c2d50); border-color: #514064; }
+        body.dark-mode .moonlit-copy h2, body.dark-mode .daily-quote p,
+        body.dark-mode .mini-manifesto strong { color: #eadcf8; }
+        body.dark-mode .moonlit-intro, body.dark-mode .quote-credit,
+        body.dark-mode .moon-caption, body.dark-mode .mini-manifesto small { color: #c2b2d4; }
+        body.dark-mode .quote-button { background: #47365b; border-color: #6b5682; color: #f2e8ff; }
+        body.dark-mode .hero-note strong { color: #eadcf8; }
+        body.dark-mode .search-box input { color: #eee8f6; }
+        body.dark-mode .search-box kbd { color: #a99ab9; }
+        body.dark-mode .foot { border-color: #40334f; }
+
+        @media (max-width: 820px) {
+            .moonlit-card { grid-template-columns: 1fr .65fr; }
+            .moonlit-copy { padding: 30px 25px; }
+            .moonlit-art { min-height: 270px; }
+            .moon-disc { width: 120px; height: 120px; font-size: 4.8rem; }
+        }
+        @media (max-width: 540px) {
+            .theme-toggle { width: 32px; height: 32px; }
+            .hero-note { justify-content: center; margin-top: 22px; }
+            .search-box { border-radius: 16px; }
+            .search-box kbd { display: none; }
+            .moonlit-section { padding: 15px 0 45px; }
+            .moonlit-card { grid-template-columns: 1fr; }
+            .moonlit-copy { padding: 27px 22px 5px; }
+            .moonlit-art { min-height: 235px; }
+            .mini-manifesto { grid-template-columns: 1fr; gap: 8px; }
+            .mini-manifesto > div { padding: 11px 14px; }
         }
 
         /* =========================
@@ -755,7 +1002,8 @@
                 <a href="#welcome">Welcome</a>
                 <a href="#library">Library</a>
                 <a href="#author">Author</a>
-                <a class="pill" href="history-of-computer.html">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Aktifkan dark mode" title="Toggle theme">☾</button>
+                <a class="pill" href="#library">
                     Start reading ↗
                 </a>
             </nav>
@@ -801,6 +1049,11 @@
                         Meet the author ✿
                     </a>
                 </div>
+
+                <div class="hero-note">
+                    <span class="note-sparkle">✧</span>
+                    <span><strong>A little space to grow.</strong> One page, many discoveries.</span>
+                </div>
             </div>
 
             <div class="art">
@@ -843,11 +1096,26 @@
                 </p>
             </div>
 
-            <div class="grid">
+            <div class="library-tools">
+                <label class="search-box">
+                    <span aria-hidden="true">⌕</span>
+                    <input id="librarySearch" type="search" placeholder="Find a topic in the library..." autocomplete="off" aria-label="Cari materi">
+                    <kbd>SEARCH</kbd>
+                </label>
+                <div class="filter-row" role="group" aria-label="Filter kategori materi">
+                    <button class="filter-chip active" type="button" data-filter="all">All rooms</button>
+                    <button class="filter-chip" type="button" data-filter="computer">Computing</button>
+                    <button class="filter-chip" type="button" data-filter="design">Design &amp; UX</button>
+                    <button class="filter-chip" type="button" data-filter="notes">Study notes</button>
+                </div>
+                <p class="results-count" id="resultsCount" aria-live="polite">5 reading rooms to explore</p>
+            </div>
+
+            <div class="grid" id="libraryGrid">
 
                 <!-- BLOG 01: HISTORY OF COMPUTERS -->
 
-                <a class="card" href="history-of-computer.html">
+                <a class="card library-item" data-category="computer" data-search="history computer sejarah komputer arsitektur tabung vakum ai" href="history-of-computer.html">
 
                     <div class="card-image">
                         <img
@@ -878,7 +1146,7 @@
 
                 <!-- BLOG 02: COMPUTER ARCHITECTURE -->
 
-                <a class="material-card" href="architecture.html">
+                <a class="material-card library-item" data-category="computer" data-search="computer architecture organization cpu memory hierarchy arsitektur organisasi komputer" href="architecture.html">
 
                     <img
                         src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
@@ -902,41 +1170,10 @@
 
                 </a>
 
-                <!-- BLOG 03: DIGITAL DESK -->
-
-                <div class="card">
-
-                    <div class="card-image">
-                        <img
-                            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85"
-                            alt="Laptop dan meja kerja"
-                            loading="lazy"
-                        >
-                    </div>
-
-                    <div class="card-copy">
-                        <span class="tag">
-                            Study notes · Coming soon
-                        </span>
-
-                        <h3>Notes from the Digital Desk</h3>
-
-                        <p>
-                            Ruang untuk catatan coding, basis data,
-                            algoritma, rekayasa perangkat lunak,
-                            dan hal-hal yang dipelajari di kelas.
-                        </p>
-
-                        <span class="read">
-                            A new chapter is brewing ✧
-                        </span>
-                    </div>
-
-                </div>
 
                 <!-- BLOG 04: ANIIMO USABILITY -->
 
-                <a class="card" href="aniimo-usability.html">
+                <a class="card library-item" data-category="design" data-search="aniimo game usability user experience game ux evaluation" href="aniimo-usability.html">
 
                     <div class="card-image">
                         <img
@@ -948,7 +1185,7 @@
 
                     <div class="card-copy">
                         <span class="tag">
-                            04 · GAME UX &amp; USABILITY
+                            03 · GAME UX &amp; USABILITY
                         </span>
 
                         <h3>The Art of Playing</h3>
@@ -966,6 +1203,105 @@
 
                 </a>
 
+                <!-- BLOG 05: UI/UX DESIGN -->
+
+                <a class="card library-item" data-category="design" data-search="ui ux user interface user experience web design usability nielsen" href="UIUX.html">
+
+                    <div class="card-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=900&q=85"
+                            alt="Perancangan antarmuka dan pengalaman pengguna"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div class="card-copy">
+                        <span class="tag">
+                            04 · UI/UX DESIGN
+                        </span>
+
+                        <h3>Designing Better Experiences</h3>
+
+                        <p>
+                            Mengenal prinsip UI/UX, mengevaluasi desain antarmuka,
+                            dan memahami bagaimana sebuah website dapat menjadi
+                            lebih mudah, nyaman, serta menyenangkan untuk digunakan.
+                        </p>
+
+                        <span class="read">
+                            Explore the design room ↗
+                        </span>
+                    </div>
+
+                </a>
+
+                <!-- BLOG 05: DIGITAL DESK -->
+
+                <div class="card library-item" data-category="notes" data-search="notes digital desk coding database algorithms software engineering study notes">
+
+                    <div class="card-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85"
+                            alt="Laptop dan meja kerja"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div class="card-copy">
+                        <span class="tag">
+                            05 · STUDY NOTES
+                        </span>
+
+                        <h3>Notes from the Digital Desk</h3>
+
+                        <p>
+                            Kumpulan catatan perjalanan belajar coding, basis data,
+                            algoritma, rekayasa perangkat lunak, dan berbagai
+                            hal menarik dari dunia perkuliahan.
+                        </p>
+
+                        <span class="read">
+                            Open the digital desk ↗
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =========================
+             MOONLIT CORNER
+        ========================= -->
+
+        <section class="moonlit-section" id="moonlit">
+            <div class="moonlit-card">
+                <div class="moonlit-copy">
+                    <span class="eyebrow">A pause between chapters</span>
+                    <h2>The Moonlit Corner<span> ✧</span></h2>
+                    <p class="moonlit-intro">A tiny reminder that learning is not a race. Take a breath, collect a thought, and keep becoming.</p>
+                    <div class="daily-quote">
+                        <span class="quote-mark">“</span>
+                        <p id="dailyQuote">Small steps still move you toward extraordinary things.</p>
+                        <span class="quote-credit" id="quoteCredit">— A note to remember</span>
+                    </div>
+                    <button class="quote-button" id="newQuote" type="button">A little inspiration ↗</button>
+                </div>
+                <div class="moonlit-art" aria-hidden="true">
+                    <div class="moon-orbit orbit-one"></div>
+                    <div class="moon-orbit orbit-two"></div>
+                    <div class="moon-disc">☾</div>
+                    <span class="moon-star star-one">✦</span>
+                    <span class="moon-star star-two">✧</span>
+                    <span class="moon-star star-three">·</span>
+                    <div class="moon-caption">STAY CURIOUS<br>STAY SOFT</div>
+                </div>
+            </div>
+
+            <div class="mini-manifesto">
+                <div><span>01</span><strong>Curiosity</strong><small>Ask better questions.</small></div>
+                <div><span>02</span><strong>Clarity</strong><small>Make complex things simple.</small></div>
+                <div><span>03</span><strong>Creativity</strong><small>Give every idea a shape.</small></div>
             </div>
         </section>
 
@@ -1057,8 +1393,81 @@
     <!-- AUTOMATIC YEAR -->
 
     <script>
-        document.getElementById("year").textContent =
-            new Date().getFullYear();
+        // Automatic year
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Library search + category filters
+        const searchInput = document.getElementById("librarySearch");
+        const filterButtons = [...document.querySelectorAll(".filter-chip")];
+        const libraryItems = [...document.querySelectorAll(".library-item")];
+        const resultsCount = document.getElementById("resultsCount");
+        let activeFilter = "all";
+
+        const emptyState = document.createElement("div");
+        emptyState.className = "library-empty";
+        emptyState.textContent = "No pages found. Try another keyword or category ✧";
+        document.getElementById("libraryGrid").appendChild(emptyState);
+
+        function filterLibrary() {
+            const query = (searchInput.value || "").trim().toLowerCase();
+            let visible = 0;
+            libraryItems.forEach(item => {
+                const searchable = (item.innerText + " " + (item.dataset.search || "")).toLowerCase();
+                const categoryMatch = activeFilter === "all" || item.dataset.category === activeFilter;
+                const searchMatch = !query || searchable.includes(query);
+                const show = categoryMatch && searchMatch;
+                item.classList.toggle("is-hidden", !show);
+                if (show) visible++;
+            });
+            resultsCount.textContent = `${visible} ${visible === 1 ? "reading room" : "reading rooms"} to explore`;
+            emptyState.classList.toggle("show", visible === 0);
+        }
+
+        searchInput.addEventListener("input", filterLibrary);
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                activeFilter = button.dataset.filter;
+                filterButtons.forEach(item => item.classList.toggle("active", item === button));
+                filterLibrary();
+            });
+        });
+
+        // Dark mode (preference stays for this browser session)
+        const themeToggle = document.getElementById("themeToggle");
+        themeToggle.addEventListener("click", () => {
+            const isDark = document.body.classList.toggle("dark-mode");
+            themeToggle.textContent = isDark ? "☀" : "☾";
+            themeToggle.setAttribute("aria-label", isDark ? "Aktifkan light mode" : "Aktifkan dark mode");
+        });
+
+        // Rotating little reminders
+        const quotes = [
+            ["Small steps still move you toward extraordinary things.", "— A note to remember"],
+            ["Curiosity is a lovely place to begin.", "— From the study desk"],
+            ["You do not have to know everything to start learning.", "— A gentle reminder"],
+            ["Make room for questions. They are where ideas bloom.", "— The Moonlit Archive"],
+            ["Progress can be quiet and still be beautiful.", "— For your next chapter"]
+        ];
+        let quoteIndex = 0;
+        document.getElementById("newQuote").addEventListener("click", () => {
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+            document.getElementById("dailyQuote").textContent = quotes[quoteIndex][0];
+            document.getElementById("quoteCredit").textContent = quotes[quoteIndex][1];
+        });
+
+        // Reveal sections as they enter the viewport
+        if ("IntersectionObserver" in window) {
+            document.body.classList.add("reveal-ready");
+            const revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in-view");
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll("section.content, .moonlit-section, .author").forEach(section => revealObserver.observe(section));
+        }
     </script>
 
 </body>
