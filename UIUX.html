@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -242,10 +241,261 @@ footer{padding:30px 0;color:var(--muted);font-size:.8rem}
  .challenge-list{grid-template-columns:1fr}
  .flip-card{height:500px}
 }
+
+/* ===== ELEVATION LAYER ===== */
+@property --p{syntax:"<number>";inherits:false;initial-value:0}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:50;background:linear-gradient(90deg,var(--accent),var(--purple),var(--deep))}
+header{background:none;backdrop-filter:none;border:0;top:10px}
+.nav{background:color-mix(in srgb,var(--surface) 80%,transparent);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:999px;padding:9px 12px 9px 22px;box-shadow:var(--shadow)}
+nav{gap:2px;font-size:.76rem}
+nav a{padding:5px 9px;border-radius:99px;transition:.2s}
+nav a:hover,nav a.on{background:var(--surface2);color:var(--deep)}
+.icon-btn{transition:.2s}.icon-btn:hover{background:var(--surface2)}
+#fxBtn[aria-pressed=false]{opacity:.4}
+.hero{border-top:0;position:relative;isolation:isolate}
+.hero:before{content:"";position:absolute;top:-30px;right:-8%;width:560px;height:560px;z-index:-1;border-radius:50%;background:radial-gradient(circle,#c9a8e8 0,#e8d5f5 40%,transparent 70%);opacity:.55;filter:blur(30px)}
+body.dark .hero:before{opacity:.2}
+h1 em{background:linear-gradient(120deg,var(--purple),#cf8fbd);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.hero-art:before{content:"";position:absolute;z-index:-1;width:80%;aspect-ratio:1;border-radius:50%;border:1.5px dashed var(--accent);animation:spin 45s linear infinite}
+.hero-art:after{content:"✧";position:absolute;top:6%;left:14%;font-size:1.7rem;color:var(--purple);animation:twinkle 3s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes twinkle{50%{opacity:.25;transform:scale(.7) rotate(25deg)}}
+section:not(.hero){border-top:1px dashed var(--line);position:relative}
+section:not(.hero):before{content:"✿";position:absolute;top:-13px;left:50%;translate:-50% 0;padding:0 12px;background:var(--bg);color:var(--accent);line-height:1}
+.eyebrow{text-transform:none;letter-spacing:.02em;font-size:.78rem;display:inline-block;padding:3px 12px;border-radius:99px;background:var(--surface2)}
+.btn.primary{background:linear-gradient(135deg,var(--deep),var(--purple));border-color:transparent}
+.btn:active{transform:scale(.97)}
+.card{transition:transform .3s,box-shadow .3s}
+.reveal{transform:translateY(16px);transition:opacity .6s,transform .6s}
+.flip-front{background:linear-gradient(165deg,var(--surface),var(--surface2))}
+.flip-card{transition:transform .3s}
+.flip-card:not(.flipped):hover{transform:translateY(-6px) rotate(-.6deg)}
+.flip-card.seen .flip-front:before{content:"✓";position:absolute;top:12px;right:12px;z-index:3;width:24px;height:24px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font-size:.75rem}
+.tools{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:-8px 0 26px}
+.chip-count{padding:9px 15px;border-radius:99px;background:var(--surface2);font-size:.8rem;font-weight:700;color:var(--deep)}
+.crime-grid{counter-reset:c}
+.crime{counter-increment:c;position:relative;overflow:hidden}
+.severity:before{content:"Kasus #" counter(c) " · "}
+.crime:after{content:"DITUTUP";position:absolute;right:14px;top:16px;font:700 .8rem "Playfair Display";letter-spacing:.14em;color:#b5586d;border:2px solid currentColor;border-radius:6px;padding:2px 10px;transform:rotate(12deg) scale(1.6);opacity:0;transition:.25s;pointer-events:none}
+.crime:hover:after{opacity:.75;transform:rotate(12deg) scale(1)}
+.crime:hover{transform:translateY(-5px) rotate(-.4deg)}
+.bad:hover{animation:jitter .35s linear infinite}
+@keyframes jitter{25%{transform:translate(1px,-1px) rotate(.2deg)}75%{transform:translate(-1px,1px) rotate(-.2deg)}}
+.good{box-shadow:0 18px 40px #8063a026}
+.tab{transition:.2s}.tab:hover{border-color:var(--purple);color:var(--deep)}
+.score{display:flex;align-items:center;gap:14px;margin:22px 0 8px}
+.ring{--p:0;width:74px;height:74px;flex:none;border-radius:50%;background:conic-gradient(var(--purple) calc(var(--p)*1%),var(--surface2) 0);display:grid;place-items:center;transition:--p .5s}
+.ring b{width:56px;height:56px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font:600 1.2rem "Playfair Display";color:var(--deep)}
+#scoreLabel{font-size:.85rem;color:var(--muted)}
+.demo-site{position:relative}
+.demo-site.lowc h3,.demo-site.lowc p,.demo-site.lowc b,.demo-site.lowc .demo-links span{color:#bdb6c4!important}
+.fake-pop{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-2deg);width:min(78%,260px);background:#ffe66d;color:#4a2a00;padding:20px 16px;border-radius:6px;box-shadow:0 20px 50px #0005;text-align:center;font-weight:700;z-index:3}
+.fake-pop[hidden]{display:none}
+.fake-pop button{position:absolute;top:3px;right:3px;width:14px;height:14px;font-size:.6rem;line-height:1;border:0;background:#4a2a0033;color:#4a2a00;border-radius:3px;padding:0;transition:transform .15s}
+.controls .btn{width:100%;margin-top:14px}
+.progress div{background:linear-gradient(90deg,var(--accent),var(--purple))}
+.challenge-item{cursor:pointer;transition:.2s;border:1px solid transparent}
+.challenge-item:hover{border-color:var(--accent)}
+.challenge-item:has(input:checked){background:var(--surface);border-color:var(--purple);text-decoration:line-through;text-decoration-color:var(--accent)}
+#rank{font-weight:700;color:var(--deep);margin:0}
+.website img{transition:transform .5s}.website:hover img{transform:scale(1.06)}
+.quiz-options{counter-reset:o}
+.quiz-options button{display:flex;gap:12px;align-items:center;transition:.2s}
+.quiz-options button:before{counter-increment:o;content:counter(o,upper-alpha);flex:0 0 28px;height:28px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-size:.75rem;font-weight:700;color:var(--purple)}
+.quiz-options button:not(:disabled):hover{transform:translateX(4px)}
+.quiz-options button:disabled{cursor:default}
+#streak{margin-right:10px;font-weight:700}
+.cookie-card{max-width:560px;margin:auto;padding:34px;text-align:center}
+.cookie{font-size:5rem;background:none;border:0;line-height:1;transition:transform .3s}
+.cookie:hover{transform:rotate(-8deg) scale(1.08)}
+.cookie.crack{animation:crack .6s}
+@keyframes crack{20%{transform:rotate(-14deg) scale(1.1)}40%{transform:rotate(12deg) scale(1.15)}60%{transform:rotate(-8deg)}80%{transform:rotate(6deg)}}
+#fortune{font:italic 1.35rem/1.5 "Playfair Display";color:var(--deep);min-height:4.5em;margin:10px 0 14px}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+#fx span{position:absolute;left:0;top:0;color:var(--purple);will-change:transform,opacity;line-height:1}
+#toast{position:fixed;left:50%;bottom:24px;translate:-50% 20px;opacity:0;background:var(--deep);color:#fff;padding:10px 18px;border-radius:99px;font-size:.85rem;z-index:70;transition:.35s;pointer-events:none;max-width:90vw;text-align:center}
+#toast.show{opacity:1;translate:-50% 0}
+body.dark #toast{color:#211d29}
+#mochi{position:fixed;left:16px;bottom:16px;z-index:40;display:flex;align-items:flex-end;gap:8px;max-width:calc(100% - 90px);pointer-events:none}
+.mochi-body{pointer-events:auto;background:none;border:0;padding:0;animation:bob 3.6s ease-in-out infinite;filter:drop-shadow(0 8px 12px #503b6833)}
+.mochi-body:hover{animation-duration:1s}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.eyes{transform-box:fill-box;transform-origin:center;animation:blink 5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.bubble{background:var(--surface);border:1px solid var(--line);border-radius:16px 16px 16px 4px;padding:10px 14px;font-size:.8rem;line-height:1.45;box-shadow:var(--shadow);max-width:250px;opacity:0;transform:translateY(6px) scale(.96);transition:.3s;margin-bottom:26px}
+.bubble.show{opacity:1;transform:none}
+.top{opacity:0;pointer-events:none;transition:.3s}.top.show{opacity:1;pointer-events:auto}
+@media(max-width:1040px){
+ .nav{border-radius:26px;flex-wrap:wrap}
+ nav{display:none;order:3;width:100%;flex-wrap:wrap;padding:6px 0}
+ nav.open{display:flex}.menu-btn{display:inline-flex}
+}
+@media(max-width:700px){.bubble{max-width:190px;font-size:.75rem}.mochi-body svg{width:58px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* ===== KOMEDI PUTAR ===== */
+.carousel{position:relative;height:430px;perspective:1500px;touch-action:pan-y;user-select:none;margin-top:10px}
+.carousel:after{content:"";position:absolute;left:50%;bottom:-6px;width:70%;height:46px;translate:-50% 0;border-radius:50%;background:radial-gradient(closest-side,#503b6833,transparent);pointer-events:none}
+.stage{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.carousel .website{position:absolute;left:50%;top:12px;width:260px;margin-left:-130px;backface-visibility:hidden;transition:opacity .6s;cursor:grab}
+.carousel .website img{height:200px}
+.carousel .website:not(.front){filter:saturate(.7)}
+.carousel .website.front{box-shadow:0 24px 60px #503b6838}
+.c-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:26px}
+#cDots{display:flex;gap:8px}
+#cDots button{width:10px;height:10px;border-radius:50%;border:0;padding:0;background:var(--accent);opacity:.5;transition:.3s}
+#cDots button.on{opacity:1;width:26px;border-radius:99px;background:var(--purple)}
+.c-hint{text-align:center;font-size:.78rem;color:var(--muted);margin:12px 0 0}
+@media(max-width:700px){.carousel{height:400px}.carousel .website{width:220px;margin-left:-110px}.carousel .website img{height:170px}}
+
+/* ===== PALET TEMA ===== */
+body[data-accent=sakura]{--bg:#fbeff3;--surface:#fffafc;--surface2:#f8e2ea;--ink:#42283a;--muted:#8d7580;--purple:#c0587f;--deep:#8a3a5b;--line:#f0d3de;--accent:#e6a3bb}
+body.dark[data-accent=sakura]{--bg:#2a1d24;--surface:#37262f;--surface2:#44313b;--ink:#f7eaf0;--muted:#c9b0bb;--purple:#f08fb0;--deep:#f5b5cb;--line:#5c4350;--accent:#c4678a}
+body[data-accent=mint]{--bg:#edf7f2;--surface:#fafffc;--surface2:#dff0e7;--ink:#233a30;--muted:#6f8a7c;--purple:#3f9170;--deep:#256650;--line:#cfe5d9;--accent:#8fcab0}
+body.dark[data-accent=mint]{--bg:#1b2621;--surface:#25332c;--surface2:#2f4037;--ink:#e8f5ee;--muted:#a9c2b4;--purple:#7fd1ad;--deep:#a8e3c8;--line:#43584c;--accent:#4f9e7e}
+body[data-accent=peach]{--bg:#fff2ea;--surface:#fffaf6;--surface2:#fde4d3;--ink:#44291e;--muted:#9a7a6a;--purple:#d9743f;--deep:#a64b22;--line:#f5d8c5;--accent:#eeae88}
+body.dark[data-accent=peach]{--bg:#2a2019;--surface:#372a21;--surface2:#44352a;--ink:#fbeee4;--muted:#d0b8a6;--purple:#f2a070;--deep:#f6bd9a;--line:#5b4636;--accent:#c07a4f}
+body[data-accent] .hero:before{background:radial-gradient(circle,var(--accent),transparent 70%)}
+body[data-accent] h1 em{background:none;color:var(--purple)}
+/* ===== SPOT THE BUG ===== */
+.bug-wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:start}
+.bug-site{position:relative;padding:20px;background:#e8e5e7;color:#57515b;overflow:hidden;cursor:crosshair;min-height:430px}
+.bug-site [data-bug]{cursor:pointer;position:relative}
+.bs-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:2px solid #bbb;padding-bottom:8px;font-weight:700}
+.bs-ico{font-size:1.1rem;padding:4px 8px;background:#ccc;border-radius:4px}
+.bs-hero{text-align:center;padding:16px 0}
+.bs-hero h3{margin:6px 0 12px;color:#c0392b;font-size:1.6rem}
+.bs-ctas{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.bs-ctas span{background:#999;color:#fff;font-weight:700;padding:9px 12px;border-radius:5px;font-size:.78rem}
+.bs-tiny{font-size:.62rem;color:#d3d0d4;margin:14px 0}
+.bs-link{color:#4a6fa5;text-decoration:underline;font-size:.85rem;display:inline-block}
+.bs-field{background:#fff;border:1px solid #bbb;border-radius:4px;padding:10px;font-size:.75rem;color:#888;margin-top:12px}
+.bug-site .bs-pop{position:absolute;right:14px;bottom:14px;width:46%;background:#ffe66d;color:#4a2a00;font-weight:700;padding:26px 12px 14px;border-radius:6px;box-shadow:0 14px 30px #0004;text-align:center;font-size:.85rem;transform:rotate(2deg)}
+.bs-pop i{position:absolute;top:3px;right:3px;width:14px;height:14px;font-style:normal;font-size:.6rem;line-height:14px;background:#4a2a0033;border-radius:3px}
+.bug-site .found{outline:3px solid #5fb37f;outline-offset:3px;border-radius:4px}
+.bug-site .found:after{content:"✓";position:absolute;top:-12px;right:-12px;background:#5fb37f;color:#fff;border-radius:50%;width:22px;height:22px;display:grid;place-items:center;font-size:.75rem}
+.bug-site.miss{animation:jitter .3s}
+.bug-site .hint{animation:pulse 1s 3}
+@keyframes pulse{50%{outline:3px dashed var(--purple);outline-offset:6px}}
+.bug-side{padding:22px}
+#bugCount{font:600 2.2rem "Playfair Display";color:var(--purple)}
+#bugList{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px;font-size:.82rem}
+#bugList li{background:var(--surface2);border-radius:10px;padding:9px 12px}
+.bug-side .btn{margin:4px 6px 0 0}
+/* ===== CONTRAST LAB ===== */
+.lab{display:grid;grid-template-columns:.85fr 1.15fr;gap:22px}
+.lab .row{display:flex;gap:14px;align-items:center;margin-top:10px}
+.lab .row label{margin:0}
+.lab input[type=color]{width:56px;height:44px;padding:2px;cursor:pointer}
+.swatches{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}
+.swatches button{padding:6px 12px;border-radius:99px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);font-size:.75rem}
+.swatches button:hover{border-color:var(--purple)}
+.ratio{font:600 3rem/1.1 "Playfair Display";color:var(--deep);margin-top:14px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.badges span{padding:5px 12px;border-radius:99px;font-size:.74rem;font-weight:700;background:#f3dfe3;color:#873e4c}
+.badges span.pass{background:#dcecdf;color:#315b3d}
+.lab-prev{padding:34px;display:grid;align-content:center;gap:10px;min-height:340px;transition:background .2s,color .2s}
+.lab-prev h3{font-size:2.4rem;margin:0;line-height:1.1}
+.lab-prev p{margin:0;max-width:460px}
+.lp-btn{justify-self:start;padding:10px 18px;border-radius:30px;font-weight:700;font-size:.85rem;margin-top:8px}
+@media(max-width:700px){.bug-wrap,.lab{grid-template-columns:1fr}}
+
+/* ===== BEFORE/AFTER 2.0 ===== */
+.ba-labels{display:none}
+.ba-actions{display:flex;gap:10px;justify-content:center;margin:-6px 0 22px;flex-wrap:wrap}
+.ba-stage{max-width:780px;margin:0 auto;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:var(--surface)}
+.fbar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:var(--surface2);border-bottom:1px solid var(--line)}
+.fbar i{width:10px;height:10px;border-radius:50%;background:#e6a3a3}.fbar i:nth-child(2){background:#e6cf8f}.fbar i:nth-child(3){background:#9fd3ad}
+.url{margin-left:10px;flex:1;background:var(--surface);border-radius:99px;padding:3px 14px;font-size:.72rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ba-view{position:relative;display:grid;touch-action:pan-y;cursor:ew-resize;user-select:none;outline:none}
+.ba-view>.mock{grid-area:1/1;border:0;border-radius:0;min-height:370px;margin:0}
+.ba-view>.good{clip-path:inset(0 0 0 var(--x,50%))}
+.ba-view .bad:hover{animation:none}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--x,50%);width:0;z-index:5;pointer-events:none}
+.ba-handle:before{content:"";position:absolute;top:0;bottom:0;left:-1.5px;width:3px;background:linear-gradient(var(--purple),var(--accent));box-shadow:0 0 18px #bca5d0aa}
+.ba-handle b{position:absolute;top:50%;left:-22px;width:44px;height:44px;margin-top:-22px;border-radius:50%;background:var(--surface);border:2px solid var(--purple);color:var(--purple);display:grid;place-items:center;box-shadow:var(--shadow);animation:nudge 2.6s ease-in-out infinite}
+.ba-view:focus-visible .ba-handle b{outline:3px solid var(--purple);outline-offset:3px}
+.ba-view.drag .ba-handle b{animation:none;transform:scale(1.14)}
+@keyframes nudge{20%,60%{transform:none}30%{transform:translateX(-7px)}45%{transform:translateX(7px)}}
+.ba-tag{position:absolute;top:12px;z-index:4;padding:4px 12px;border-radius:99px;font-size:.7rem;font-weight:700;pointer-events:none}
+.ba-tag.b{left:12px;background:#57515bdd;color:#fff}.ba-tag.a{right:12px;background:var(--purple);color:#fff}
+.ba-foot{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;padding:16px 22px;border-top:1px solid var(--line)}
+.ba-score{text-align:center;min-width:70px}.ba-score b{display:block;font:600 2.5rem/1 "Playfair Display";color:var(--purple)}.ba-score small{color:var(--muted);font-size:.7rem}
+.fixes{display:flex;flex-wrap:wrap;gap:8px}
+.fixes span{padding:6px 12px;border-radius:99px;font-size:.76rem;font-weight:700;background:#f3dfe3;color:#873e4c;transition:.3s}
+.fixes span.ok{background:#dcecdf;color:#315b3d;transform:scale(1.05)}
+/* ===== DESIGN STUDIO ===== */
+.studio{display:grid;grid-template-columns:330px 1fr;gap:22px;align-items:start}
+.studio-ctl{padding:22px;display:grid;gap:16px}
+.studio-ctl h3{margin:0;font-size:1.4rem}
+.ctl{display:grid;gap:7px;font-size:.8rem;font-weight:700}
+.ctl>span{display:flex;justify-content:space-between}
+.ctl input[type=range]{width:100%;accent-color:var(--purple)}
+.ctl.two{grid-template-columns:1fr 1fr}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{flex:1;padding:7px 10px;border-radius:99px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);font-size:.75rem;font-weight:600;transition:.2s;white-space:nowrap}
+.seg button:hover{border-color:var(--purple)}
+.seg button.on{background:var(--deep);color:#fff;border-color:var(--deep)}
+body.dark .seg button.on{color:#211d29}
+.sw{display:flex;gap:8px}
+.sw button{width:30px;height:30px;border-radius:50%;border:3px solid var(--surface);box-shadow:0 0 0 1px var(--line);padding:0;transition:.2s}
+.sw button.on{box-shadow:0 0 0 2px var(--deep);transform:scale(1.14)}
+.tg{display:flex;align-items:center;gap:8px;font-weight:700}.tg input{accent-color:var(--purple);width:18px;height:18px}
+.s-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.s-tools .seg{flex:none}.s-tools .btn{padding:9px 14px}
+.s-tools .btn[aria-pressed=true]{background:var(--deep);color:#fff}
+body.dark .s-tools .btn[aria-pressed=true]{color:#211d29}
+.frame{border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);background:var(--surface);transition:max-width .45s cubic-bezier(.2,.7,.2,1);max-width:100%;margin:auto}
+.frame.m{max-width:360px}
+.site{--ac:#8063a0;--sp:1;--r:14px;--fs:16px;--ff:"DM Sans",sans-serif;--bgc:#fffaff;--ink2:#342842;--mut:#6f6379;position:relative;overflow:hidden;background:var(--bgc);color:var(--ink2);font-size:var(--fs);font-family:var(--ff);line-height:1.55;padding:calc(20px*var(--sp));min-height:480px;transition:background .3s,color .3s}
+.site.lowc{--ink2:#bdb6c4;--mut:#d4cfd9}
+.site.dk{--bgc:#1f1a27;--ink2:#f2eaf7;--mut:#bcb0c7}
+.site.dk.lowc{--ink2:#5f566b;--mut:#4b4357}
+.s-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:calc(16px*var(--sp))}
+.s-logo{font-weight:700;font-size:1.1em}
+.s-links{display:flex;gap:14px;color:var(--mut);font-size:.85em}.s-links i{font-style:normal}
+.s-clutter{display:none;background:#ffe66d;color:#7a1f1f;font-weight:700;text-align:center;padding:6px;margin:0 calc(-20px*var(--sp)) 14px;font-size:.8em}
+.chaos .s-clutter{display:block}
+.s-hero{padding:calc(12px*var(--sp)) 0 calc(20px*var(--sp))}
+.s-kicker{color:var(--ac);font-weight:700;font-size:.8em}
+.site .s-hero h3{font-family:inherit;font-size:calc(var(--fs)*1.9);line-height:1.15;margin:6px 0 calc(10px*var(--sp));max-width:15em;font-weight:700}
+.s-hero p{color:var(--mut);margin:0 0 calc(16px*var(--sp));max-width:30em}
+.chaos .s-hero h3{text-transform:uppercase;color:#d33;text-shadow:2px 2px 0 #ffe66d;font-size:calc(var(--fs)*2.2)}
+.s-ctas{display:flex;gap:8px;flex-wrap:wrap}
+.s-cta{padding:calc(11px*var(--sp)) calc(20px*var(--sp));border-radius:var(--r);border:2px solid var(--ac);font:inherit;font-weight:700;background:var(--ac);color:#fff}
+.s-cta.alt{background:transparent;color:var(--ac)}
+.s-cta.x{display:none}.chaos .s-cta.x{display:inline-block}
+.chaos .s-cta.alt{background:var(--ac);color:#fff}
+.s-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(12px*var(--sp))}
+.s-cards>div{background:color-mix(in srgb,var(--ac) 10%,var(--bgc));border-radius:var(--r);padding:calc(14px*var(--sp));font-size:.9em;transition:.3s}
+.s-cards b{display:block}.s-cards p{margin:4px 0 0;color:var(--mut);font-size:.9em}
+.chaos .s-cards>div{border:3px dashed var(--ac);transform:rotate(-1.5deg)}.chaos .s-cards>div:nth-child(2){transform:rotate(2deg)}
+.frame.m .s-cards{grid-template-columns:1fr}.frame.m .s-links{display:none}
+.s-pop{position:absolute;z-index:5;top:42%;left:50%;transform:translate(-50%,-50%) rotate(-2deg);width:min(80%,280px);background:#ffe66d;color:#4a2a00;padding:22px 16px;border-radius:6px;box-shadow:0 20px 50px #0006;text-align:center;font-weight:700;font-size:.9rem}
+.s-pop[hidden]{display:none}
+.s-pop button{position:absolute;top:3px;right:3px;width:14px;height:14px;font-size:.6rem;line-height:1;border:0;background:#4a2a0033;color:#4a2a00;border-radius:3px;padding:0;transition:transform .15s}
+#heat{position:absolute;inset:0;pointer-events:none;z-index:6}
+.hb{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,40,40,.95) 0,rgba(255,150,0,.65) 35%,rgba(255,230,0,.25) 60%,transparent 72%);filter:blur(5px);animation:hbIn .5s both}
+@keyframes hbIn{from{opacity:0;transform:scale(.4)}}
+.legend{display:flex;align-items:center;gap:8px;font-size:.72rem;color:var(--muted);margin-top:10px;justify-content:center}
+.legend i{width:140px;height:8px;border-radius:99px;background:linear-gradient(90deg,#8fd0ff,#ffe600,#ff9600,#ff2828)}
+.legend[hidden]{display:none}
+.meter{display:grid;grid-template-columns:auto 1fr;gap:22px;padding:22px;margin-top:16px;align-items:center}
+.meter .ring{width:100px;height:100px}.meter .ring b{width:78px;height:78px;font-size:1.7rem}
+.bars{display:grid;gap:10px}
+.bar-row{display:grid;grid-template-columns:110px 1fr 34px;gap:10px;align-items:center;font-size:.8rem;font-weight:600}
+.track{height:9px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--purple));border-radius:99px;transition:width .5s}
+.advice{grid-column:1/-1;font-size:.85rem;color:var(--muted);margin:0}
+@media(max-width:900px){.studio{grid-template-columns:1fr}}
+@media(max-width:700px){.ba-foot,.meter{grid-template-columns:1fr}.bar-row{grid-template-columns:90px 1fr 30px}}
 </style>
 </head>
 
 <body>
+<div id="bar"></div><div id="fx" aria-hidden="true"></div><div id="toast" role="status"></div>
 <header>
  <div class="wrap nav">
   <a class="brand" href="#home">VELOURERIA <span>✿</span></a>
@@ -261,6 +511,8 @@ footer{padding:30px 0;color:var(--muted);font-size:.8rem}
    <a href="#author">Author</a>
   </nav>
   <div class="nav-actions">
+   <button class="icon-btn" id="palBtn" aria-label="Ganti warna tema" title="Ganti warna tema">🎨</button>
+   <button class="icon-btn" id="fxBtn" aria-pressed="true" aria-label="Efek kursor" title="Efek kursor">✧</button>
    <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
    <button class="icon-btn menu-btn" id="menuBtn">☰</button>
    <a class="icon-btn" href="index.html">← Welcome</a>
@@ -278,6 +530,7 @@ footer{padding:30px 0;color:var(--muted);font-size:.8rem}
   <div class="actions">
    <a class="btn primary" href="#mistakes">Explore 10 Mistakes ↓</a>
    <a class="btn" href="#playground">Try the Playground ✧</a>
+   <a class="btn" href="#detective">Spot the bug 🔍</a>
   </div>
  </div>
  <div class="hero-art reveal">
@@ -313,6 +566,7 @@ footer{padding:30px 0;color:var(--muted);font-size:.8rem}
   <h2>10 mistakes. 10 lessons.</h2>
   <p>Klik setiap kartu untuk membaliknya dan menemukan penjelasan, contoh, serta solusi UX.</p>
  </div>
+ <div class="tools"><span class="chip-count" id="learnCount">0 / 10 kartu dibuka</span><button class="btn" id="shuffleCards">🎲 Acak urutan</button><button class="btn" id="flipAll">↻ Balik semua</button></div>
  <div class="mistake-grid" id="mistakeGrid"></div>
 </section>
 
@@ -332,11 +586,36 @@ footer{padding:30px 0;color:var(--muted);font-size:.8rem}
  </div>
 </section>
 
+<section id="detective">
+ <div class="section-head reveal">
+  <div class="eyebrow">Bonus game ✧</div>
+  <h2>Spot the bug.</h2>
+  <p>Ada 6 masalah UX tersembunyi di halaman toko ini. Klik bagian yang menurutmu bermasalah.</p>
+ </div>
+ <div class="bug-wrap">
+  <div class="card bug-site" id="bugSite">
+   <div class="bs-bar"><b>MEGA STORE!!!</b><span><span class="bs-ico" data-bug="icon">🗑</span> ☰</span></div>
+   <div class="bs-hero"><small>DISKON GILA-GILAAN</small><h3>BELI SEKARANG!!!</h3>
+    <div class="bs-ctas" data-bug="cta"><span>BELI</span><span>DAFTAR</span><span>LANGGANAN</span></div></div>
+   <p class="bs-tiny" data-bug="contrast">Syarat dan ketentuan berlaku. Harga dapat berubah tanpa pemberitahuan.</p>
+   <a class="bs-link" href="#detective" data-bug="link">Baca artikel lengkap →</a>
+   <div class="bs-field" data-bug="input">Nomor HP (tanpa spasi, tanpa tanda hubung, wajib 12 digit!)</div>
+   <div class="bs-pop" data-bug="popup"><i>×</i>🎉 SUBSCRIBE SEKARANG!!!</div>
+  </div>
+  <div class="card bug-side">
+   <b>Bug ditemukan</b>
+   <div id="bugCount">0 / 6</div>
+   <ul id="bugList"></ul>
+   <button class="btn" id="bugHint">💡 Kasih petunjuk</button><button class="btn" id="bugReset">↻ Ulangi</button>
+  </div>
+ </div>
+</section>
+
 <section id="beforeafter">
  <div class="section-head reveal">
   <div class="eyebrow">04 · Design Transformation</div>
   <h2>Before & After.</h2>
-  <p>Lihat bagaimana pendekatan desain yang berbeda dapat mengubah pengalaman pengguna. Setiap studi kasus memiliki karakter visualnya sendiri.</p>
+  <p>Lihat bagaimana pendekatan desain yang berbeda dapat mengubah pengalaman pengguna. Geser garis ungunya untuk membandingkan, atau tekan tombol transformasi.</p>
  </div>
  <div class="ba-tabs" id="baTabs">
   <button class="tab active" data-tab="store">Online Store</button>
@@ -346,6 +625,7 @@ footer{padding:30px 0;color:var(--muted);font-size:.8rem}
   <button class="tab" data-tab="travel">Travel</button>
  </div>
 
+ <div class="ba-actions"><button class="btn primary" id="baSweep">✨ Putar transformasi</button><button class="btn" id="baReset">↔ Reset 50:50</button></div>
  <div class="ba-panel active" id="store">
   <div class="ba-labels"><span>✕ BEFORE</span><span>✦ AFTER</span></div>
   <div class="ba-grid">
@@ -414,28 +694,55 @@ footer{padding:30px 0;color:var(--muted);font-size:.8rem}
 
 <section id="playground">
  <div class="section-head reveal">
-  <div class="eyebrow">05 · Interactive Playground</div>
+  <div class="eyebrow">05 · Interactive playground</div>
   <h2>Become the web designer.</h2>
-  <p>Ubah elemen website dan lihat bagaimana pilihan desain memengaruhi pengalaman pengguna.</p>
+  <p>Racik website-mu sendiri. Pilih mood, ubah warna dan ukuran, lalu nyalakan peta panas untuk melihat ke mana mata pengguna pergi.</p>
  </div>
- <div class="playground">
-  <div class="card controls">
-   <h3>Design controls ✧</h3>
-   <label for="designMode">Design quality</label>
-   <select id="designMode"><option value="bad">Poor UX — Before</option><option value="good">Better UX — After</option></select>
-   <label for="fontSize">Text size</label>
-   <input type="range" id="fontSize" min="12" max="24" value="16">
-   <label for="contrast">Text contrast</label>
-   <select id="contrast"><option value="low">Low contrast</option><option value="high">High contrast</option></select>
-   <label for="popups">Pop-up interruption</label>
-   <select id="popups"><option value="yes">Show pop-up</option><option value="no">No pop-up</option></select>
-   <button class="btn primary" id="applyDesign" style="margin-top:20px;width:100%">Apply changes ↗</button>
-   <p id="playFeedback" style="font-size:.8rem;color:var(--muted)">Coba ubah pengaturan, lalu terapkan.</p>
+ <div class="studio">
+  <div class="card studio-ctl">
+   <h3>Design studio ✧</h3>
+   <div class="ctl"><span>Mood cepat</span><div class="seg" id="presets"><button data-p="messy">🧨 Berantakan</button><button data-p="minimal">🌿 Minimalis</button><button data-p="playful">🎀 Playful</button><button data-p="elegant">🕯 Elegan</button></div></div>
+   <div class="ctl"><span>Layout</span><div class="seg" data-k="layout"><button data-v="chaos">Berantakan</button><button data-v="clean">Rapi</button></div></div>
+   <div class="ctl"><span>Ukuran teks <b id="vfs"></b></span><input type="range" id="rfs" min="12" max="24" aria-label="Ukuran teks"></div>
+   <div class="ctl"><span>Kontras teks</span><div class="seg" data-k="contrast"><button data-v="low">Rendah</button><button data-v="high">Tinggi</button></div></div>
+   <div class="ctl"><span>Spasi</span><input type="range" id="rsp" min="60" max="160" aria-label="Spasi"></div>
+   <div class="ctl"><span>Sudut</span><input type="range" id="rr" min="0" max="28" aria-label="Sudut membulat"></div>
+   <div class="ctl"><span>Warna aksen</span><div class="sw" id="accents"></div></div>
+   <div class="ctl"><span>Font</span><div class="seg" data-k="ff"><button data-v="serif">Serif</button><button data-v="sans">Sans</button><button data-v="mono">Mono</button></div></div>
+   <div class="ctl two"><label class="tg"><input type="checkbox" id="tPop"> Pop-up</label><label class="tg"><input type="checkbox" id="tDark"> Mode gelap</label></div>
   </div>
-  <div class="card demo-site bad-demo" id="demoSite">
-   <div class="demo-nav"><b>MY LITTLE WEBSITE</b><span>☰</span></div>
-   <div class="demo-hero"><small>WELCOME</small><h3>Discover something wonderful.</h3><p>A simple example of a website interface.</p><div class="demo-links"><span>Home</span><span>About</span><span>Explore</span></div></div>
-   <div class="demo-links"><span>Featured article</span><span>Latest update</span><span>Contact</span></div>
+  <div class="studio-main">
+   <div class="s-tools">
+    <div class="seg" data-k="device"><button data-v="d">💻 Desktop</button><button data-v="m">📱 Mobile</button></div>
+    <button class="btn" id="tHeat" aria-pressed="false">🔥 Peta panas</button>
+    <button class="btn" id="tChaos">🎲 Acak</button>
+    <button class="btn" id="tCopy">📋 Salin CSS</button>
+   </div>
+   <div class="frame" id="frame">
+    <div class="fbar"><i></i><i></i><i></i><span class="url" id="sUrl"></span></div>
+    <div class="site" id="site">
+     <div class="s-clutter">🔥 DISKON!!! • GRATIS ONGKIR!!! • BUKA SEKARANG!!! 🔥</div>
+     <div class="s-top"><span class="s-logo">Lumi Studio ✿</span><span class="s-links"><i>Home</i><i>Karya</i><i>Kontak</i></span></div>
+     <div class="s-hero"><small class="s-kicker">Studio desain kecil</small>
+      <h3>Kami merancang web yang ramah manusia.</h3>
+      <p>Ceritakan idemu. Kami bantu membuatnya jelas, cepat, dan nyaman dipakai.</p>
+      <div class="s-ctas"><button type="button" class="s-cta main">Mulai proyek</button><button type="button" class="s-cta alt">Lihat karya</button><button type="button" class="s-cta alt x">Hubungi</button><button type="button" class="s-cta alt x">Promo!</button></div></div>
+     <div class="s-cards"><div><b>🎨 Desain</b><p>Visual yang rapi dan konsisten.</p></div><div><b>⚡ Cepat</b><p>Ringan dibuka di perangkat apa pun.</p></div><div><b>♿ Inklusif</b><p>Nyaman untuk semua pengguna.</p></div></div>
+     <div class="s-pop" id="sPop"><button type="button" id="sClose" aria-label="Tutup pop-up">×</button>🎉 SUBSCRIBE SEKARANG!!!</div>
+     <div id="heat" aria-hidden="true"></div>
+    </div>
+   </div>
+   <div class="legend" id="legend" hidden>dingin <i></i> panas · perhatian mata pengguna</div>
+   <div class="card meter">
+    <div class="ring"><b id="stTotal">0</b></div>
+    <div class="bars">
+     <div class="bar-row"><span>Keterbacaan</span><div class="track"><i id="m0"></i></div><span id="n0"></span></div>
+     <div class="bar-row"><span>Kejelasan</span><div class="track"><i id="m1"></i></div><span id="n1"></span></div>
+     <div class="bar-row"><span>Ketenangan</span><div class="track"><i id="m2"></i></div><span id="n2"></span></div>
+     <div class="bar-row"><span>Aksesibilitas</span><div class="track"><i id="m3"></i></div><span id="n3"></span></div>
+    </div>
+    <p class="advice" id="advice"></p>
+   </div>
   </div>
  </div>
 </section>
@@ -446,14 +753,47 @@ footer{padding:30px 0;color:var(--muted);font-size:.8rem}
   <h2>Five websites worth exploring.</h2>
   <p>Contoh website dengan pendekatan desain dan pengalaman pengguna yang menarik untuk dipelajari.</p>
  </div>
- <div class="website-grid">
+ <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="Inspirasi website"><div class="stage" id="stage">
   <article class="card website reveal"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=700&q=80" alt="Workspace"><div class="website-copy"><h3>Apple</h3><p>Visual produk yang kuat, hierarki konten, dan konsistensi desain.</p><a href="https://www.apple.com/" target="_blank" rel="noopener">Explore website ↗</a></div></article>
   <article class="card website reveal"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80" alt="Landscape"><div class="website-copy"><h3>Airbnb</h3><p>Pencarian akomodasi dengan filter dan alur eksplorasi.</p><a href="https://www.airbnb.com/" target="_blank" rel="noopener">Explore website ↗</a></div></article>
   <article class="card website reveal"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80" alt="Data screen"><div class="website-copy"><h3>Stripe</h3><p>Dokumentasi dan informasi produk dengan struktur yang rapi.</p><a href="https://stripe.com/" target="_blank" rel="noopener">Explore website ↗</a></div></article>
   <article class="card website reveal"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=80" alt="Workspace interior"><div class="website-copy"><h3>Notion</h3><p>Penjelasan fitur dan navigasi produk yang terorganisasi.</p><a href="https://www.notion.com/" target="_blank" rel="noopener">Explore website ↗</a></div></article>
   <article class="card website reveal"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80" alt="Digital interface"><div class="website-copy"><h3>Gov.uk</h3><p>Bahasa sederhana, aksesibilitas, dan navigasi layanan publik.</p><a href="https://www.gov.uk/" target="_blank" rel="noopener">Explore website ↗</a></div></article>
- </div>
+ </div></div>
+ <div class="c-controls"><button class="icon-btn" id="cPrev" aria-label="Sebelumnya">‹</button><div id="cDots"></div><button class="icon-btn" id="cNext" aria-label="Berikutnya">›</button><button class="icon-btn" id="cPlay" aria-pressed="true" aria-label="Putar otomatis" title="Putar otomatis">⏸</button></div>
+ <p class="c-hint">Geser, klik panah, atau tekan ← → untuk memutar komedi putarnya ✿</p>
  <p style="text-align:center;color:var(--muted);font-size:.76rem;margin-top:20px">Catatan: contoh di atas merupakan referensi untuk dianalisis, bukan klaim bahwa situs tersebut sempurna atau bebas dari masalah usability.</p>
+</section>
+
+<section id="lab">
+ <div class="section-head reveal">
+  <div class="eyebrow">Bonus lab ✿</div>
+  <h2>Contrast lab.</h2>
+  <p>Pilih warna teks dan latar, lalu lihat apakah masih nyaman dibaca. Warna cantik belum tentu terbaca.</p>
+ </div>
+ <div class="lab">
+  <div class="card controls">
+   <div class="row"><input type="color" id="lfg" value="#342842" aria-label="Warna teks"><label for="lfg">Warna teks</label></div>
+   <div class="row"><input type="color" id="lbg" value="#fffaff" aria-label="Warna latar"><label for="lbg">Warna latar</label></div>
+   <div class="ratio" id="ratio">12.0:1</div>
+   <div id="ratioNote" style="color:var(--muted);font-size:.85rem"></div>
+   <div class="badges"><span id="b1"></span><span id="b2"></span><span id="b3"></span></div>
+   <div class="swatches">
+    <button data-f="#342842" data-b="#fffaff">Situs ini</button>
+    <button data-f="#bca5d0" data-b="#f5eff8">Ungu tipis</button>
+    <button data-f="#c9c4cc" data-b="#ffffff">Abu terang</button>
+    <button data-f="#f2d34a" data-b="#ffffff">Kuning di putih</button>
+    <button data-f="#f2eaf7" data-b="#211d29">Mode malam</button>
+   </div>
+   <button class="btn primary" id="labFix" style="width:100%;margin-top:14px">✨ Perbaiki otomatis</button>
+  </div>
+  <div class="card lab-prev" id="labPrev">
+   <small>Teks kecil 14px. Bacaan seperti ini yang pertama hilang.</small>
+   <h3>Aa, teks besar</h3>
+   <p>Pengguna membaca ini di bawah matahari, di layar murahan, atau dengan mata yang sudah lelah.</p>
+   <div class="lp-btn" id="lpBtn">Tombol contoh</div>
+  </div>
+ </div>
 </section>
 
 <section id="challenge">
@@ -478,6 +818,7 @@ footer{padding:30px 0;color:var(--muted);font-size:.8rem}
   </div>
   <div class="progress"><div id="progressBar"></div></div>
   <p id="checkCount">0 dari 10 prinsip terpenuhi.</p>
+  <p id="rank">Peringkat: Pemula UX 🌱</p>
  </div>
 </section>
 
@@ -488,12 +829,25 @@ footer{padding:30px 0;color:var(--muted);font-size:.8rem}
   <p>Uji pemahamanmu. Setiap kali mengulang, urutan pertanyaan dan pilihan akan diacak.</p>
  </div>
  <div class="card quiz reveal">
-  <div class="quiz-meta"><span id="questionCount">Question 1</span><span id="score">Score: 0</span></div>
+  <div class="quiz-meta"><span id="questionCount">Question 1</span><span><span id="streak"></span><span id="score">Score: 0</span></span></div>
   <h3 id="question">Loading question...</h3>
   <div class="quiz-options" id="options"></div>
   <div id="feedback"></div>
   <button class="btn primary" id="nextQuestion" disabled>Next question →</button>
   <button class="btn" id="restartQuiz" style="display:none">Try another round ↻</button>
+ </div>
+</section>
+
+<section id="cookie">
+ <div class="section-head reveal">
+  <div class="eyebrow">Bonus ✿</div>
+  <h2>Fortune cookie UX.</h2>
+  <p>Satu kalimat kecil untuk dibawa pulang. Ketuk kuenya.</p>
+ </div>
+ <div class="card cookie-card reveal">
+  <button class="cookie" id="cookieBtn" aria-label="Pecahkan fortune cookie">🥠</button>
+  <p id="fortune" aria-live="polite">Pecahkan kuenya untuk membaca pesanmu.</p>
+  <button class="btn" id="againCookie">Ambil lagi ✧</button>
  </div>
 </section>
 
@@ -521,9 +875,21 @@ footer{padding:30px 0;color:var(--muted);font-size:.8rem}
 </main>
 
 <footer><div class="wrap foot"><a class="brand" href="#home">VELOURERIA <span>✿</span></a><span>Made with curiosity & moonlight · 2026</span></div></footer>
+<div id="mochi">
+ <button class="mochi-body" id="mochiBtn" aria-label="Mochi si maskot. Klik untuk tips UX">
+  <svg viewBox="0 -8 90 88" width="72" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3eaf9"/><stop offset="1" stop-color="#c2a9d8"/></linearGradient></defs>
+  <path d="M10 50C10 22 28 8 45 8s35 14 35 42c0 16-16 24-35 24S10 66 10 50Z" fill="url(#mg)" stroke="#8063a0" stroke-width="1.5"/>
+  <text x="45" y="8" text-anchor="middle" font-size="15" fill="#8063a0">✿</text>
+  <g class="eyes" fill="#342842"><ellipse cx="33" cy="44" rx="3.4" ry="4.4"/><ellipse cx="57" cy="44" rx="3.4" ry="4.4"/></g>
+  <ellipse cx="24" cy="53" rx="5" ry="3" fill="#f2a7c3" opacity=".65"/><ellipse cx="66" cy="53" rx="5" ry="3" fill="#f2a7c3" opacity=".65"/>
+  <path id="mouth" d="M40 54q5 5 10 0" fill="none" stroke="#342842" stroke-width="2" stroke-linecap="round"/></svg>
+ </button>
+ <div class="bubble" id="bubble" role="status"></div>
+</div>
 <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <script>
+
 const mistakes=[
 {n:10,t:"Mobile Design on Big Screens",cat:"Responsive design",desc:"Desain yang dibuat untuk ponsel hanya diperbesar begitu saja di desktop. Akibatnya, ruang layar besar tidak dimanfaatkan secara optimal.",example:"Menu hamburger kecil yang menyembunyikan navigasi utama pada desktop.",fix:"Gunakan navigasi yang sesuai dengan ukuran layar. Desktop dapat menampilkan menu utama secara langsung.",lesson:"Responsive design bukan sekadar memperbesar tampilan mobile."},
 {n:9,t:"Only a Huge Hero Image Above the Fold",cat:"Content hierarchy",desc:"Pengguna hanya melihat gambar raksasa ketika membuka halaman. Tidak ada petunjuk jelas tentang isi situs atau konten berikutnya.",example:"Landing page berisi satu gambar penuh layar tanpa judul informatif atau petunjuk scroll.",fix:"Tampilkan pesan utama, navigasi, dan petunjuk bahwa masih ada konten di bawahnya.",lesson:"Beri pengguna alasan dan arah untuk melanjutkan."},
@@ -550,88 +916,7 @@ const mistakeImages={
  2:{src:"data:image/jpeg;base64,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",alt:"Ilustrasi pendukung kesalahan UI/UX nomor 2"},
  1:{src:"data:image/jpeg;base64,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",alt:"Ilustrasi pendukung kesalahan UI/UX nomor 1"}
 };
-mistakes.forEach(m=>{
- const el=document.createElement("article");
- el.className="flip-card reveal";
- el.tabIndex=0;
- el.setAttribute("role","button");
- el.setAttribute("aria-label",`Balik kartu ${m.t}`);
- el.setAttribute("aria-pressed","false");
- const visual=mistakeImages[m.n];
- el.innerHTML=`<div class="flip-inner">
- <div class="flip-front">
-  <div class="flip-visual"><img src="${visual.src}" alt="${visual.alt}" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('image-fallback')"></div>
-  <div class="flip-front-content"><div class="rank">#${m.n}</div><div class="category">${m.cat}</div><h3>${m.t}</h3><p>${m.desc.slice(0,105)}...</p></div>
-  <div class="flip-hint">CLICK TO FLIP ↻</div>
- </div>
- <div class="flip-back">
-  <div class="category">THE LESSON · #${m.n}</div><h3>${m.t}</h3>
-  <p>${m.desc}</p><p><strong>Contoh:</strong> ${m.example}</p>
-  <p><strong>Solusi:</strong> ${m.fix}</p><p><strong>Ingat:</strong> ${m.lesson}</p>
-  <div class="flip-hint">CLICK TO RETURN ↻</div>
- </div></div>`;
- const toggle=()=>{
-   const flipped=el.classList.toggle("flipped");
-   el.setAttribute("aria-pressed",String(flipped));
-   el.setAttribute("aria-label",`${flipped?"Kembalikan":"Balik"} kartu ${m.t}`);
- };
- el.addEventListener("click",toggle);
- el.addEventListener("keydown",event=>{
-   if(event.key==="Enter"||event.key===" "){event.preventDefault();toggle();}
- });
- grid.appendChild(el);
-});
 
-/* Navigation */
-document.getElementById("menuBtn").onclick=()=>document.getElementById("nav").classList.toggle("open");
-document.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>document.getElementById("nav").classList.remove("open")));
-
-/* Dark mode */
-const themeBtn=document.getElementById("themeBtn");
-themeBtn.onclick=()=>{
- document.body.classList.toggle("dark");
- themeBtn.textContent=document.body.classList.contains("dark")?"☀":"☾";
- localStorage.setItem("veloureria-theme",document.body.classList.contains("dark")?"dark":"light");
-};
-if(localStorage.getItem("veloureria-theme")==="dark"){
- document.body.classList.add("dark");themeBtn.textContent="☀";
-}
-
-/* Before and after tabs */
-document.querySelectorAll(".tab").forEach(btn=>{
- btn.addEventListener("click",()=>{
-  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-  document.querySelectorAll(".ba-panel").forEach(x=>x.classList.remove("active"));
-  btn.classList.add("active");
-  document.getElementById(btn.dataset.tab).classList.add("active");
- });
-});
-
-/* Playground */
-document.getElementById("applyDesign").onclick=()=>{
- const site=document.getElementById("demoSite");
- const good=document.getElementById("designMode").value==="good";
- site.classList.toggle("good-demo",good);
- site.classList.toggle("bad-demo",!good);
- site.style.fontSize=document.getElementById("fontSize").value+"px";
- site.style.filter=document.getElementById("contrast").value==="low"?"opacity(.65)":"none";
- const popup=document.getElementById("popups").value==="yes";
- document.getElementById("playFeedback").textContent=
- (good?"Better UX applied.":"Poor UX applied.")+
- (popup?" A disruptive pop-up would appear here!":" No pop-up interruption.")+
- (good?" The content is clearer.":" Notice how the experience feels less comfortable.");
- if(popup) alert("SPECIAL OFFER!!! Subscribe now!!!");
-};
-
-/* UX checklist */
-const checks=[...document.querySelectorAll("#checklist input")];
-checks.forEach(c=>c.addEventListener("change",()=>{
- const count=checks.filter(x=>x.checked).length;
- document.getElementById("progressBar").style.width=(count/10*100)+"%";
- document.getElementById("checkCount").textContent=count+" dari 10 prinsip terpenuhi.";
-}));
-
-/* Quiz with shuffled questions and answers */
 const questions=[
 {q:"Apa masalah utama penggunaan ikon tanpa label?",a:["Membuat file lebih besar","Pengguna harus menebak fungsi ikon","Membuat website lambat","Mengurangi jumlah gambar"],c:1,e:"Label membantu pengguna memahami fungsi kontrol tanpa menebak."},
 {q:"Apa yang dimaksud layout shift?",a:["Warna halaman berubah","Elemen bergeser saat halaman dimuat","Menu berubah posisi ketika diklik","Ukuran browser mengecil"],c:1,e:"Layout shift terjadi ketika elemen berubah posisi selama proses loading."},
@@ -644,71 +929,295 @@ const questions=[
 {q:"Apa yang membantu mengurangi waktu respons?",a:["Menambah banyak skrip","Mengoptimalkan aset dan mengurangi komponen tidak perlu","Memperbanyak pop-up","Menggunakan gambar berukuran besar"],c:1,e:"Optimasi aset dan skrip membantu mempercepat respons."},
 {q:"Apa benang merah dari kesalahan desain web?",a:["Pengguna harus mengikuti keinginan sistem","Estetika selalu lebih penting","Kebutuhan pengguna harus menjadi prioritas","Semakin banyak pop-up semakin baik"],c:2,e:"Desain yang baik menghormati kebutuhan, waktu, dan kendali pengguna."}
 ];
-let quizSet=[],qi=0,score=0,answered=false;
-function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
-function startQuiz(){
- quizSet=shuffle(questions).map(q=>{
-  const options=q.a.map((text,i)=>({text,correct:i===q.c}));
-  const mixed=shuffle(options);
-  return {...q,a:mixed,c:mixed.findIndex(x=>x.correct)};
- });
- qi=0;score=0;showQuestion();
- document.getElementById("restartQuiz").style.display="none";
-}
-function showQuestion(){
- answered=false;
- const q=quizSet[qi];
- document.getElementById("questionCount").textContent=`Question ${qi+1} / ${quizSet.length}`;
- document.getElementById("score").textContent="Score: "+score;
- document.getElementById("question").textContent=q.q;
- document.getElementById("feedback").textContent="";
- document.getElementById("nextQuestion").disabled=true;
- document.getElementById("nextQuestion").textContent=qi===quizSet.length-1?"See results →":"Next question →";
- const options=document.getElementById("options");options.innerHTML="";
- q.a.forEach((o,i)=>{
-  const b=document.createElement("button");b.textContent=o.text;
-  b.onclick=()=>{
-   if(answered)return;answered=true;
-   const correct=i===q.c;
-   if(correct)score++;
-   [...options.children].forEach((x,j)=>{
-    x.disabled=true;
-    if(j===q.c)x.classList.add("correct");
-    else if(j===i)x.classList.add("wrong");
-   });
-   document.getElementById("feedback").textContent=(correct?"Correct! ✨ ":"Not quite. ")+q.e;
-   document.getElementById("score").textContent="Score: "+score;
-   document.getElementById("nextQuestion").disabled=false;
-  };
-  options.appendChild(b);
- });
-}
-document.getElementById("nextQuestion").onclick=()=>{
- if(qi<quizSet.length-1){qi++;showQuestion();}
- else{
-  document.getElementById("question").textContent="Your result: "+score+" / "+quizSet.length+" ✨";
-  document.getElementById("options").innerHTML="";
-  document.getElementById("feedback").textContent=score>=8?"Excellent! You understand the UX principles.":score>=5?"Good effort! Keep exploring the lessons.":"Keep learning. Try another round!";
-  document.getElementById("nextQuestion").style.display="none";
-  document.getElementById("restartQuiz").style.display="inline-flex";
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const rnd=(a,b)=>a+Math.random()*(b-a);
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* toast + mochi */
+let tt,bt,mt;
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600)}
+function say(m,ms=6000){const b=$('#bubble');b.textContent=m;b.classList.add('show');clearTimeout(bt);bt=setTimeout(()=>b.classList.remove('show'),ms)}
+const mouths={idle:'M40 54q5 5 10 0',happy:'M38 53q7 9 14 0',wow:'M41 55a4 4 0 1 0 8 0a4 4 0 1 0-8 0',sad:'M39 58q6-6 12 0'};
+function mood(k){$('#mouth').setAttribute('d',mouths[k]);clearTimeout(mt);if(k!=='idle')mt=setTimeout(()=>$('#mouth').setAttribute('d',mouths.idle),2500)}
+
+/* petals */
+const G=['✿','✧','❀','✦','❁'];
+function fly(x,y,n,rain){
+ if(rm)return;const fx=$('#fx');
+ for(let i=0;i<n;i++){
+  const s=document.createElement('span');s.textContent=G[i%G.length];s.style.fontSize=rnd(12,26)+'px';fx.appendChild(s);
+  const sx=rain?rnd(0,innerWidth):x,sy=rain?-30:y,dx=rnd(-160,160),r=rnd(-300,300);
+  const kf=rain?[{transform:`translate(${sx}px,${sy}px) rotate(0)`,opacity:1},{transform:`translate(${sx+dx}px,${innerHeight+40}px) rotate(${r}deg)`,opacity:.8}]
+   :[{transform:`translate(${sx}px,${sy}px) rotate(0)`,opacity:1},{transform:`translate(${sx+dx*.6}px,${sy-rnd(80,200)}px) rotate(${r/2}deg)`,opacity:1,offset:.4},{transform:`translate(${sx+dx}px,${sy+rnd(80,220)}px) rotate(${r}deg)`,opacity:0}];
+  s.animate(kf,{duration:rain?rnd(3000,5200):rnd(1200,2000),delay:rain?rnd(0,1500):0,easing:'cubic-bezier(.3,.6,.4,1)',fill:'backwards'}).onfinish=()=>s.remove();
  }
-};
-document.getElementById("restartQuiz").onclick=()=>{
- document.getElementById("nextQuestion").style.display="inline-flex";
- startQuiz();
-};
+}
+function pop(el,n=36){const r=el.getBoundingClientRect();fly(r.left+r.width/2,r.top+r.height/2,n)}
+let fxOn=store.get('veloureria-fx')!=='off',last=0;
+const fxb=$('#fxBtn');fxb.setAttribute('aria-pressed',fxOn);
+fxb.onclick=()=>{fxOn=!fxOn;fxb.setAttribute('aria-pressed',fxOn);store.set('veloureria-fx',fxOn?'on':'off');toast(fxOn?'Kilau kursor menyala ✧':'Kilau kursor dimatikan')};
+addEventListener('pointermove',e=>{
+ if(!fxOn||rm||e.pointerType!=='mouse')return;const n=performance.now();if(n-last<70)return;last=n;
+ const s=document.createElement('span');s.textContent=G[Math.random()*G.length|0];s.style.fontSize=rnd(10,18)+'px';$('#fx').appendChild(s);
+ s.animate([{transform:`translate(${e.clientX}px,${e.clientY}px) scale(1)`,opacity:.9},{transform:`translate(${e.clientX+rnd(-20,20)}px,${e.clientY+rnd(16,40)}px) scale(.3) rotate(${rnd(-90,90)}deg)`,opacity:0}],{duration:800,easing:'ease-out'}).onfinish=()=>s.remove();
+});
+let bc=0,bto;
+$$('.brand').forEach(b=>b.addEventListener('click',()=>{bc++;clearTimeout(bto);bto=setTimeout(()=>bc=0,1200);if(bc>=3){bc=0;fly(0,0,48,true);toast('Hujan kelopak! ✿ Rahasia kecil');mood('wow')}}));
+
+/* nav, theme */
+$('#menuBtn').onclick=()=>$('#nav').classList.toggle('open');
+$$('nav a').forEach(a=>a.addEventListener('click',()=>$('#nav').classList.remove('open')));
+const themeBtn=$('#themeBtn');
+function setTheme(d){document.body.classList.toggle('dark',d);themeBtn.textContent=d?'☀':'☾';$('meta[name=theme-color]').content=d?'#211d29':'#f5eff9'}
+const st=store.get('veloureria-theme');
+setTheme(st?st==='dark':matchMedia('(prefers-color-scheme:dark)').matches);
+themeBtn.onclick=()=>{const d=!document.body.classList.contains('dark');setTheme(d);store.set('veloureria-theme',d?'dark':'light');say(d?'Mode malam aktif 🌙 Mata kamu aman.':'Pagi lagi ☀️',3500);mood('happy')};
+
+/* progress + back to top + scrollspy + mochi tips */
+const bar=$('#bar'),toTop=$('.top');let tick=false;
+addEventListener('scroll',()=>{if(tick)return;tick=true;requestAnimationFrame(()=>{const h=document.documentElement;bar.style.width=(scrollY/Math.max(1,h.scrollHeight-innerHeight)*100)+'%';toTop.classList.toggle('show',scrollY>700);tick=false})},{passive:true});
+const tips={home:'Hai, aku Mochi ✿ Klik aku kapan saja buat dapat tips UX!',overview:'Evil, Stupid, atau Lazy... mana yang paling sering kamu temui?',mistakes:'Klik kartunya buat dibalik. Ada pelajaran di baliknya!',crime:'Arahkan kursor ke kartu kasus. Ada stempelnya 🔍',beforeafter:'Bandingkan kiri dan kanan. Mana yang bikin kamu betah?',playground:'Nyalain pop-up, lalu coba tangkap tombol close-nya 😆',websites:'Jangan cuma lihat tampilannya, perhatikan alurnya juga.',challenge:'Jujur ya, website kamu sendiri lolos berapa dari 10?',quiz:'Semangat! Jawaban benar berturut-turut bikin streak 🔥',cookie:'Ketuk kuenya, ada pesan kecil di dalam 🥠',author:'Terima kasih sudah mampir. Sampai ketemu! 🌸'};
+const extra=['Tombol yang jelas lebih baik daripada tombol yang pintar.','Kalau pengguna harus menebak, desainnya belum selesai.','Kontras itu kebutuhan, bukan opsi.','Tes desainmu ke satu orang asing. Hasilnya sering mengejutkan.','Loading lama? Kasih tahu progresnya.','Satu halaman, satu tujuan utama.','Teks 16px bukan dosa, itu kebaikan.'];
+const seen=new Set();
+const ioSpy=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const id=e.target.id;
+ $$('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));
+ if(!seen.has(id)&&tips[id]){seen.add(id);say(tips[id])}
+}),{rootMargin:'-45% 0px -50% 0px'});
+$$('main section').forEach(s=>ioSpy.observe(s));
+$('#mochiBtn').onclick=()=>{say(extra[Math.random()*extra.length|0]);mood('happy');pop($('#mochiBtn'),8)};
+
+/* reveal (one-time) */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
+$$('.reveal').forEach(el=>io.observe(el));
+
+/* flip cards */
+const learned=new Set();let allDone=false;
+function upd(){$('#learnCount').textContent=learned.size+' / 10 kartu dibuka';
+ if(learned.size===10&&!allDone){allDone=true;pop($('#learnCount'),40);toast('Semua kartu terbuka! Kamu rajin 💜');say('10 dari 10! Sekarang coba quiz-nya 😉');mood('happy')}}
+function makeCard(m){
+ const el=document.createElement('article');el.className='flip-card'+(learned.has(m.n)?' seen':'');el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-pressed','false');el.setAttribute('aria-label','Balik kartu '+m.t);
+ const v=mistakeImages[m.n];
+ el.innerHTML=`<div class="flip-inner"><div class="flip-front"><div class="flip-visual"><img src="${v.src}" alt="${v.alt}" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('image-fallback')"></div><div class="flip-front-content"><div class="rank">#${m.n}</div><div class="category">${m.cat}</div><h3>${m.t}</h3><p>${m.desc.slice(0,105)}...</p></div><div class="flip-hint">Klik untuk membalik ↻</div></div><div class="flip-back"><div class="category">The lesson · #${m.n}</div><h3>${m.t}</h3><p>${m.desc}</p><p><strong>Contoh:</strong> ${m.example}</p><p><strong>Solusi:</strong> ${m.fix}</p><p><strong>Ingat:</strong> ${m.lesson}</p><div class="flip-hint">Klik untuk kembali ↻</div></div></div>`;
+ const flip=()=>{const f=el.classList.toggle('flipped');el.setAttribute('aria-pressed',f);if(f){el.classList.add('seen');learned.add(m.n);upd()}};
+ el.addEventListener('click',flip);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
+ return el}
+function render(list){grid.innerHTML='';list.forEach(m=>grid.appendChild(makeCard(m)))}
+render(mistakes);
+$('#shuffleCards').onclick=()=>{render(shuffle(mistakes));mood('wow')};
+$('#flipAll').onclick=()=>{const all=$$('.flip-card'),to=!all.every(c=>c.classList.contains('flipped'));all.forEach(c=>{if(c.classList.contains('flipped')!==to)c.click()})};
+
+/* before / after tabs */
+$$('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+ $$('.tab').forEach(x=>x.classList.remove('active'));$$('.ba-panel').forEach(x=>x.classList.remove('active'));
+ btn.classList.add('active');$('#'+btn.dataset.tab).classList.add('active');mood('wow')}));
+
+/* checklist */
+const checks=$$('#checklist input'),ranks=[[0,'Pemula UX 🌱'],[3,'Pengamat 🔍'],[6,'Auditor 📋'],[9,'Senior Auditor ✨'],[10,'UX Queen 👑']];
+checks.forEach(c=>c.addEventListener('change',()=>{
+ const n=checks.filter(x=>x.checked).length;
+ $('#progressBar').style.width=n*10+'%';$('#checkCount').textContent=n+' dari 10 prinsip terpenuhi.';
+ $('#rank').textContent='Peringkat: '+ranks.filter(r=>n>=r[0]).pop()[1];
+ if(n===10){pop($('#progressBar'),40);toast('Website impianmu! 10 dari 10 👑');mood('happy')}}));
+
+/* quiz */
+let quizSet=[],qi=0,score=0,answered=false,streak=0;
+function startQuiz(){
+ quizSet=shuffle(questions).map(q=>{const mixed=shuffle(q.a.map((text,i)=>({text,correct:i===q.c})));return {...q,a:mixed,c:mixed.findIndex(x=>x.correct)}});
+ qi=0;score=0;streak=0;showQuestion();$('#restartQuiz').style.display='none'}
+function showQuestion(){
+ answered=false;const q=quizSet[qi];
+ $('#questionCount').textContent=`Question ${qi+1} / ${quizSet.length}`;$('#score').textContent='Score: '+score;$('#streak').textContent=streak>1?'🔥 '+streak:'';
+ $('#question').textContent=q.q;$('#feedback').textContent='';
+ const nx=$('#nextQuestion');nx.disabled=true;nx.textContent=qi===quizSet.length-1?'See results →':'Next question →';
+ const box=$('#options');box.innerHTML='';
+ q.a.forEach((o,i)=>{const b=document.createElement('button');b.textContent=o.text;b.onclick=()=>{
+  if(answered)return;answered=true;const ok=i===q.c;
+  if(ok){score++;streak++;mood('happy');if(streak>=3)toast('🔥 Streak '+streak+'!')}else{streak=0;mood('sad')}
+  [...box.children].forEach((x,j)=>{x.disabled=true;if(j===q.c)x.classList.add('correct');else if(j===i)x.classList.add('wrong')});
+  $('#feedback').textContent=(ok?'Correct! ✨ ':'Not quite. ')+q.e;$('#score').textContent='Score: '+score;$('#streak').textContent=streak>1?'🔥 '+streak:'';nx.disabled=false};box.appendChild(b)})}
+$('#nextQuestion').onclick=()=>{
+ if(qi<quizSet.length-1){qi++;showQuestion();return}
+ $('#question').textContent='Your result: '+score+' / '+quizSet.length+' ✨';$('#options').innerHTML='';
+ $('#feedback').textContent=score>=8?'Excellent! You understand the UX principles.':score>=5?'Good effort! Keep exploring the lessons.':'Keep learning. Try another round!';
+ $('#nextQuestion').style.display='none';$('#restartQuiz').style.display='inline-flex';
+ if(score>=8){pop($('#question'),44);say('Keren banget! Kamu siap jadi UX auditor 🎉');mood('happy')}else mood('wow')};
+$('#restartQuiz').onclick=()=>{$('#nextQuestion').style.display='inline-flex';startQuiz()};
 startQuiz();
 
-/* Scroll reveal - enter and leave viewport */
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  entry.target.classList.toggle("visible",entry.isIntersecting);
+/* fortune cookie */
+const fortunes=['Pengguna tidak membaca. Mereka memindai. Rancang untuk itu.','Tombol yang bagus menjelaskan apa yang terjadi saat diklik.','Hari ini, hapus satu pop-up. Dunia akan sedikit lebih tenang.','Kontras yang cukup adalah bentuk kasih sayang paling sederhana.','Desain yang baik terasa tidak ada apa-apa, karena semuanya sudah pada tempatnya.','Tanyakan pada satu orang asing: “Ini untuk apa?” Jawabannya jujur.','Form yang pendek adalah form yang dicintai.','Kecepatan juga bagian dari kesopanan.'];
+let fi=-1;
+function crack(){const c=$('#cookieBtn');c.classList.remove('crack');void c.offsetWidth;c.classList.add('crack');
+ let i;do{i=Math.random()*fortunes.length|0}while(i===fi);fi=i;mood('wow');
+ setTimeout(()=>{$('#fortune').textContent='“'+fortunes[i]+'”';pop(c,14)},350)}
+$('#cookieBtn').onclick=$('#againCookie').onclick=crack;
+
+/* komedi putar */
+(function(){
+ const car=$('#carousel'),st=$('#stage'),cards=$$('#stage .website'),n=cards.length,step=360/n,dots=$('#cDots');
+ let idx=0,R=340,auto=!rm,hold=false,timer,sx=null,moved=false;
+ cards.forEach((c,k)=>{const d=document.createElement('button');d.setAttribute('aria-label','Kartu '+(k+1));d.onclick=()=>go(k+Math.round((idx-k)/n)*n);dots.appendChild(d)});
+ function go(i){idx=i;st.style.transform=`translateZ(-${R}px) rotateY(${-idx*step}deg)`;
+  cards.forEach((c,k)=>{const d=((k-idx)%n+n)%n,rel=Math.min(d,n-d);
+   c.style.opacity=rel===0?1:rel===1?.85:0;c.style.pointerEvents=rel>1?'none':'auto';c.classList.toggle('front',rel===0);c.setAttribute('aria-hidden',rel>1)});
+  [...dots.children].forEach((b,k)=>b.classList.toggle('on',((k-idx)%n+n)%n===0))}
+ function layout(){R=innerWidth<700?230:340;cards.forEach((c,k)=>c.style.transform=`rotateY(${k*step}deg) translateZ(${R}px)`);go(idx)}
+ function run(){clearInterval(timer);if(auto&&!hold)timer=setInterval(()=>{if(!document.hidden)go(idx+1)},3800)}
+ $('#cPrev').onclick=()=>{go(idx-1);run()};$('#cNext').onclick=()=>{go(idx+1);run()};
+ const pb=$('#cPlay');pb.disabled=rm;pb.onclick=()=>{auto=!auto;pb.setAttribute('aria-pressed',auto);pb.textContent=auto?'⏸':'▶';run();toast(auto?'Komedi putar jalan lagi 🎠':'Komedi putar berhenti')};
+ car.addEventListener('pointerenter',()=>{hold=true;run()});car.addEventListener('pointerleave',()=>{hold=false;sx=null;run()});
+ car.addEventListener('focusin',()=>{hold=true;run()});car.addEventListener('focusout',()=>{hold=false;run()});
+ car.addEventListener('pointerdown',e=>{sx=e.clientX;moved=false});
+ car.addEventListener('pointerup',e=>{if(sx===null)return;const dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50){moved=true;go(idx+(dx<0?1:-1));run()}});
+ cards.forEach((c,k)=>c.addEventListener('click',e=>{if(moved){e.preventDefault();moved=false;return}if(!c.classList.contains('front')){e.preventDefault();go(k+Math.round((idx-k)/n)*n);run()}}));
+ car.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){go(idx+1);run()}if(e.key==='ArrowLeft'){go(idx-1);run()}});
+ car.tabIndex=0;addEventListener('resize',layout);layout();run();
+ tips.websites='Putar komedi putarnya! Geser atau klik panah 🎠';
+})();
+
+/* palet tema */
+(function(){
+ const pals=['lavender','sakura','mint','peach'],pn={lavender:'Lavender 💜',sakura:'Sakura 🌸',mint:'Mint 🍃',peach:'Peach 🍑'};
+ let pi=Math.max(0,pals.indexOf(store.get('veloureria-pal')));
+ function set(i){const p=pals[i];if(p==='lavender')document.body.removeAttribute('data-accent');else document.body.dataset.accent=p;store.set('veloureria-pal',p)}
+ set(pi);
+ $('#palBtn').onclick=()=>{pi=(pi+1)%pals.length;set(pi);toast('Tema '+pn[pals[pi]]);mood('happy');pop($('#palBtn'),10)};
+})();
+/* spot the bug */
+(function(){
+ const bugs={icon:['Ikon tanpa label','Tambahkan teks "Hapus" supaya pengguna tidak menebak.'],cta:['Tiga tombol bersaing','Pilih satu aksi utama, sisanya dibuat lebih tenang.'],contrast:['Teks kontras rendah','Abu terang di atas abu tidak terbaca.'],link:['Tautan menyesatkan','"Baca artikel" ternyata membuka formulir langganan.'],input:['Input terlalu kaku','Terima spasi dan tanda hubung, lalu rapikan sendiri.'],popup:['Pop-up menutupi konten','Tombol close sekecil itu membuat pengguna terjebak.']};
+ const bs=$('#bugSite'),found=new Set();
+ bs.addEventListener('click',e=>{
+  e.preventDefault();const t=e.target.closest('[data-bug]');
+  if(!t){bs.classList.remove('miss');void bs.offsetWidth;bs.classList.add('miss');toast('Bukan itu 😅 coba lagi');mood('sad');return}
+  const k=t.dataset.bug;if(found.has(k))return;found.add(k);t.classList.add('found');t.classList.remove('hint');
+  const li=document.createElement('li');li.innerHTML=`<b>✓ ${bugs[k][0]}</b><br>${bugs[k][1]}`;$('#bugList').appendChild(li);
+  $('#bugCount').textContent=found.size+' / 6';mood('happy');
+  if(found.size===6){pop($('#bugCount'),44);toast('Semua bug ketemu! Detektif UX 🔍👑');say('Mata kamu tajam banget! 🔎')}else toast('Ketemu! '+bugs[k][0]);
  });
-},{threshold:.12});
-function observeElements(){
- document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-}
-observeElements();
+ $('#bugHint').onclick=()=>{const t=$$('#bugSite [data-bug]').find(x=>!found.has(x.dataset.bug));if(t){t.classList.remove('hint');void t.offsetWidth;t.classList.add('hint');mood('wow')}};
+ $('#bugReset').onclick=()=>{found.clear();$$('#bugSite .found').forEach(x=>x.classList.remove('found'));$('#bugList').innerHTML='';$('#bugCount').textContent='0 / 6'};
+ tips.detective='Teliti ya. Ada 6 bug, dan satunya sengaja dibuat licik 🔍';
+})();
+/* contrast lab */
+(function(){
+ const fg=$('#lfg'),bg=$('#lbg'),lp=$('#labPrev');
+ const lum=x=>{const c=[1,3,5].map(i=>parseInt(x.slice(i,i+2),16)/255).map(v=>v<=.03928?v/12.92:((v+.055)/1.055)**2.4);return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+ const ratio=(a,b)=>{const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
+ const mix=(a,b,t)=>'#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
+ function upd(){
+  const r=ratio(fg.value,bg.value);lp.style.color=fg.value;lp.style.background=bg.value;$('#lpBtn').style.cssText=`background:${fg.value};color:${bg.value}`;
+  $('#ratio').textContent=r.toFixed(1)+':1';
+  $('#ratioNote').textContent=r>=7?'Luar biasa jelas ✨':r>=4.5?'Aman dibaca 👍':r>=3?'Hanya cukup untuk teks besar':'Sulit dibaca 😵';
+  [['b1',r>=4.5,'AA teks biasa'],['b2',r>=3,'AA teks besar'],['b3',r>=7,'AAA']].forEach(([id,ok,t])=>{const b=$('#'+id);b.className=ok?'pass':'';b.textContent=(ok?'✓ ':'✕ ')+t})}
+ [fg,bg].forEach(i=>i.addEventListener('input',upd));
+ $$('.swatches button').forEach(b=>b.onclick=()=>{fg.value=b.dataset.f;bg.value=b.dataset.b;upd()});
+ $('#labFix').onclick=()=>{
+  const target=lum(bg.value)>.4?'#000000':'#ffffff';let t=0,c=fg.value;
+  while(ratio(c,bg.value)<4.5&&t<1){t+=.04;c=mix(fg.value,target,t)}
+  fg.value=c;upd();toast(t?'Teks digelapkan sedikit sampai aman dibaca ✨':'Sudah aman, tidak perlu diubah 👍');mood('happy')};
+ upd();tips.lab='Ungu tipis di atas lavender itu cantik, tapi coba lihat skornya 👀';
+})();
+
+/* before/after 2.0 */
+(function(){
+ const D={store:{u:['megastore-SALE!!!.biz','thelittleshop.id'],s:[18,92],f:['Satu aksi utama','Harga jelas','Tanpa pop-up']},
+  dashboard:{u:['admin-panel-v2-final.php','insight.app/dashboard'],s:[20,90],f:['Hierarki metrik','Grafik berlabel','Navigasi ringkas']},
+  editorial:{u:['berita-semua-sekaligus.net','thedailyjournal.id'],s:[25,94],f:['Judul berhierarki','Iklan tidak memotong','Waktu baca jelas']},
+  form:{u:['register-now!!!.biz','hello.app/daftar'],s:[15,93],f:['3 field penting','Label jelas','Show password']},
+  travel:{u:['travel-deals-CLICK.biz','escape.travel'],s:[22,91],f:['Pencarian berlabel','Foto menenangkan','CTA spesifik']}};
+ const api={};
+ $$('.ba-panel').forEach(p=>{
+  const d=D[p.id],g=p.querySelector('.ba-grid'),[bm,am]=g.children;
+  const st=document.createElement('div');st.className='ba-stage';
+  st.innerHTML=`<div class="fbar"><i></i><i></i><i></i><span class="url"></span></div><div class="ba-view" tabindex="0" role="slider" aria-label="Geser untuk membandingkan before dan after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span class="ba-tag b">✕ Before</span><span class="ba-tag a">✦ After</span><div class="ba-handle"><b>↔</b></div></div><div class="ba-foot"><div class="ba-score"><b>0</b><small>Skor UX</small></div><div class="fixes">${d.f.map(x=>`<span>${x}</span>`).join('')}</div></div>`;
+  const v=st.querySelector('.ba-view');v.prepend(am);v.prepend(bm);g.replaceWith(st);
+  const chips=[...st.querySelectorAll('.fixes span')];let x=50,done=false;
+  function set(nx){
+   x=Math.max(0,Math.min(100,nx));v.style.setProperty('--x',x+'%');v.setAttribute('aria-valuenow',Math.round(x));
+   st.querySelector('.ba-score b').textContent=Math.round(d.s[0]+(d.s[1]-d.s[0])*(1-x/100));
+   st.querySelector('.url').textContent=x<50?d.u[1]:d.u[0];
+   chips.forEach((c,i)=>c.classList.toggle('ok',x<75-i*25));
+   if(x<5&&!done){done=true;pop(st,30);mood('happy')}if(x>60)done=false}
+  const at=e=>{const r=v.getBoundingClientRect();set((e.clientX-r.left)/r.width*100)};
+  v.addEventListener('pointerdown',e=>{v.setPointerCapture(e.pointerId);v.classList.add('drag');at(e)});
+  v.addEventListener('pointermove',e=>{if(v.classList.contains('drag'))at(e)});
+  ['pointerup','pointercancel'].forEach(t=>v.addEventListener(t,()=>v.classList.remove('drag')));
+  v.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')set(x-5);if(e.key==='ArrowRight')set(x+5)});
+  function anim(from,to,ms,cb){if(rm){set(to);cb&&cb();return}const t0=performance.now();(function f(n){const k=Math.min(1,(n-t0)/ms),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;set(from+(to-from)*e);if(k<1)requestAnimationFrame(f);else cb&&cb()})(t0)}
+  api[p.id]={sweep(){done=false;anim(100,0,1800)},reset(){anim(x,50,500)}};
+  set(50);
+ });
+ $('#baSweep').onclick=()=>{api[$('.ba-panel.active').id].sweep();mood('wow')};
+ $('#baReset').onclick=()=>api[$('.ba-panel.active').id].reset();
+ tips.beforeafter='Geser garis ungunya ↔ buat lihat sebelum dan sesudah!';
+})();
+/* design studio */
+(function(){
+ const S={layout:'chaos',fs:16,contrast:'low',sp:100,r:14,ac:'#8063a0',ff:'sans',pop:true,dark:false,device:'d',heat:false};
+ const site=$('#site'),frame=$('#frame'),sPop=$('#sPop'),sClose=$('#sClose');
+ const FF={serif:'"Playfair Display",serif',sans:'"DM Sans",sans-serif',mono:'ui-monospace,Menlo,monospace'};
+ const ACC=['#8063a0','#c0587f','#3f9170','#d9743f','#3f6fb5'];
+ const PRE={messy:{layout:'chaos',fs:12,contrast:'low',sp:60,r:0,ac:'#d9743f',ff:'mono',pop:true,dark:false},
+  minimal:{layout:'clean',fs:17,contrast:'high',sp:130,r:8,ac:'#3f6fb5',ff:'sans',pop:false,dark:false},
+  playful:{layout:'clean',fs:18,contrast:'high',sp:120,r:28,ac:'#c0587f',ff:'sans',pop:false,dark:false},
+  elegant:{layout:'clean',fs:17,contrast:'high',sp:140,r:4,ac:'#8063a0',ff:'serif',pop:false,dark:true}};
+ const L=x=>{const c=[1,3,5].map(i=>parseInt(x.slice(i,i+2),16)/255).map(v=>v<=.03928?v/12.92:((v+.055)/1.055)**2.4);return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+ const CR=(a,b)=>{const x=L(a),y=L(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
+ const cl=v=>Math.max(0,Math.min(100,Math.round(v)));
+ let dodge=0,queen=false;
+ ACC.forEach(c=>{const b=document.createElement('button');b.dataset.c=c;b.style.background=c;b.setAttribute('aria-label','Aksen '+c);$('#accents').appendChild(b)});
+ function score(){
+  const hi=S.contrast==='high',clean=S.layout==='clean',ac=CR(S.ac,'#ffffff');
+  const v=[cl(Math.min(Math.max(S.fs-12,0),4)/4*50+(hi?50:5)-(S.ff==='mono'?8:0)),
+   cl((clean?60:10)+(S.pop?0:25)+(ac>=4.5?15:ac>=3?7:0)),
+   cl(Math.max(0,40-Math.abs(S.sp-130)*.5)+(clean?40:5)+(S.pop?0:20)),
+   cl((hi?40:0)+(S.fs>=16?30:S.fs/16*15)+(ac>=4.5?30:ac>=3?15:0))];
+  const t=Math.round(v.reduce((a,b)=>a+b)/4);
+  v.forEach((n,i)=>{$('#m'+i).style.width=n+'%';$('#n'+i).textContent=n});
+  $('.meter .ring').style.setProperty('--p',t);$('#stTotal').textContent=t;
+  const w=v.indexOf(Math.min(...v));
+  $('#advice').textContent=t>=95?'Desain ini nyaman, jelas, dan ramah semua orang. UX Queen 👑':'Saran: '+['besarkan teks dan naikkan kontras.','rapikan layout, tutup pop-up, atau pilih aksen yang cukup kontras dengan teks putih.','atur spasi sekitar 130 dan kurangi gangguan.','cek kontras tombol dan pakai teks minimal 16px.'][w];
+  if(t>=95&&!queen){queen=true;pop($('.meter'),44);toast('Skor '+t+'! Pengguna jatuh cinta 💜');mood('happy')}if(t<95)queen=false}
+ function heat(){
+  const hz=$('#heat');hz.innerHTML='';$('#legend').hidden=!S.heat;if(!S.heat)return;
+  const sr=site.getBoundingClientRect(),clean=S.layout==='clean',lo=S.contrast==='low';
+  [['.s-logo',.3,1],['.s-hero h3',clean?.9:.5,1],['.s-cta.main',clean?1:.55,0],['.s-clutter',clean?0:1,0],['.s-cta.x',clean?0:.6,0],['.s-cards>div',.35,1],['#sPop',S.pop?1.5:0,0]].forEach(([sel,w,tx])=>{
+   $$('#site '+sel).forEach(el=>{
+    if(!w||!el.getClientRects().length)return;
+    const k=w*(S.pop&&sel!=='#sPop'?.45:1)*(tx&&lo?.6:1)*(tx&&S.fs<14?.8:1);if(k<.08)return;
+    const r=el.getBoundingClientRect(),z=60+k*130,b=document.createElement('div');b.className='hb';
+    b.style.cssText=`width:${z}px;height:${z}px;left:${r.left-sr.left+r.width/2-z/2}px;top:${r.top-sr.top+r.height/2-z/2}px;opacity:${Math.min(.9,k*.8)}`;hz.appendChild(b)})})}
+ function render(){
+  site.className='site'+(S.layout==='chaos'?' chaos':'')+(S.contrast==='low'?' lowc':'')+(S.dark?' dk':'');
+  site.style.cssText=`--ac:${S.ac};--sp:${S.sp/100};--r:${S.r}px;--fs:${S.fs}px;--ff:${FF[S.ff]}`;
+  frame.classList.toggle('m',S.device==='m');
+  if(S.pop&&sPop.hidden){dodge=0;sClose.style.transform=''}sPop.hidden=!S.pop;
+  $('#sUrl').textContent=S.layout==='chaos'?'lumi-studio-PROMO!!!.biz':'lumistudio.id';
+  $$('.seg[data-k]').forEach(g=>[...g.children].forEach(b=>b.classList.toggle('on',String(S[g.dataset.k])===b.dataset.v)));
+  $('#rfs').value=S.fs;$('#vfs').textContent=S.fs+'px';$('#rsp').value=S.sp;$('#rr').value=S.r;$('#tPop').checked=S.pop;$('#tDark').checked=S.dark;
+  $$('#accents button').forEach(b=>b.classList.toggle('on',b.dataset.c===S.ac));
+  $('#tHeat').setAttribute('aria-pressed',S.heat);score();heat();if(S.heat)setTimeout(heat,470)}
+ $$('.seg[data-k]').forEach(g=>g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;S[g.dataset.k]=b.dataset.v;render()}));
+ $('#presets').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;Object.assign(S,PRE[b.dataset.p]);render();mood('wow');toast('Mood: '+b.textContent)});
+ [['rfs','fs'],['rsp','sp'],['rr','r']].forEach(([id,k])=>$('#'+id).addEventListener('input',e=>{S[k]=+e.target.value;render()}));
+ $('#accents').addEventListener('click',e=>{const b=e.target.closest('button');if(b){S.ac=b.dataset.c;render()}});
+ $('#tPop').onchange=e=>{S.pop=e.target.checked;render()};$('#tDark').onchange=e=>{S.dark=e.target.checked;render()};
+ $('#tHeat').onclick=()=>{S.heat=!S.heat;render();if(S.heat){mood('wow');say(S.pop?'Lihat? Semua mata tertarik ke pop-up, bukan ke kontennya 😵':'Merah itu tempat mata berhenti. Pastikan itu bagian terpenting!')}};
+ $('#tChaos').onclick=()=>{const r=a=>a[Math.random()*a.length|0];Object.assign(S,{layout:r(['chaos','clean']),fs:12+(Math.random()*12|0),contrast:r(['low','high']),sp:60+(Math.random()*100|0),r:Math.random()*28|0,ac:r(ACC),ff:r(['serif','sans','mono']),pop:Math.random()<.4,dark:Math.random()<.3});render();mood('wow')};
+ $('#tCopy').onclick=()=>{
+  const css=`:root{\n  --accent:${S.ac};\n  --font:${FF[S.ff]};\n  --font-size:${S.fs}px;\n  --radius:${S.r}px;\n  --space:${S.sp/100};\n  --text:${S.contrast==='high'?(S.dark?'#f2eaf7':'#342842'):'#bdb6c4'};\n  --bg:${S.dark?'#1f1a27':'#fffaff'};\n}`;
+  const ok=()=>{toast('CSS desainmu sudah disalin ✿');mood('happy')};
+  const fb=()=>{const t=document.createElement('textarea');t.value=css;document.body.appendChild(t);t.select();try{document.execCommand('copy');ok()}catch(e){toast('Gagal menyalin. Salin manual ya.')}t.remove()};
+  if(navigator.clipboard)navigator.clipboard.writeText(css).then(ok,fb);else fb()};
+ sClose.addEventListener('pointerenter',e=>{if(e.pointerType!=='mouse'||dodge>=4)return;dodge++;sClose.style.transform=`translate(${rnd(-90,90)}px,${rnd(-50,110)}px)`;if(dodge===4){toast('Oke oke, kali ini boleh kamu tutup 😅');mood('wow')}});
+ sClose.onclick=()=>{S.pop=false;render();mood('happy')};
+ render();addEventListener('resize',()=>S.heat&&heat());
+ tips.playground='Coba preset Mood, lalu nyalakan Peta Panas 🔥 buat lihat ke mana mata pengguna pergi';
+})();
 </script>
 </body>
 </html>
