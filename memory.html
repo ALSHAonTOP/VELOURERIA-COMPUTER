@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catatan pembelajaran Arsitektur dan Organisasi Komputer tentang memory komputer, jenis-jenis memory, evolusi, dan perkembangan RAM.">
+  <title>Memory — The Digital Memory Garden</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fbf9ff;--paper:#ffffff;--ink:#29243a;--muted:#716b80;
+      --purple:#7654a5;--deep:#493568;--lilac:#eee6f8;--lav:#d9c8ed;
+      --line:#e9e1f1;--gold:#c18b45;--shadow:0 18px 55px rgba(69,48,99,.09);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.75}
+    a{color:var(--purple)}
+    button{font:inherit}
+    .flower-field{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;opacity:.42}
+    .flower{position:absolute;width:155px;height:155px;filter:blur(.1px)}
+    .flower:nth-child(1){top:9%;left:-45px;transform:rotate(15deg) scale(1.1)}
+    .flower:nth-child(2){top:42%;right:-65px;transform:rotate(35deg) scale(1.35)}
+    .flower:nth-child(3){bottom:2%;left:8%;transform:rotate(-15deg) scale(.8)}
+    .flower svg{width:100%;height:100%}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(251,249,255,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .navwrap{max-width:1160px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{font-family:"Playfair Display",serif;font-weight:700;color:var(--deep);font-size:21px;text-decoration:none;white-space:nowrap}
+    .brand span{color:var(--gold)}
+    nav{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+    nav a{text-decoration:none;color:var(--muted);font-size:12px;font-weight:700;padding:7px 10px;border-radius:30px}
+    nav a:hover,nav a.active{background:var(--lilac);color:var(--deep)}
+    .menu-btn{display:none;border:1px solid var(--line);background:white;color:var(--deep);border-radius:12px;padding:8px 12px;cursor:pointer}
+    .hero{max-width:1160px;margin:34px auto 22px;padding:0 22px}
+    .hero-card{position:relative;overflow:hidden;border-radius:32px;background:linear-gradient(120deg,#38294f,#654c86 58%,#a48bc2);color:white;padding:clamp(30px,6vw,68px);box-shadow:var(--shadow)}
+    .hero-card:after{content:"";position:absolute;width:340px;height:340px;border:1px solid rgba(255,255,255,.22);border-radius:50%;right:-70px;top:-115px;box-shadow:0 0 0 24px rgba(255,255,255,.045),0 0 0 50px rgba(255,255,255,.035)}
+    .eyebrow{text-transform:uppercase;letter-spacing:2.5px;font-size:11px;font-weight:700;color:#e6d9f4}
+    h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.2}
+    h1{font-size:clamp(42px,7vw,76px);max-width:720px;margin:12px 0 14px}
+    .hero p{max-width:650px;color:#eee6f8;margin:0;font-size:16px}
+    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+    .pill{border:1px solid rgba(255,255,255,.3);border-radius:30px;padding:7px 13px;font-size:12px;color:#fff}
+    main{max-width:1040px;margin:0 auto;padding:0 22px 70px}
+    .intro-strip{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:19px 23px;margin:22px 0 40px;box-shadow:0 8px 25px rgba(69,48,99,.04)}
+    .intro-strip strong{color:var(--deep)}
+    .progress{width:120px;height:7px;border-radius:20px;background:var(--lilac);overflow:hidden}
+    .progress span{display:block;width:0;height:100%;background:var(--purple);transition:width .3s}
+    section{margin:0 0 58px;scroll-margin-top:100px}
+    .section-head{display:flex;gap:15px;align-items:flex-start;margin-bottom:20px}
+    .number{flex:0 0 42px;width:42px;height:42px;border-radius:14px;background:var(--lilac);display:grid;place-items:center;color:var(--deep);font-weight:700}
+    h2{font-size:clamp(27px,4vw,38px);color:var(--deep);margin:0 0 8px}
+    .section-head p{margin:0;color:var(--muted);font-size:14px}
+    .panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(20px,3.5vw,32px);box-shadow:0 10px 35px rgba(69,48,99,.045)}
+    .lead{font-size:17px;color:#484154}
+    .callout{border-left:4px solid var(--gold);background:#fcf8f0;padding:15px 18px;border-radius:0 14px 14px 0;margin:20px 0;color:#5b4b38}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+    .mini-card{background:#fcfaff;border:1px solid var(--line);border-radius:18px;padding:19px}
+    .mini-card h3{font-size:20px;color:var(--deep);margin:0 0 8px}
+    .mini-card p{margin:0;color:#5f596b;font-size:14px}
+    .tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700;color:var(--purple);background:var(--lilac);border-radius:30px;padding:4px 9px;margin-bottom:10px}
+    .memory-map{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
+    .memory-map .mini-card{position:relative}
+    .memory-map .mini-card:before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;background:var(--lav);border-radius:5px}
+    .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;margin-top:18px}
+    table{border-collapse:collapse;width:100%;min-width:650px;background:white}
+    th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top;font-size:13px}
+    th{background:#f3edf9;color:var(--deep);font-size:12px;letter-spacing:.3px}
+    tr:last-child td{border-bottom:0}
+    td strong{color:var(--deep)}
+    .timeline{position:relative;margin:25px 0 5px;padding-left:27px}
+    .timeline:before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--lav),var(--purple))}
+    .era{position:relative;padding:0 0 25px 20px}
+    .era:before{content:"";position:absolute;left:-24px;top:7px;width:12px;height:12px;background:white;border:3px solid var(--purple);border-radius:50%}
+    .era h3{margin:0 0 5px;color:var(--deep);font-size:20px}
+    .era p{margin:0;color:#625c6d;font-size:14px}
+    .era small{display:inline-block;color:var(--gold);font-weight:700;margin-bottom:4px}
+    .compare-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+    .tab-btn{border:1px solid var(--line);background:#fff;color:var(--deep);padding:9px 15px;border-radius:30px;cursor:pointer;font-weight:700;font-size:13px}
+    .tab-btn[aria-selected="true"]{background:var(--deep);color:#fff;border-color:var(--deep)}
+    .tab-panel{background:#fcfaff;border:1px solid var(--line);padding:20px;border-radius:18px}
+    .tab-panel h3{margin:0 0 8px;color:var(--deep);font-size:23px}
+    .tab-panel p{margin:0 0 10px;color:#5d5669}
+    .performance{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
+    .metric{background:white;border:1px solid var(--line);border-radius:13px;padding:12px}
+    .metric b{display:block;color:var(--deep);font-size:12px}
+    .metric span{font-size:12px;color:var(--muted)}
+    .quiz{background:linear-gradient(135deg,#f0e9f8,#fff);border:1px solid var(--line);border-radius:24px;padding:24px}
+    .quiz h3{font-size:24px;color:var(--deep);margin:0 0 10px}
+    .answers{display:grid;gap:9px;margin:15px 0}
+    .answer{background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px 15px;text-align:left;cursor:pointer;color:var(--ink)}
+    .answer:hover{border-color:var(--purple)}
+    .answer.correct{border-color:#4f9871;background:#f0faf4}
+    .answer.wrong{border-color:#c87979;background:#fff4f4}
+    .quiz-feedback{min-height:26px;color:var(--deep);font-size:13px;font-weight:600}
+    .action{border:0;background:var(--deep);color:white;border-radius:30px;padding:10px 18px;cursor:pointer;font-weight:700}
+    .action:hover{background:var(--purple)}
+    .glossary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    details{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 15px}
+    summary{cursor:pointer;color:var(--deep);font-weight:700}
+    details p{margin:8px 0 0;font-size:13px;color:var(--muted)}
+    .references li{margin:8px 0;color:#5f596b;font-size:13px}
+    .author{display:flex;gap:17px;align-items:center;background:#38294f;color:#fff;border-radius:24px;padding:24px}
+    .avatar{width:58px;height:58px;flex:0 0 58px;border-radius:50%;background:#e8dcf5;color:var(--deep);display:grid;place-items:center;font-family:"Playfair Display",serif;font-size:25px}
+    .author h3{margin:0 0 4px;font-size:21px}
+    .author p{margin:0;color:#e4d9ef;font-size:13px}
+    footer{text-align:center;padding:28px 15px;color:var(--muted);font-size:12px}
+    .backtop{position:fixed;right:18px;bottom:18px;width:43px;height:43px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--deep);box-shadow:var(--shadow);cursor:pointer;display:none}
+    .backtop.show{display:block}
+    :focus-visible{outline:3px solid #b497d2;outline-offset:3px}
+    @media(max-width:760px){
+      .menu-btn{display:block}
+      nav{display:none;position:absolute;top:63px;left:12px;right:12px;background:#fff;padding:12px;border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch}
+      nav.open{display:flex}
+      nav a{padding:10px 13px}
+      .grid-2,.memory-map,.glossary{grid-template-columns:1fr}
+      .performance{grid-template-columns:1fr}
+      .intro-strip{grid-template-columns:1fr}
+      .hero{margin-top:18px}
+      .hero-card{border-radius:24px}
+      .author{align-items:flex-start}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="flower-field" aria-hidden="true">
+    <div class="flower"><svg viewBox="0 0 160 160"><g fill="#cdb8e5"><ellipse cx="80" cy="35" rx="18" ry="34"/><ellipse cx="80" cy="125" rx="18" ry="34"/><ellipse cx="35" cy="80" rx="34" ry="18"/><ellipse cx="125" cy="80" rx="34" ry="18"/><ellipse cx="48" cy="48" rx="18" ry="34" transform="rotate(-45 48 48)"/><ellipse cx="112" cy="48" rx="18" ry="34" transform="rotate(45 112 48)"/><ellipse cx="48" cy="112" rx="18" ry="34" transform="rotate(45 48 112)"/><ellipse cx="112" cy="112" rx="18" ry="34" transform="rotate(-45 112 112)"/></g><circle cx="80" cy="80" r="14" fill="#ead7a8"/></svg></div>
+    <div class="flower"><svg viewBox="0 0 160 160"><g fill="#d8c5eb"><ellipse cx="80" cy="35" rx="18" ry="34"/><ellipse cx="80" cy="125" rx="18" ry="34"/><ellipse cx="35" cy="80" rx="34" ry="18"/><ellipse cx="125" cy="80" rx="34" ry="18"/><ellipse cx="48" cy="48" rx="18" ry="34" transform="rotate(-45 48 48)"/><ellipse cx="112" cy="48" rx="18" ry="34" transform="rotate(45 112 48)"/><ellipse cx="48" cy="112" rx="18" ry="34" transform="rotate(45 48 112)"/><ellipse cx="112" cy="112" rx="18" ry="34" transform="rotate(-45 112 112)"/></g><circle cx="80" cy="80" r="14" fill="#ead7a8"/></svg></div>
+    <div class="flower"><svg viewBox="0 0 160 160"><g fill="#cdb8e5"><ellipse cx="80" cy="35" rx="18" ry="34"/><ellipse cx="80" cy="125" rx="18" ry="34"/><ellipse cx="35" cy="80" rx="34" ry="18"/><ellipse cx="125" cy="80" rx="34" ry="18"/><ellipse cx="48" cy="48" rx="18" ry="34" transform="rotate(-45 48 48)"/><ellipse cx="112" cy="48" rx="18" ry="34" transform="rotate(45 112 48)"/><ellipse cx="48" cy="112" rx="18" ry="34" transform="rotate(45 48 112)"/><ellipse cx="112" cy="112" rx="18" ry="34" transform="rotate(-45 112 112)"/></g><circle cx="80" cy="80" r="14" fill="#ead7a8"/></svg></div>
+  </div>
+
+  <header class="topbar">
+    <div class="navwrap">
+      <a class="brand" href="#home">Veloureria<span> ✦</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+      <nav id="mainNav" aria-label="Navigasi utama">
+        <a href="#pengertian">Pengertian</a><a href="#jenis">Jenis Memory</a><a href="#evolusi">Evolusi</a><a href="#ram">Perbandingan RAM</a><a href="#quiz">Mini Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero" id="home">
+    <div class="hero-card">
+      <div class="eyebrow">Arsitektur & Organisasi Komputer · Tugas 04</div>
+      <h1>Memory:<br>The Digital Memory Garden</h1>
+      <p>Mengenal tempat komputer menyimpan data, bagaimana teknologi memory berkembang, dan mengapa setiap generasi RAM memiliki cara kerja yang berbeda.</p>
+      <div class="hero-meta"><span class="pill">Computer Memory</span><span class="pill">RAM Technology</span><span class="pill">Learning Notes</span></div>
+    </div>
+  </div>
+
+  <main>
+    <div class="intro-strip">
+      <div><strong>Learning route</strong><br><span style="font-size:13px;color:var(--muted)">Ikuti empat pembahasan utama, lalu uji pemahaman melalui mini quiz.</span></div>
+      <div><div style="font-size:11px;color:var(--muted);margin-bottom:5px">Progress membaca</div><div class="progress"><span id="readProgress"></span></div></div>
+    </div>
+
+    <section id="pengertian">
+      <div class="section-head"><div class="number">01</div><div><h2>Apa Itu Memory?</h2><p>Pengertian dan peran memory dalam sistem komputer.</p></div></div>
+      <div class="panel">
+        <p class="lead"><strong>Memory komputer</strong> adalah komponen atau media yang digunakan untuk menyimpan data, instruksi, dan hasil pemrosesan agar dapat digunakan oleh komputer. Memory memungkinkan prosesor mengambil informasi yang dibutuhkan ketika menjalankan suatu program.</p>
+        <p>Ketika sebuah aplikasi dibuka, data dan instruksi yang sedang diperlukan akan ditempatkan pada memory yang sesuai. Prosesor kemudian membaca atau menulis data tersebut. Karena itu, memory berpengaruh terhadap kecepatan kerja, kapasitas penyimpanan sementara, dan kemampuan komputer menjalankan banyak tugas.</p>
+        <div class="callout"><strong>Bayangkan seperti meja belajar:</strong> penyimpanan (SSD/HDD) adalah lemari untuk menyimpan banyak buku dalam jangka panjang, sedangkan RAM adalah meja tempat buku yang sedang dipakai diletakkan agar mudah dijangkau. CPU berperan seperti orang yang sedang belajar dan mengolah informasi.</div>
+        <div class="grid-2">
+          <div class="mini-card"><span class="tag">Fungsi 01</span><h3>Menyimpan instruksi</h3><p>Menampung instruksi program yang akan atau sedang dijalankan oleh prosesor.</p></div>
+          <div class="mini-card"><span class="tag">Fungsi 02</span><h3>Menyimpan data</h3><p>Menampung data masukan, data sementara, dan hasil pengolahan.</p></div>
+          <div class="mini-card"><span class="tag">Fungsi 03</span><h3>Mempercepat akses</h3><p>Menyediakan data sesuai kebutuhan sistem, terutama melalui cache dan RAM.</p></div>
+          <div class="mini-card"><span class="tag">Fungsi 04</span><h3>Menjaga informasi</h3><p>Memory non-volatile dapat menyimpan data meskipun daya komputer dimatikan.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="jenis">
+      <div class="section-head"><div class="number">02</div><div><h2>Macam-Macam Memory</h2><p>Memory dapat dikelompokkan berdasarkan fungsi, letak, dan kemampuannya mempertahankan data.</p></div></div>
+      <div class="panel">
+        <p class="lead">Secara umum, memory komputer dibedakan menjadi memory internal/primer dan memory eksternal/sekunder. Selain itu, ada pembagian berdasarkan sifat penyimpanan, yaitu volatile dan non-volatile.</p>
+        <div class="memory-map">
+          <div class="mini-card"><span class="tag">Memory Primer</span><h3>Register</h3><p>Memory berukuran sangat kecil dan sangat cepat yang berada di dalam prosesor. Register menyimpan data, alamat, atau instruksi yang sedang diproses.</p></div>
+          <div class="mini-card"><span class="tag">Memory Primer</span><h3>Cache Memory</h3><p>Memory berkecepatan tinggi yang menyimpan salinan data/instruksi yang sering digunakan CPU. Cache membantu mengurangi waktu menunggu akses ke RAM.</p></div>
+          <div class="mini-card"><span class="tag">Memory Primer</span><h3>RAM (Random Access Memory)</h3><p>Memory utama yang dapat dibaca dan ditulis. RAM menyimpan program dan data yang sedang digunakan. Umumnya bersifat volatile, sehingga isinya hilang ketika daya terputus.</p></div>
+          <div class="mini-card"><span class="tag">Memory Primer</span><h3>ROM (Read Only Memory)</h3><p>Memory non-volatile yang menyimpan firmware atau instruksi penting untuk proses awal perangkat. Isinya tetap tersimpan tanpa aliran listrik.</p></div>
+          <div class="mini-card"><span class="tag">Memory Sekunder</span><h3>HDD (Hard Disk Drive)</h3><p>Media penyimpanan non-volatile yang menggunakan piringan magnetik berputar. Kapasitasnya besar dan cocok untuk menyimpan file dalam jangka panjang.</p></div>
+          <div class="mini-card"><span class="tag">Memory Sekunder</span><h3>SSD (Solid State Drive)</h3><p>Media penyimpanan non-volatile berbasis flash memory tanpa komponen mekanis bergerak. Umumnya memiliki waktu akses lebih cepat daripada HDD.</p></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Jenis</th><th>Volatile?</th><th>Kecepatan relatif</th><th>Penggunaan utama</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Register</strong></td><td>Ya</td><td>Sangat tinggi</td><td>Data yang langsung diproses CPU</td></tr>
+              <tr><td><strong>Cache</strong></td><td>Ya</td><td>Sangat tinggi</td><td>Data/instruksi yang sering diakses CPU</td></tr>
+              <tr><td><strong>RAM</strong></td><td>Ya</td><td>Tinggi</td><td>Program dan data aktif</td></tr>
+              <tr><td><strong>ROM</strong></td><td>Tidak</td><td>Bervariasi</td><td>Firmware dan instruksi awal</td></tr>
+              <tr><td><strong>SSD / HDD</strong></td><td>Tidak</td><td>Lebih lambat dari RAM</td><td>Penyimpanan data jangka panjang</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout"><strong>Catatan:</strong> Volatile berarti data membutuhkan daya untuk dipertahankan. Non-volatile berarti data tetap tersimpan walaupun perangkat dimatikan.</div>
+      </div>
+    </section>
+
+    <section id="evolusi">
+      <div class="section-head"><div class="number">03</div><div><h2>Evolusi Memory dari Generasi ke Generasi</h2><p>Perkembangan teknologi memory bergerak menuju kapasitas lebih besar, akses lebih cepat, ukuran lebih ringkas, dan konsumsi daya lebih efisien.</p></div></div>
+      <div class="panel">
+        <p class="lead">Memory berkembang seiring meningkatnya kebutuhan komputer. Teknologi awal memiliki kapasitas dan kecepatan terbatas, kemudian digantikan oleh teknologi semikonduktor yang lebih praktis dan efisien.</p>
+        <div class="timeline">
+          <div class="era"><small>1940-an – 1950-an</small><h3>Memory tabung vakum, delay line, dan magnetic core</h3><p>Komputer generasi awal menggunakan berbagai teknologi penyimpanan, seperti tabung vakum untuk rangkaian elektronik, mercury delay line pada beberapa sistem, serta magnetic core memory. Magnetic core menyimpan bit menggunakan inti magnet kecil.</p></div>
+          <div class="era"><small>1960-an – 1970-an</small><h3>Semiconductor memory mulai berkembang</h3><p>Memory berbasis semikonduktor mulai menggantikan teknologi yang lebih besar dan kurang praktis. SRAM dan DRAM berkembang sebagai pilihan memory utama dengan karakteristik biaya, kepadatan, dan kecepatan yang berbeda.</p></div>
+          <div class="era"><small>1980-an – 1990-an</small><h3>DRAM dan modul SIMM berkembang</h3><p>DRAM menjadi memory utama yang umum pada komputer personal. Teknologi seperti FPM DRAM dan EDO DRAM meningkatkan cara pengambilan data dibandingkan DRAM sebelumnya. Modul memory juga berkembang agar pemasangan lebih praktis.</p></div>
+          <div class="era"><small>Akhir 1990-an – 2000-an</small><h3>SDRAM dan DDR SDRAM</h3><p>SDRAM menyelaraskan operasi memory dengan clock sistem. DDR SDRAM kemudian mentransfer data pada dua sisi sinyal clock sehingga bandwidth meningkat dibandingkan SDRAM generasi awal.</p></div>
+          <div class="era"><small>2000-an – 2010-an</small><h3>DDR2, DDR3, dan DDR4</h3><p>Generasi DDR terus meningkatkan transfer data, efisiensi daya, dan kapasitas modul. Setiap generasi memiliki spesifikasi dan bentuk konektor yang perlu disesuaikan dengan motherboard.</p></div>
+          <div class="era"><small>2020-an hingga sekarang</small><h3>DDR5 dan memory berbandwidth tinggi</h3><p>DDR5 meningkatkan bandwidth dan kapasitas per modul serta membawa perubahan pada pengelolaan daya dan struktur kanal. Pada perangkat khusus, teknologi seperti HBM juga digunakan untuk menyediakan bandwidth sangat tinggi.</p></div>
+        </div>
+        <div class="callout"><strong>Garis besar evolusi:</strong> dari media yang besar dan terbatas menuju chip semikonduktor yang semakin kecil, cepat, padat, dan hemat energi. Tidak semua teknologi lama langsung hilang; beberapa tetap digunakan untuk kebutuhan khusus.</div>
+      </div>
+    </section>
+
+    <section id="ram">
+      <div class="section-head"><div class="number">04</div><div><h2>Perbedaan EDO RAM, SDRAM, dan DDR SDRAM</h2><p>Membandingkan cara kerja dan kinerja dari masing-masing teknologi.</p></div></div>
+      <div class="panel">
+        <p class="lead">EDO RAM, SDRAM, dan DDR SDRAM merupakan teknologi DRAM yang berkembang pada periode berbeda. Perbedaan utamanya terdapat pada cara mengakses data dan hubungan transfer data dengan sinyal clock.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Teknologi</th><th>Cara kerja</th><th>Karakteristik kinerja</th><th>Keterbatasan</th></tr></thead>
+            <tbody>
+              <tr><td><strong>EDO RAM</strong></td><td>Extended Data Out DRAM mempertahankan keluaran data dari satu siklus agar dapat tetap tersedia ketika akses berikutnya dimulai.</td><td>Lebih efisien daripada FPM DRAM pada pola akses tertentu karena mengurangi jeda antarakses.</td><td>Belum tersinkronisasi dengan clock sistem seperti SDRAM dan bandwidth-nya terbatas menurut standar modern.</td></tr>
+              <tr><td><strong>SDRAM</strong></td><td>Synchronous DRAM bekerja selaras dengan clock sistem sehingga operasi pembacaan dan penulisan dapat diatur mengikuti siklus clock.</td><td>Timing lebih teratur dan mendukung operasi burst; kinerjanya lebih baik dibanding DRAM asinkron generasi sebelumnya.</td><td>Transfer data pada SDR SDRAM dilakukan satu kali per siklus clock, sehingga bandwidth lebih rendah dibanding DDR pada clock yang sama.</td></tr>
+              <tr><td><strong>DDR SDRAM</strong></td><td>Double Data Rate SDRAM mentransfer data pada rising edge dan falling edge sinyal clock.</td><td>Dapat melakukan dua transfer data per siklus clock, sehingga secara teori menggandakan laju transfer dibanding SDR SDRAM pada clock yang sama.</td><td>Memerlukan dukungan motherboard dan prosesor yang sesuai; generasi DDR berbeda tidak saling kompatibel secara fisik maupun elektris.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="compare-tabs" role="tablist" aria-label="Pilih teknologi RAM">
+          <button class="tab-btn" role="tab" aria-selected="true" aria-controls="ramPanel" data-tab="edo">EDO RAM</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="ramPanel" data-tab="sdram">SDRAM</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="ramPanel" data-tab="ddr">DDR SDRAM</button>
+        </div>
+        <div class="tab-panel" id="ramPanel" role="tabpanel" tabindex="0" aria-live="polite">
+          <h3 id="ramTitle">EDO RAM — Extended Data Out</h3>
+          <p id="ramDescription">EDO RAM memperpanjang ketersediaan data pada jalur keluaran sehingga siklus akses berikutnya dapat dimulai lebih awal. Teknik ini membantu mengurangi waktu tunggu dibanding FPM DRAM pada kondisi tertentu.</p>
+          <div class="performance">
+            <div class="metric"><b>Sinkronisasi</b><span id="ramSync">Asinkron</span></div>
+            <div class="metric"><b>Transfer per clock</b><span id="ramTransfer">Tidak menggunakan mekanisme transfer berbasis clock seperti SDRAM</span></div>
+            <div class="metric"><b>Era penggunaan umum</b><span id="ramEra">Komputer personal era 1990-an</span></div>
+          </div>
+        </div>
+        <h3 style="font-size:22px;color:var(--deep);margin:28px 0 8px">Ilustrasi transfer data</h3>
+        <p style="font-size:13px;color:var(--muted);margin-top:0">Gambaran sederhana untuk membedakan SDR dan DDR. Ini bukan pengukuran kecepatan aktual.</p>
+        <div class="mini-card">
+          <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:13px"><strong>SDR SDRAM</strong><span>1 transfer per siklus clock</span></div>
+          <div style="display:flex;gap:5px;margin:10px 0 18px"><span style="height:13px;flex:1;background:#8e72b3;border-radius:5px"></span><span style="height:13px;flex:1;background:#eee6f8;border-radius:5px"></span><span style="height:13px;flex:1;background:#8e72b3;border-radius:5px"></span><span style="height:13px;flex:1;background:#eee6f8;border-radius:5px"></span></div>
+          <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:13px"><strong>DDR SDRAM</strong><span>2 transfer per siklus clock</span></div>
+          <div style="display:flex;gap:5px;margin:10px 0 0"><span style="height:13px;flex:1;background:#8e72b3;border-radius:5px"></span><span style="height:13px;flex:1;background:#8e72b3;border-radius:5px"></span><span style="height:13px;flex:1;background:#8e72b3;border-radius:5px"></span><span style="height:13px;flex:1;background:#8e72b3;border-radius:5px"></span></div>
+        </div>
+        <div class="callout"><strong>Kesimpulan kinerja:</strong> EDO RAM meningkatkan efisiensi akses dibanding FPM DRAM; SDRAM membuat operasi DRAM tersinkronisasi dengan clock; sedangkan DDR SDRAM meningkatkan jumlah transfer data per siklus clock. Perbandingan kecepatan nyata tetap dipengaruhi frekuensi, timing, lebar bus, dan konfigurasi sistem.</div>
+      </div>
+    </section>
+
+    <section id="quiz">
+      <div class="section-head"><div class="number">✦</div><div><h2>Memory Checkpoint</h2><p>Mini quiz untuk menguji pemahaman setelah membaca.</p></div></div>
+      <div class="quiz">
+        <div class="eyebrow" style="color:var(--purple)">Quick knowledge check</div>
+        <h3 id="question">Jenis memory apakah yang umumnya menyimpan data sementara saat aplikasi sedang berjalan?</h3>
+        <div class="answers" id="answers">
+          <button class="answer" data-correct="false">SSD</button>
+          <button class="answer" data-correct="true">RAM</button>
+          <button class="answer" data-correct="false">ROM</button>
+          <button class="answer" data-correct="false">HDD</button>
+        </div>
+        <div class="quiz-feedback" id="quizFeedback" aria-live="polite"></div>
+        <button class="action" id="nextQuestion" hidden>Pertanyaan berikutnya →</button>
+        <div style="font-size:12px;color:var(--muted);margin-top:12px" id="quizScore">Skor: 0 / 0</div>
+      </div>
+    </section>
+
+    <section id="glossary">
+      <div class="section-head"><div class="number">＋</div><div><h2>Mini Glossary</h2><p>Istilah penting yang sering muncul dalam pembahasan memory.</p></div></div>
+      <div class="glossary">
+        <details><summary>Volatile</summary><p>Sifat memory yang membutuhkan daya listrik untuk mempertahankan data.</p></details>
+        <details><summary>Non-volatile</summary><p>Sifat media penyimpanan yang tetap menyimpan data walaupun daya dimatikan.</p></details>
+        <details><summary>Bandwidth</summary><p>Jumlah data yang dapat ditransfer dalam suatu rentang waktu.</p></details>
+        <details><summary>Latency</summary><p>Waktu jeda antara permintaan akses data dan saat data mulai tersedia.</p></details>
+        <details><summary>Clock</summary><p>Sinyal periodik yang membantu menyelaraskan operasi komponen digital.</p></details>
+        <details><summary>DRAM</summary><p>Dynamic RAM yang menyimpan bit dalam kapasitor dan perlu di-refresh secara berkala.</p></details>
+      </div>
+    </section>
+
+    <section id="referensi">
+      <div class="section-head"><div class="number">↗</div><div><h2>Referensi Bacaan</h2><p>Sumber untuk memperdalam materi.</p></div></div>
+      <div class="panel references">
+        <ol>
+          <li>Stallings, W. (2016). <em>Computer Organization and Architecture: Designing for Performance</em> (10th ed.). Pearson.</li>
+          <li>Hennessy, J. L., & Patterson, D. A. (2019). <em>Computer Architecture: A Quantitative Approach</em> (6th ed.). Morgan Kaufmann.</li>
+          <li>JEDEC Solid State Technology Association. <a href="https://www.jedec.org/" target="_blank" rel="noopener noreferrer">JEDEC — Standards for the microelectronics industry</a>.</li>
+          <li>Micron Technology. <a href="https://www.micron.com/" target="_blank" rel="noopener noreferrer">Micron — Memory and storage technology resources</a>.</li>
+          <li>Encyclopaedia Britannica. <a href="https://www.britannica.com/technology/computer-memory" target="_blank" rel="noopener noreferrer">Computer memory</a>.</li>
+        </ol>
+        <p style="font-size:12px;color:var(--muted)">Catatan: pembahasan disusun sebagai ringkasan pengantar. Detail spesifikasi teknis dapat berbeda menurut model, generasi, dan implementasi perangkat.</p>
+      </div>
+    </section>
+
+    <div class="author">
+      <div class="avatar">A</div>
+      <div><h3>About the Author</h3><p><strong>Salsabillah Aurellya Utami</strong><br>Computer Science Student · Veloureria — A Little Academic Library<br>“Some stories are written in ink. Mine is written in moonlight.”</p></div>
+    </div>
+  </main>
+  <footer>© 2026 Veloureria · Notes from The Digital Desk</footer>
+  <button class="backtop" id="backTop" aria-label="Kembali ke atas">↑</button>
+
+  <script>
+    const menuBtn=document.getElementById('menuBtn');
+    const mainNav=document.getElementById('mainNav');
+    menuBtn.addEventListener('click',()=>{
+      const open=mainNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded',String(open));
+      menuBtn.textContent=open?'✕ Tutup':'☰ Menu';
+    });
+    mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      mainNav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰ Menu';
+    }));
+
+    const tabData={
+      edo:{title:'EDO RAM — Extended Data Out',description:'EDO RAM memperpanjang ketersediaan data pada jalur keluaran sehingga siklus akses berikutnya dapat dimulai lebih awal. Teknik ini membantu mengurangi waktu tunggu dibanding FPM DRAM pada kondisi tertentu.',sync:'Asinkron',transfer:'Tidak menggunakan mekanisme transfer berbasis clock seperti SDRAM',era:'Komputer personal era 1990-an'},
+      sdram:{title:'SDRAM — Synchronous DRAM',description:'SDRAM menyelaraskan operasi memory dengan clock sistem. Karena timing mengikuti siklus clock, pengendali memory dapat mengatur akses dan transfer data secara lebih teratur, termasuk dalam mode burst.',sync:'Sinkron dengan clock',transfer:'SDR: 1 transfer data per siklus clock',era:'Banyak digunakan pada PC akhir 1990-an'},
+      ddr:{title:'DDR SDRAM — Double Data Rate',description:'DDR SDRAM mentransfer data pada dua sisi sinyal clock, yaitu saat transisi naik (rising edge) dan transisi turun (falling edge). Dengan demikian, jumlah transfer per siklus menjadi dua kali SDR SDRAM pada clock yang sama.',sync:'Sinkron dengan clock',transfer:'2 transfer data per siklus clock',era:'Berkembang dari DDR hingga DDR5'}
+    };
+    document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.setAttribute('aria-selected',String(b===btn)));
+      const d=tabData[btn.dataset.tab];
+      document.getElementById('ramTitle').textContent=d.title;
+      document.getElementById('ramDescription').textContent=d.description;
+      document.getElementById('ramSync').textContent=d.sync;
+      document.getElementById('ramTransfer').textContent=d.transfer;
+      document.getElementById('ramEra').textContent=d.era;
+    }));
+
+    const questions=[
+      {q:'Jenis memory apakah yang umumnya menyimpan data sementara saat aplikasi sedang berjalan?',a:['SSD','RAM','ROM','HDD'],c:1,why:'RAM menyimpan data dan program yang sedang digunakan. RAM umumnya bersifat volatile.'},
+      {q:'Apa arti sifat volatile pada memory?',a:['Data tetap ada tanpa listrik','Data membutuhkan daya untuk dipertahankan','Data hanya dapat dibaca','Data tersimpan di piringan magnetik'],c:1,why:'Memory volatile membutuhkan daya listrik untuk mempertahankan isi datanya.'},
+      {q:'Apa keunggulan utama DDR SDRAM dibanding SDR SDRAM pada clock yang sama?',a:['Tidak membutuhkan clock','Transfer data pada dua sisi sinyal clock','Tidak memerlukan refresh','Menyimpan data secara permanen'],c:1,why:'DDR melakukan transfer pada rising edge dan falling edge, sehingga dua transfer per siklus clock.'},
+      {q:'Memory manakah yang paling dekat dan sangat cepat di dalam prosesor?',a:['HDD','ROM','Register','SSD'],c:2,why:'Register berada di dalam CPU dan menyimpan informasi yang sedang diproses.'},
+      {q:'Apa fungsi utama cache memory?',a:['Menyimpan file selamanya','Mengurangi waktu tunggu CPU saat mengakses data yang sering digunakan','Menggantikan sistem operasi','Menyimpan data ketika listrik mati'],c:1,why:'Cache menyimpan salinan data/instruksi yang sering diakses agar CPU dapat mengambilnya lebih cepat.'}
+    ];
+    let qIndex=0,score=0,answered=false;
+    const questionEl=document.getElementById('question'),answersEl=document.getElementById('answers'),feedback=document.getElementById('quizFeedback'),next=document.getElementById('nextQuestion'),scoreEl=document.getElementById('quizScore');
+    function showQuestion(){
+      const q=questions[qIndex];answered=false;questionEl.textContent=q.q;feedback.textContent='';next.hidden=true;
+      answersEl.innerHTML='';
+      q.a.forEach((answer,i)=>{const b=document.createElement('button');b.className='answer';b.textContent=answer;b.addEventListener('click',()=>chooseAnswer(b,i));answersEl.appendChild(b)});
+      scoreEl.textContent=`Skor: ${score} / ${qIndex}`;
+    }
+    function chooseAnswer(button,index){
+      if(answered)return;answered=true;const q=questions[qIndex];
+      [...answersEl.children].forEach((b,i)=>{b.disabled=true;if(i===q.c)b.classList.add('correct')});
+      if(index===q.c){score++;feedback.textContent='Tepat! '+q.why}else{button.classList.add('wrong');feedback.textContent='Belum tepat. '+q.why}
+      scoreEl.textContent=`Skor: ${score} / ${qIndex+1}`;next.hidden=false;
+      next.textContent=qIndex===questions.length-1?'Lihat hasil →':'Pertanyaan berikutnya →';
+    }
+    next.addEventListener('click',()=>{
+      if(qIndex<questions.length-1){qIndex++;showQuestion()}
+      else{questionEl.textContent=`Selesai! Skor kamu ${score} dari ${questions.length}.`;answersEl.innerHTML='';feedback.textContent=score===questions.length?'Excellent! Semua jawaban benar.':'Terus belajar, kamu sudah menyelesaikan checkpoint ini.';next.hidden=false;next.textContent='Ulangi quiz ↻';next.onclick=()=>{qIndex=0;score=0;next.onclick=null;showQuestion()}}
+    });
+    showQuestion();
+
+    const progress=document.getElementById('readProgress'),backTop=document.getElementById('backTop');
+    function onScroll(){
+      const max=document.documentElement.scrollHeight-innerHeight;
+      progress.style.width=(max>0?Math.min(100,scrollY/max*100):0)+'%';
+      backTop.classList.toggle('show',scrollY>450);
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+    backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+  </script>
+</body>
+</html>
